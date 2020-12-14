@@ -23,7 +23,7 @@ export default () => {
                     id="video"
                     controls="true"
                 >
-                    <source src="badapple.mp4" type="video/mp4"/>
+                    <source src="http://a.sinwai.cn/badapple.mp4" type="video/mp4" />
                 </video>
                 <div className={style.txt} onClick={model.drawLottery}>
                     开始摇奖55

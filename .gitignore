@@ -22,3 +22,4 @@ yarn-error.log*
 .idea
 .vscode
 app.tar.gz
+static/*.mp4
