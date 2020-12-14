@@ -1,0 +1,39 @@
+.test-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    //background-color: black;
+    .tit {
+        font-size: .3rem;
+        margin: .2rem 0;
+    }
+
+    .slider {
+        line-height: .5rem;
+        font-size: .3rem;
+        display: flex;
+        justify-content: space-between;
+        .btn {
+            width: 1rem;
+            height: .5rem;
+            text-align: center;
+            border-radius: .1rem;
+            border: .01rem solid red;
+
+
+        }
+    }
+
+    //mix-blend-mode: screen;
+}
+
+@keyframes metr {
+    from {
+        transform: rotate(45deg) translateX(-120%);
+    }
+    to {
+        transform: rotate(45deg)  translateX(100%);
+    }
+}
