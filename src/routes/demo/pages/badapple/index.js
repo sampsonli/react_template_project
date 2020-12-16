@@ -32,6 +32,9 @@ export default () => {
     const render = useRef();
     const [playing, setPlaying] = useState(false);
     useEffect(() => {
+        if (window.innerWidth < 500) {
+            alert('不好意思， 暂不支持在移动端浏览， 请在pc浏览器打开, 谢谢');
+        }
     }, []);
     const scale = 1;
     const init = (imgData) => {
@@ -85,27 +88,29 @@ export default () => {
     return (
         <div className={style.container}>
             <div className={style.content}>
-                <canvas className={style.canvas} id="cv" ref={cv} />
+                <canvas className={style.canvas} id="cv" ref={cv}/>
                 <video
-                  className={style.video}
-                  webkit-playsinline="true"
-                  playsinline
-                  x5-playsinline="true"
-                  x-webkit-airplay="allow"
-                  id="video"
-                  onTimeUpdate={capturePic}
-                  ref={myVideo}
-                  controls
-                  onPause={pauseVideo}
+                    className={style.video}
+                    webkit-playsinline="true"
+                    playsinline
+                    x5-playsinline="true"
+                    x-webkit-airplay="allow"
+                    id="video"
+                    onTimeUpdate={capturePic}
+                    ref={myVideo}
+                    controls
+                    onPause={pauseVideo}
                 >
-                    <source src="badapple.mp4" type="video/mp4" />
-                    {/*<source src="02.mp4" type="video/mp4" />*/}
+                    <source src="badapple.mp4" type="video/mp4"/>
+                    {/* <source src="02.mp4" type="video/mp4" /> */}
                 </video>
-                <div className={style.txt} id="txt" ref={render} />
-                {!playing && <div>
-                    <div onClick={doPlay} className={style.btn}>开始表演</div>
-                    <div className={style.tips}>powered by lichun</div>
-                </div>}
+                <div className={style.txt} id="txt" ref={render}/>
+                {!playing && (
+                    <div>
+                        <div onClick={doPlay} className={style.btn}>开始表演</div>
+                        <div className={style.tips}>powered by lichun, supported by redux-spring</div>
+                    </div>
+                )}
             </div>
 
         </div>
