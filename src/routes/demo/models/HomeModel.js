@@ -13,6 +13,8 @@ function wait(time) {
 class HomeModel extends Model {
     loaded = false;
 
+    static a = 7;
+
     loading = false;
 
     #raf;
@@ -34,6 +36,7 @@ class HomeModel extends Model {
      * 初始化方法调用
      */
     init() {
+        console.log(HomeModel.a);
         if (this.loaded) return;
         let i = 0;
 
@@ -68,4 +71,4 @@ class HomeModel extends Model {
 }
 export default HomeModel;
 
-module.hot && module.hot.accept();
+// module.hot && module.hot.accept();

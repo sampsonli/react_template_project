@@ -12,7 +12,7 @@ object-assign
 
 /**
  * redux-spring
- * Copyright (c) 2019 sampson Li (lichun) <740056710@qq.com>
+ * Copyright (c) 2020 Sampson Li (lichun) <740056710@qq.com>
  * @license MIT
  */
 
