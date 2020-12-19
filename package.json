@@ -14,7 +14,7 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
-    "redux-spring": "^2.0.5"
+    "redux-spring": "^2.0.8"
   },
   "scripts": {
     "build": "rimraf dist/* && webpack --config build/webpack.config.prod.js",
@@ -58,7 +58,7 @@
     "copy-webpack-plugin": "^7.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^5.0.1",
-    "eslint": "^7.15.0",
+    "eslint": "^7.16.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
@@ -68,7 +68,7 @@
     "express": "^4.16.4",
     "file-loader": "^6.2.0",
     "forward-request": "^1.0.3",
-    "html-webpack-plugin": "^5.0.0-alpha.17",
+    "html-webpack-plugin": "^5.0.0-beta.1",
     "husky": "^4.3.6",
     "less": "^3.13.0",
     "less-loader": "^7.1.0",
