@@ -29,6 +29,7 @@ class HomeModel extends Model {
 
     /**
      * @type {UserModel}
+     * @private
      */
     @inject(UserModel) userModel;
 
