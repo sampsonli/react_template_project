@@ -4735,10 +4735,10 @@ reduce-flatten@^2.0.0:
   resolved "https://registry.yarnpkg.com/reduce-flatten/-/reduce-flatten-2.0.0.tgz#734fd84e65f375d7ca4465c69798c25c9d10ae27"
   integrity sha512-EJ4UNY/U1t2P/2k6oqotuX2Cc3T6nxJwsM0N0asT7dhrtH1ltUxDn4NalSYmPE2rCkVpcf/X6R0wDwcFpzhd4w==
 
-redux-spring@^2.0.9:
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/redux-spring/-/redux-spring-2.0.9.tgz#452367246d267bfb93f35259cd5424d3e2f66e4c"
-  integrity sha512-gufSUqSXNf3mMGvOp8oCFulbbyzn/ijpBfOIX0p5k2zfnPQ9Or5+Xx3jfVk7jjdDZ/PWQrGS3RXHj+zU+iZbPA==
+redux-spring@^2.0.10:
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/redux-spring/-/redux-spring-2.0.10.tgz#bc68731d0818f264be0dc003c178be7ea10f7852"
+  integrity sha512-7FRMF6nQ64dByt8mp0voYiDqRPEsStvd085kJw2Xpd72numQxZ1E4zB2HP0ukryJvZ6FJ4KdVJIvleJnRoyLgw==
 
 redux@^4.0.5:
   version "4.0.5"
