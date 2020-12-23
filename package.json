@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "private": false,
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "core-js": "^3.8.1",
     "moment": "^2.29.1",
