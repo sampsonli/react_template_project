@@ -3,7 +3,7 @@ import React from 'react';
 /**
  * 动态加载组件
  * @template T
- * @param {function(): Promise<{default: T}>} loadComp - 组件加载方法
+ * @param {function(): Promise<{default: T, onUpdate?: function({default: T})}>} loadComp - 组件加载方法
  * @param {function()} [LoadingComp] - 加载中渲染组件
  * @return {T}
  */

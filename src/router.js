@@ -16,7 +16,7 @@ export default () => (
     <Router>
         <Switch>
             { routes.map(r => <Route key={r.path} component={r.component} path={r.path} />)}
-            <Redirect from="/" to="/demo/badapple" />
+            <Redirect from="/" to="/test/badapple" />
         </Switch>
     </Router>
 );

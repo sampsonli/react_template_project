@@ -1,5 +1,5 @@
 import {service, Model, inject} from 'redux-spring';
-import UserModel from '~/routes/demo/models/UserModel';
+import UserModel from '~/routes/test/models/UserModel';
 
 function wait(time) {
     return new Promise((resolve) => {

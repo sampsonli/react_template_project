@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
 import {useModel} from 'redux-spring';
 import style from './style.less';
-import HomeModel from '~/routes/demo/models/HomeModel';
+import DemoModel from '~/routes/test/models/HomeModel';
 
 export default () => {
-    const model = useModel(HomeModel);
+    const model = useModel(DemoModel);
     const {
         result, frag,
     } = model;
