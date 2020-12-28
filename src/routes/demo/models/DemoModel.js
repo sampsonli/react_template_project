@@ -10,6 +10,7 @@ class DemoModel extends Model {
     num;
 
     * init() {
+        if (this.loaded) return;
         this.num = yield new Promise((resolve) => setTimeout(() => resolve(10), 200));
         this.loaded = true;
     }

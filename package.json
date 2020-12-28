@@ -14,7 +14,7 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
-    "redux-spring": "^2.0.10"
+    "redux-spring": "^2.0.11"
   },
   "scripts": {
     "build": "rimraf dist/* && webpack --config build/webpack.config.prod.js",
@@ -80,7 +80,7 @@
     "url-loader": "^4.1.1",
     "webpack": "^5.11.0",
     "webpack-bundle-analyzer": "^4.3.0",
-    "webpack-cli": "^4.2.0",
+    "webpack-cli": "^4.3.0",
     "webpack-dev-middleware": "^4.0.2",
     "webpack-hot-middleware": "^2.25.0"
   }
