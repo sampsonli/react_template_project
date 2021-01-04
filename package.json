@@ -5,7 +5,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
-    "core-js": "^3.8.1",
+    "core-js": "^3.8.2",
     "moment": "^2.29.1",
     "prop-types": "^15.6.2",
     "react": "^17.0.1",
@@ -58,7 +58,7 @@
     "copy-webpack-plugin": "^7.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^5.0.1",
-    "eslint": "^7.16.0",
+    "eslint": "^7.17.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
@@ -68,7 +68,7 @@
     "express": "^4.16.4",
     "file-loader": "^6.2.0",
     "forward-request": "^1.0.3",
-    "html-webpack-plugin": "^5.0.0-beta.1",
+    "html-webpack-plugin": "^5.0.0-beta.3",
     "husky": "^4.3.6",
     "less": "^4.0.0",
     "less-loader": "^7.2.1",
@@ -80,7 +80,7 @@
     "url-loader": "^4.1.1",
     "webpack": "^5.11.1",
     "webpack-bundle-analyzer": "^4.3.0",
-    "webpack-cli": "^4.3.0",
+    "webpack-cli": "^4.3.1",
     "webpack-dev-middleware": "^4.0.2",
     "webpack-hot-middleware": "^2.25.0"
   }
