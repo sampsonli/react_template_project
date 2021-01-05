@@ -7,5 +7,4 @@ const store = createStore(
     () => {},
     window.__INITIAL_STATE__,
 );
-spring(store);
-export default store;
+export default spring(store);
