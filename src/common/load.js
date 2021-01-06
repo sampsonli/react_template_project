@@ -5,7 +5,7 @@ import React from 'react';
  * @template T
  * @param {function(): Promise<{default: T, onUpdate?: function({default: T})}>} loadComp - 组件加载方法
  * @param {React.Component|function(...arg)} [Wrap] - 包装组件
- * @param {function()} [LoadingComp] - 加载中渲染组件
+ * @param {React.Component|function(...arg)} [LoadingComp] - 加载中渲染组件
  * @return {T}
  */
 export default (loadComp, Wrap = ({children}) => children, LoadingComp = () => null) => (

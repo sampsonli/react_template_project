@@ -7,6 +7,7 @@ class DemoModel extends Model {
 
     /**
      * @type {UserModel}
+     * @private
      */
     @inject(UserModel)
     user;
@@ -18,7 +19,7 @@ class DemoModel extends Model {
 
     * init() {
         if (this.loaded) return;
-        console.log(this.user.info);
+        console.log(this.user);
         this.num = yield new Promise((resolve) => setTimeout(() => resolve(10), 200));
         this.loaded = true;
     }
