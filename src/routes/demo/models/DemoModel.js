@@ -1,8 +1,15 @@
-import {service, Model} from 'redux-spring';
+import {service, Model, inject} from 'redux-spring';
+import UserModel from '~/models/UserModel';
 
 @service(module.id)
 class DemoModel extends Model {
     loaded = false;
+
+    /**
+     * @type {UserModel}
+     */
+    @inject(UserModel)
+    user;
 
     /**
      * @type {number}
@@ -11,6 +18,7 @@ class DemoModel extends Model {
 
     * init() {
         if (this.loaded) return;
+        console.log(this.user.info);
         this.num = yield new Promise((resolve) => setTimeout(() => resolve(10), 200));
         this.loaded = true;
     }

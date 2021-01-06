@@ -18,7 +18,7 @@ export default () => {
                 <div className={style.num}>{loaded ? num : '加载中'}</div>
                 <div className={style.minus} onClick={model.minusOne}>-</div>
             </div>
-
         </div>
+
     );
 };
