@@ -1,11 +1,13 @@
 import {service, Model, inject} from 'redux-spring';
 import UserModel from '~/models/UserModel';
+import api from './api';
 
 @service(module.id)
 class DemoModel extends Model {
     loaded = false;
 
     /**
+     * 此处可以拿到用户信息
      * @type {UserModel}
      * @private
      */
@@ -19,8 +21,7 @@ class DemoModel extends Model {
 
     * init() {
         if (this.loaded) return;
-        console.log(this.user);
-        this.num = yield new Promise((resolve) => setTimeout(() => resolve(10), 200));
+        this.num = yield api.getRemoteData();
         this.loaded = true;
     }
 

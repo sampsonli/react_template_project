@@ -2,10 +2,13 @@ import {Model, service} from 'redux-spring';
 
 @service('user')
 class UserModel extends Model {
+    /**
+     * @type {{name: string, sex: number}}
+     */
     info
 
     init() {
-        console.log('init user');
+        if (this.info) return;
         this.getUserInfo();
     }
 
