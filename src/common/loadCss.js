@@ -10,7 +10,6 @@ export default (src) => {
         element.setAttribute('rel', 'stylesheet');
         element.href = src;
         document.head.appendChild(element);
-        element.setAttribute('rel', 'stylesheet');
         element.onload = () => {
             resolve(() => {
                 if (window.__loadedCss[src]) {
