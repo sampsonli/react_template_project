@@ -4658,10 +4658,10 @@ rechoir@^0.7.0:
   dependencies:
     resolve "^1.9.0"
 
-redux-spring@^2.0.16:
-  version "2.0.16"
-  resolved "https://registry.yarnpkg.com/redux-spring/-/redux-spring-2.0.16.tgz#d5fbe37b460aaa093a2466ec4ec9d7f675f8891f"
-  integrity sha512-scjnoxdU5LwEwITK49ov52aDs9YrxJQ6fq8/1Z8QQ7fYHkpTXey+2qhv2537ZbKzEJ14TytFnkGRcmjSuc7sFQ==
+redux-spring@^2.0.18:
+  version "2.0.18"
+  resolved "https://registry.yarnpkg.com/redux-spring/-/redux-spring-2.0.18.tgz#561edfce580cae362d9c26bdb15ea8c4e6934ad1"
+  integrity sha512-Y2+WN6FuV69qpmJ19jE+LCf3OzitmlgQKUTXjeIKZoKncTJ21Q2MmdGv5BDyZoro669fYRVt3AAtSbUcZ7F+1w==
 
 redux@^4.0.5:
   version "4.0.5"
