@@ -49,6 +49,7 @@
     "@babel/plugin-transform-runtime": "^7.12.13",
     "@babel/preset-env": "^7.12.13",
     "@babel/preset-react": "^7.12.13",
+    "@types/react": "^17.0.1",
     "assets-webpack-plugin": "^7.0.0",
     "autoprefixer": "^10.2.4",
     "babel-eslint": "^10.1.0",
