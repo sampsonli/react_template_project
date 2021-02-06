@@ -4,7 +4,7 @@
       "@babel/env",
       {
         "useBuiltIns": "usage",
-        "corejs": "^3.7.0",
+        "corejs": "^3.8.3",
         "targets": {
           "browsers": [
             "ie >= 9",
