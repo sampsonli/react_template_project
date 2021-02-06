@@ -23,6 +23,7 @@ module.exports = {
         filename: '[name].js',
         chunkFilename: '[name]_chunk.js',
     },
+    target: ['web', 'es5'],
     devtool: 'inline-source-map', // 报错的时候在控制台输出哪一行报错
     context: ctxPath,
     module: {

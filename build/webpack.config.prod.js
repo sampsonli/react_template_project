@@ -22,6 +22,7 @@ module.exports = {
         filename: '[name].[contenthash:6].bundle.js',
         chunkFilename: '[name].[contenthash:6].chunk.js',
     },
+    target: ['web', 'es5'],
     context: ctxPath,
     module: {
         rules: [
