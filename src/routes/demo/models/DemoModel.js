@@ -23,7 +23,6 @@ class DemoModel extends Model {
         if (this.loaded) return;
         this.num = yield api.getRemoteData();
         this.loaded = true;
-        return this.num;
     }
 
     addOne() {
