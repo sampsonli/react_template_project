@@ -34,7 +34,7 @@ module.exports = {
                 include: srcPath,
                 exclude: /node_modules/,
                 use: [
-                    'babel-loader',
+                    'babel-loader?cacheDirectory',
                 ],
             },
             {
@@ -45,7 +45,17 @@ module.exports = {
                     'style-loader',
                     'css-loader',
                     'postcss-loader',
-                    'less-loader',
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            lessOptions: {
+                                modifyVars: {
+                                    // 'font-size-base': '.14rem',
+                                },
+                                javascriptEnabled: true,
+                            },
+                        },
+                    },
                 ],
             },
             {
