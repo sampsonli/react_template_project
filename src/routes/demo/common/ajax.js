@@ -31,7 +31,7 @@ ajax.get = function (url, config) {
         }
         throw new Error(response.message);
     }).catch(e => {
-        alert(e.message)
+        alert(e.message);
         // alert(JSON.stringify(e))
     });
 };

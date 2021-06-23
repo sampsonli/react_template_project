@@ -20,7 +20,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": ["prettier --write ./src", "eslint --fix", "git add"]
+    "*.{js,jsx,ts,tsx}": ["prettier --write ./src", "eslint --fix ./src", "git add"]
   },
   "browserslist": [
     ">0.2%",

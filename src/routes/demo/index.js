@@ -16,8 +16,8 @@ export default () => {
     return (
         // <ConfigProvider locale={zhCN}>
             <Switch>
-                <Route path={`${match.url}/rain`} component={Rain}/>
-                <Route path={`${match.url}`} component={Demo}/>
+                <Route path={`${match.url}/rain`} component={Rain} />
+                <Route path={`${match.url}`} component={Demo} />
             </Switch>
         // </ConfigProvider>
     );
