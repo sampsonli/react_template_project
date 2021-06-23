@@ -10,11 +10,26 @@
 
     <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
     <script type="text/javascript">
+        var rFontSize;
         function resize() {
-            document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 + "px";
+            var clientWith = document.documentElement.clientWidth;
+            if(clientWith > 1500) {
+                rFontSize = clientWith / 17;
+            } else if(clientWith > 1300){
+                rFontSize = clientWith / 14.4; // 统一1440 * 960
+            } else {
+                rFontSize = 100;
+            }
+            document.documentElement.style.fontSize = rFontSize + "px";
         }
-        window.onresize = resize
+        window.onresize = resize;
         resize();
+        function rem2px (size) {
+            return size * rFontSize;
+        }
+        function px2rem (size) {
+            return size / rFontSize;
+        }
     </script>
 </head>
 <body>
