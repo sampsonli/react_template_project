@@ -3,13 +3,15 @@
   "version": "0.0.3",
   "private": false,
   "scripts": {
-    "build": "rimraf dist/* && webpack --config build/webpack.config.prod.js",
+    "build": "webpack --config build/webpack.config.prod.js",
     "analyse": "cross-env ANALYSE=1 npm run build",
     "build:dll": "rimraf static/dll/ && webpack --config build/webpack.config.dll.js",
     "clean": "rimraf dist",
-    "deploy": "node deploy.js",
     "dev": "cross-env NODE_ENV=development PORT=3000 node server.js",
-    "start": "cross-env NODE_ENV=production node server.js"
+    "start": "cross-env NODE_ENV=production node server.js",
+    "devdb": "rimraf dist/* && cross-env SF_ENV=devdb npm run build",
+    "sit": "rimraf dist/* && cross-env SF_ENV=sit npm run build",
+    "prd": "rimraf dist/* && cross-env SF_ENV=prd npm run build"
   },
   "browserslist": [
     ">0.2%",

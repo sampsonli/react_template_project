@@ -105,6 +105,7 @@ module.exports = {
     plugins: [
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
+            'process.env.SF_ENV': JSON.stringify(process.env.SF_ENV || 'prd'),
         }),
         new webpack.DllReferencePlugin({
             context: ctxPath,

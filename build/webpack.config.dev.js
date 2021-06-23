@@ -117,6 +117,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(), // 热更新插件
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development'),
+            'process.env.SF_ENV': JSON.stringify(process.env.SF_ENV || 'sit'),
         }),
         ...(isDll ? [new webpack.DllReferencePlugin({
             context: ctxPath,

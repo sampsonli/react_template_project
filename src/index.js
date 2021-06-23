@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import loadJs from '~/common/loadjs';
 import store from './store';
 import Router from './router';
-import './assets/common.css';
+import './assets/common.less';
 
 const render = () => {
     ReactDOM.render(
