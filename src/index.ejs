@@ -12,14 +12,15 @@
     <script type="text/javascript">
         var rFontSize;
         function resize() {
-            var clientWith = document.documentElement.clientWidth;
-            if(clientWith > 1500) {
+            // var clientWith = document.documentElement.clientWidth;
+            /*if(clientWith > 1500) {
                 rFontSize = clientWith / 17;
             } else if(clientWith > 1300){
                 rFontSize = clientWith / 14.4; // 统一1440 * 960
             } else {
                 rFontSize = 100;
-            }
+            }*/
+            rFontSize = 100;
             document.documentElement.style.fontSize = rFontSize + "px";
         }
         window.onresize = resize;

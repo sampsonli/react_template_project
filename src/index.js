@@ -20,3 +20,6 @@ const render = () => {
 };
 render();
 export default render;
+if (module.hot) {
+    module.hot.accept();
+}
