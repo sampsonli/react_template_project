@@ -12,7 +12,8 @@
     "devdb": "rimraf dist/* && cross-env SF_ENV=devdb npm run build",
     "sit": "rimraf dist/* && cross-env SF_ENV=sit npm run build",
     "prd": "rimraf dist/* && cross-env SF_ENV=prd npm run build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "precommit": "lint-staged"
   },
   "husky": {
     "hooks": {
