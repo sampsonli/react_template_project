@@ -12,8 +12,7 @@
     "devdb": "rimraf dist/* && cross-env SF_ENV=devdb npm run build",
     "sit": "rimraf dist/* && cross-env SF_ENV=sit npm run build",
     "prd": "rimraf dist/* && cross-env SF_ENV=prd npm run build",
-    "prepare": "husky install",
-    "precommit": "lint-staged"
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
@@ -21,10 +20,7 @@
     }
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ]
+    "*.{js,jsx,ts,tsx}": ["prettier --write ./src", "eslint --fix", "git add"]
   },
   "browserslist": [
     ">0.2%",
