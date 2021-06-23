@@ -1,8 +1,5 @@
-import react, {useMemo} from 'react';
+import {useMemo} from 'react';
 
-import react from 'react';
-import react from 'react';
-import react from 'react';
 const resolvePath = (path) => {
     path = path.replace(/\/\.\//g, '/')
         .replace(/^\.\//, '');
