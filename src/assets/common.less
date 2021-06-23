@@ -25,28 +25,35 @@ button,
 ul,
 li,
 select {
-    margin: 0;
-    padding: 0;
-}
-input {
-    font-size: inherit;
-}
-li {
-    list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-em,
-i {
-    font-style: normal;
+input {
+  font-size: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+em, i {
+  font-style: normal;
 }
 
 html {
-    font-family: -apple-system, Helvetica Neue, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
-}
-body {
-    font-size: 14px;
-}
-* {
-    box-sizing: border-box;
+  font-family: -apple-system, Helvetica Neue, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
 }
 
+body {
+  font-size: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@import '~antd/lib/style/themes/default.less';
+@import '~antd/dist/antd.less'; // 引入官方提供的 less 样式入口文件
+//@primary-color red;
+@primary-color: red;

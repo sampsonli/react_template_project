@@ -43,7 +43,18 @@ module.exports = {
                     MiniCssExtractPlugin.loader,
                     'css-loader',
                     'postcss-loader',
-                    'less-loader',
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            lessOptions: {
+                                modifyVars: {
+                                    // 'font-size-base': '.14rem',
+                                    // 'primary-color': '#1DA57A',
+                                },
+                                javascriptEnabled: true,
+                            },
+                        },
+                    },
                 ],
             },
             {

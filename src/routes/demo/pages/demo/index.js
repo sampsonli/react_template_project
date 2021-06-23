@@ -3,6 +3,7 @@ import {useModel} from 'redux-spring';
 import style from './style.less';
 import DemoModel from '~/routes/demo/models/DemoModel';
 import {pushPath} from '~/common/pathTools';
+import {DatePicker} from 'antd';
 
 export default () => {
     const model = useModel(DemoModel);
@@ -19,6 +20,7 @@ export default () => {
                 <div className={style.num} onClick={() => pushPath('./demo/rain', {name: 'hello'})}>{loaded ? num : '加载中'}</div>
                 <div className={style.minus} onClick={model.minusOne}>-</div>
             </div>
+            <DatePicker/>
         </div>
 
     );
