@@ -20,7 +20,7 @@ export default () => {
                 <div className={style.num} onClick={() => pushPath('./demo/rain', {name: 'hello'})}>{loaded ? num : '加载中'}</div>
                 <div className={style.minus} onClick={model.minusOne}>-</div>
             </div>
-            <DatePicker/>
+            <DatePicker />
         </div>
 
     );
