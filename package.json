@@ -51,6 +51,7 @@
     "@babel/plugin-transform-runtime": "^7.14.5",
     "@babel/preset-env": "^7.14.5",
     "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.14.5",
     "@types/react": "^17.0.11",
     "assets-webpack-plugin": "^7.1.0",
     "autoprefixer": "^10.2.6",
