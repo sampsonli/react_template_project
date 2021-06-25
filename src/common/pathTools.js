@@ -16,6 +16,11 @@ const resolvePath = (path) => {
     });
     return stack.join('/');
 };
+/**
+ * 获取所有请求参数key-value 对象
+ * @param qs
+ * @return {{}}
+ */
 export const parseQueryStr = (qs) => {
     if (qs && qs.indexOf('?') === 0) {
         qs = qs.replace('?', '');
@@ -32,6 +37,10 @@ export const parseQueryStr = (qs) => {
     }
     return result;
 };
+/**
+ * hooks获取所有请求参数key-value 对象
+ * @return {{}}
+ */
 export const useQueryParams = () => useMemo(parseQueryStr, [window.location.href]);
 
 const getFinalPath = (path, query = {}) => {
@@ -52,11 +61,47 @@ const getFinalPath = (path, query = {}) => {
     return resolvePath(fPath);
 };
 
+/**
+ * 跳转新的页面
+ * @param path {string}
+ * @param query {Object}
+ */
 export const pushPath = (path, query = {}) => {
     window.location.href = getFinalPath(path, query);
 };
+/**
+ * 替换当前页面
+ * @param path {string}
+ * @param query {Object}
+ */
 export const replacePath = (path, query = {}) => {
     window.location.replace(getFinalPath(path, query));
+};
+/**
+ * 开启新的Tab页面
+ * @param path {string}
+ * @param query {Object}
+ */
+export const openNewTab = (path, query = {}) => {
+    window.open(getFinalPath(path, query), '_blank');
+};
+/**
+ * 刷新跳转新页面
+ * @param path {string}
+ * @param query {Object}
+ */
+export const reloadPushPath = (path, query = {}) => {
+    const tmp = getFinalPath(path, query).split('#');
+    window.open([`${tmp[0].split('?')[0]}?_t=${Date.now()}`, tmp[1]].join('#'), '_self');
+};
+/**
+ * 刷新替换当前页面
+ * @param path {string}
+ * @param query {Object}
+ */
+export const reloadReplacePath = (path, query = {}) => {
+    const tmp = getFinalPath(path, query).split('#');
+    window.location.replace([`${tmp[0].split('?')[0]}?_t=${Date.now()}`, tmp[1]].join('#'), '_self');
 };
 export const back = () => {
     window.history.back();

@@ -4,8 +4,6 @@
  */
 import axios from 'axios';
 
-const isMock = false;
-// const isMock = false;
 const options = {
   baseURL: '/api',
   timeout: 20000,
@@ -52,19 +50,20 @@ export const generator = (Apis) => {
   const result = {};
   Object.keys(Apis).forEach(key => {
     const {
-      url, method, config, mockUrl,
+      url, method, config, mockUrl, isMock = false,
     } = Apis[key];
+    const furl = isMock ? (mockUrl || url) : url;
     if (method === 'get' || method === 'GET') {
       result[key] = (params = {}) => {
         const p = Object.keys(params);
-        let reqUrl = `${isMock ? (mockUrl || url) : url }?_t=${ Date.now()}`;
+        let reqUrl = `${furl}?_t=${ Date.now()}`;
         if (p.length) {
           reqUrl = `${reqUrl }&${ Object.keys(params).map((k) => [k, params[k]].join('=')).join('&')}`;
         }
         return get(reqUrl, config);
       };
     } else if (method === 'post' || method === 'POST') {
-      result[key] = (params = {}) => post(isMock ? (mockUrl || url) : url, params, config);
+      result[key] = (params = {}) => post(furl, params, config);
     }
   });
   return result;
