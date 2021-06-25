@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跳转中...</title>
+</head>
+<body>
+<script>
+    /**
+     * 中间页跳转
+     */
+    var href = window.location.href;
+    var url = href;
+    var qs = href.split('?')[1];
+    var result = {};
+    if(qs) {
+        qs.split('&')
+            .forEach(ele => {
+                var tmp = ele.split('=');
+                // eslint-disable-next-line prefer-destructuring
+                result[tmp[0]] = tmp[1];
+            });
+    }
+    window.location.replace(result.url && decodeURIComponent(result.url) || '/')
+</script>
+
+</body>
+</html>
