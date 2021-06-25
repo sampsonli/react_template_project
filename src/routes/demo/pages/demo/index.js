@@ -17,7 +17,7 @@ export default () => {
     return (
         <div className={style.container}>
             <div className={style.content}>
-                <div className={style.add} onClick={model.addOne}>+1</div>
+                <div className={style.add} onClick={model.addOne}>+</div>
                 <div className={style.num}
                   onClick={() => reloadPushPath('./demo/rain', {name: 'hello'})}
                 >
