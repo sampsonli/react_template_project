@@ -132,8 +132,6 @@ module.exports = {
             favicon: path.join(ctxPath, 'static/favicon.ico'), // 自动把根目录下的favicon.ico图片加入html
             dllName: isDll ? bundleConfig.vendors.js : null,
         }),
-    // new PreloadWebpackPlugin(),
-    // new BundleAnalyzerPlugin() // 打包分析插件，打包后会自动弹出tree图：127.0.0.1:8888
     ],
     optimization: {
         runtimeChunk: true,

@@ -21,7 +21,9 @@ class DemoModel extends Model {
 
     * init() {
         if (this.loaded) return;
-        this.num = yield api.getRemoteData();
+        const info = yield api.getRemoteData();
+        console.log(info);
+        this.num = info.data.list.length;
         this.loaded = true;
     }
 

@@ -6,7 +6,7 @@ import {ConfigProvider} from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
 import store from './store';
 import Router from './router';
-import './assets/common.less';
+// import './assets/common.less';
 
 const render = () => {
     ReactDOM.render(

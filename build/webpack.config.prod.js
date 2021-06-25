@@ -4,7 +4,6 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
-// const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
 const vendorManifest = require('../static/dll/vendors-manifest');
 const bundleConfig = require('../static/dll/bundle-config');
 
@@ -27,7 +26,6 @@ module.exports = {
     module: {
         rules: [
             {
-                // .js .jsx用babel解析
                 test: /\.[tj]sx?$/,
                 include: srcPath,
                 exclude: /node_modules/,
@@ -79,7 +77,6 @@ module.exports = {
             {
                 // 文件解析
                 test: /\.(eot|woff|svg|ttf|woff2|appcache|mp3|mp4|pdf)(\?|$)/,
-                // include: path.resolve(__dirname, 'src'),
                 use: [
                     {
                         loader: 'file-loader',
@@ -138,7 +135,6 @@ module.exports = {
         new BundleAnalyzerPlugin({
             analyzerMode: process.env.ANALYSE ? 'server' : 'disabled',
         }),
-        // new PreloadWebpackPlugin(),
     ],
     performance: {
         maxAssetSize: 1024 * 1024,

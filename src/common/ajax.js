@@ -4,6 +4,7 @@
  */
 import axios from 'axios';
 
+const isDev = process.env.NODE_ENV === 'development';
 const options = {
   baseURL: '/api',
   timeout: 20000,
@@ -52,13 +53,16 @@ export const generator = (Apis) => {
     const {
       url, method, config, mockUrl, isMock = false,
     } = Apis[key];
-    const furl = isMock ? (mockUrl || url) : url;
+    let furl = isMock ? (mockUrl || url) : url;
+    if (!isDev) { // 防止mock上生产、测试环境
+      furl = url;
+    }
     if (method === 'get' || method === 'GET') {
       result[key] = (params = {}) => {
         const p = Object.keys(params);
-        let reqUrl = `${furl}?_t=${ Date.now()}`;
+        let reqUrl = `${furl}?_t=${Date.now()}`;
         if (p.length) {
-          reqUrl = `${reqUrl }&${ Object.keys(params).map((k) => [k, params[k]].join('=')).join('&')}`;
+          reqUrl = `${reqUrl }&${Object.keys(params).map((k) => [k, params[k]].join('=')).join('&')}`;
         }
         return get(reqUrl, config);
       };
