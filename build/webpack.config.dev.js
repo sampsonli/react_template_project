@@ -11,6 +11,9 @@ const isDll = true;
 module.exports = {
     mode: 'development',
     stats: 'errors-only',
+    watchOptions: {
+        ignore: /node_module/,
+    },
     entry: {
         app: [
             'webpack-hot-middleware/client?reload=true&path=/__webpack_hmr', // webpack热更新插件，就这么写
