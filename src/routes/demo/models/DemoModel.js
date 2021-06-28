@@ -36,6 +36,12 @@ class DemoModel extends Model {
         if (this.num === undefined) return;
         this.num -= 1;
     }
+
+    jumpLogin() {
+        const {href} = window.location;
+        const link = `${href.split('#')[0] }#/user/login?from=${ encodeURIComponent(href)}`;
+        window.location.replace(link);
+    }
 }
 export default DemoModel;
 

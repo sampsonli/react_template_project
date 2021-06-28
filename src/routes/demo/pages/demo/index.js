@@ -19,7 +19,7 @@ export default () => {
             <div className={style.content}>
                 <div className={style.add} onClick={model.addOne}>+</div>
                 <div className={style.num}
-                  onClick={() => reloadPushPath('./demo/rain', {name: 'hello'})}
+                  onClick={model.jumpLogin}
                 >
                     {loaded ? num : '加载中'}
                 </div>

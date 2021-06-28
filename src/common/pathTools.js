@@ -16,23 +16,23 @@ const resolvePath = (path) => {
     });
     return stack.join('/');
 };
+
 /**
  * 获取所有请求参数key-value 对象
  * @param qs
  * @return {{}}
  */
 export const parseQueryStr = (qs) => {
-    if (qs && qs.indexOf('?') === 0) {
-        qs = qs.replace('?', '');
+    if (qs && qs.indexOf('?') > -1) {
+        [, qs] = qs.split('?');
     }
-    qs = qs || decodeURIComponent(window.location.hash.split('?')[1]);
     const result = {};
     if (qs) {
         qs.split('&')
             .forEach(ele => {
                 const tmp = ele.split('=');
                 // eslint-disable-next-line prefer-destructuring
-                result[tmp[0]] = tmp[1];
+                result[tmp[0]] = decodeURIComponent(tmp[1]);
             });
     }
     return result;
@@ -41,7 +41,7 @@ export const parseQueryStr = (qs) => {
  * hooks获取所有请求参数key-value 对象
  * @return {{}}
  */
-export const useQueryParams = () => useMemo(parseQueryStr, [window.location.href]);
+export const useQueryParams = () => useMemo(() => parseQueryStr(window.location.hash.split('?')[1]), [window.location.href]);
 
 const getFinalPath = (path, query = {}) => {
     const queryStr = Object.keys(query)
