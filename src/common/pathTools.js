@@ -41,7 +41,10 @@ export const parseQueryStr = (qs) => {
  * hooks获取所有请求参数key-value 对象
  * @return {{}}
  */
-export const useQueryParams = () => useMemo(() => parseQueryStr(window.location.hash.split('?')[1]), [window.location.href]);
+export const useQueryParams = () => useMemo(
+    () => parseQueryStr(window.location.hash ? window.location.hash.split('?')[1] : window.location.href.split('?')[1]),
+    [window.location.href],
+);
 
 const getFinalPath = (path, query = {}) => {
     const queryStr = Object.keys(query)
@@ -59,6 +62,19 @@ const getFinalPath = (path, query = {}) => {
     }
     const fPath = window.location.hash.substr(0, window.location.hash.lastIndexOf('/') + 1) + path;
     return resolvePath(fPath);
+};
+
+/**
+ * 重置查询参数
+ */
+export const resetQuery = () => {
+    if (window.location.hash) {
+        const [path] = window.location.hash.split('?');
+        window.location.replace(path);
+    } else {
+        const [path] = window.location.href.split('?');
+        window.location.replace(path);
+    }
 };
 
 /**

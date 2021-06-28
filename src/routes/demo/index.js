@@ -2,17 +2,22 @@ import React from 'react';
 import {Switch, Route, useRouteMatch} from 'react-router-dom';
 import 'moment/locale/zh-cn';
 import load from '~/common/load';
-import UserWrap from '~/containers/UserWrap';
+import {resetQuery, useQueryParams} from '~/common/pathTools';
 
-const Demo = load(() => import('./pages/demo' /* webpackChunkName: demo */), UserWrap);
+const Demo = load(() => import('./pages/demo' /* webpackChunkName: demo */));
 const Rain = load(() => import('./pages/rain' /* webpackChunkName: rain */));
 export const init = true;
 export default () => {
     const match = useRouteMatch();
+    const params = useQueryParams();
+    if (params.type === 'login' && params.code) {
+        resetQuery();
+        return '';
+    }
     return (
         <Switch>
-            <Route path={`${match.url}/rain`} component={Rain}/>
-            <Route path={`${match.url}`} component={Demo}/>
+            <Route path={`${match.url}/rain`} component={Rain} />
+            <Route path={`${match.url}/home`} component={Demo} />
         </Switch>
     );
 };
