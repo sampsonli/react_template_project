@@ -12,7 +12,7 @@ module.exports = {
     mode: 'development',
     stats: 'errors-only',
     watchOptions: {
-        ignore: /node_module/,
+        ignored: /node_modules/,
     },
     entry: {
         app: [
