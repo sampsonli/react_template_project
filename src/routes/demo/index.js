@@ -1,6 +1,7 @@
 import React from 'react';
-import {Switch, Route, useRouteMatch} from 'react-router-dom';
-import 'moment/locale/zh-cn';
+import {
+    Switch, Route, useRouteMatch, Redirect,
+} from 'react-router-dom';
 import load from '~/common/load';
 import {resetQuery, useQueryParams} from '~/common/pathTools';
 
@@ -18,6 +19,7 @@ export default () => {
         <Switch>
             <Route path={`${match.url}/rain`} component={Rain} />
             <Route path={`${match.url}/home`} component={Demo} />
+            <Redirect path={`${match.url}/`} to={`${match.url}/home`} />
         </Switch>
     );
 };
