@@ -4,10 +4,12 @@
  */
 import axios from 'axios';
 
+
 const isDev = process.env.NODE_ENV === 'development';
 const options = {
   baseURL: '',
   timeout: 20000,
+  withCredentials: true,
 };
 const _axios = axios.create(options);
 
@@ -51,7 +53,7 @@ export const generator = (Apis) => {
   const result = {};
   Object.keys(Apis).forEach(key => {
     const {
-      url, method, config, mockUrl, isMock = false,
+      url, method, config, mockUrl, isMock = false, type = 'json'
     } = Apis[key];
     let furl = isMock ? (mockUrl || url) : url;
     if (!isDev) { // 防止mock上生产、测试环境
@@ -67,7 +69,18 @@ export const generator = (Apis) => {
         return get(reqUrl, config);
       };
     } else if (method === 'post' || method === 'POST') {
-      result[key] = (params = {}) => post(furl, params, config);
+      result[key] = (params = {}) => {
+        let p = params;
+        if (type === 'form') {
+          config.headers = config.headers || {};
+          config.headers['content-type'] = 'application/x-www-form-urlencoded';
+          p = new URLSearchParams();
+          Object.keys(params).forEach((k) => {
+            p.append(k, params[k]);
+          });
+        }
+        return post(furl, p, config);
+      };
     }
   });
   return result;

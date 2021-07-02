@@ -77,6 +77,15 @@ app.use((req, resp, next) => {
            ip: '192.168.89.21',
            showLog: false,
        });
+   } else if (req.originalUrl.indexOf('/KMS/learning') > -1) {
+       forward({
+           req,
+           resp,
+           port: 9999,
+           host: 'kms.sf-express.com',
+           ip: '192.168.89.21',
+           showLog: false,
+       });
    } else {
        next();
    }

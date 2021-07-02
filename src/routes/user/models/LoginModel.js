@@ -28,9 +28,12 @@ class LoginModel extends Model {
     }
 
     * getToken() {
-        const {data} = yield api.getToken({thirdPartyName: 'third_database', thirdPartyPassword: 'database_pass1234'});
+        // const {data} = yield api.getToken({thirdPartyName: 'third_database', thirdPartyPassword: 'database_pass1234'});
         // console.log(data);
-        sessionStorage.setItem('_token', data);
+        // sessionStorage.setItem('_token', data);
+
+        const {data: data2} = yield api.getDetail({'stuUserExamVO.examId': '2980088', 'stuUserExamVO.empTryCount': '1'});
+        console.log(data2);
     }
 
     doLogin() {
