@@ -9,5 +9,9 @@ const Api = {
         url: '/v1/user/login',
         method: 'post',
     },
+    getToken: {
+        url: '/auth/thirdParty/getToken',
+        method: 'get',
+    },
 };
 export default generator(Api);

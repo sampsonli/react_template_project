@@ -27,6 +27,12 @@ class LoginModel extends Model {
         this.captchaInfo = data;
     }
 
+    * getToken() {
+        const {data} = yield api.getToken({thirdPartyName: 'third_database', thirdPartyPassword: 'database_pass1234'});
+        // console.log(data);
+        sessionStorage.setItem('_token', data);
+    }
+
     doLogin() {
         let link;
         if (this.from.indexOf('#') > -1) { // hash

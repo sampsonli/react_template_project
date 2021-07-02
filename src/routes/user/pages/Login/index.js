@@ -25,7 +25,7 @@ export default () => {
         <div className={style.loginPage}>
             <div className={style.content}>
                 <div className={style.header}>
-                    <div className={style.titcn}>解决方案数据库</div>
+                    <div className={style.titcn} onClick={model.getToken}>解决方案数据库</div>
                     <div className={style.titen}>Online Solution Database</div>
                 </div>
 
