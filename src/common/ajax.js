@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const isDev = process.env.NODE_ENV === 'development';
 const options = {
-  baseURL: '/api',
+  baseURL: '',
   timeout: 20000,
 };
 const _axios = axios.create(options);

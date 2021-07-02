@@ -1,5 +1,6 @@
 import {Model, service} from 'redux-spring';
 import {parseQueryStr} from '~/common/pathTools';
+import api from '../api';
 
 @service(module.id)
 class LoginModel extends Model {
@@ -12,10 +13,18 @@ class LoginModel extends Model {
      */
     from;
 
-    code = 123;
+    code = '';
+
+    captchaInfo;
 
     init(from) {
         this.from = from;
+        this.getCaptcha();
+    }
+
+    * getCaptcha() {
+        const {data} = yield api.getCaptchapairImg();
+        this.captchaInfo = data;
     }
 
     doLogin() {
@@ -37,7 +46,9 @@ class LoginModel extends Model {
                 .join('&')}`;
         }
         window.location.replace(link);
-        window.location.reload();
+        if (this.from.split('#')[0] === window.location.href.split('#')[0]) { // 同地址跳转需要刷新页面
+            window.location.reload();
+        }
     }
 }
 
