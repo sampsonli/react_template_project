@@ -57,70 +57,39 @@ if (env === 'production') {
         });
     });
 }
-/*
-// 接口转发
-const forwardCfg = {
-    ewt360: [
-        ['/api', {host: 'teacher.ewt360.com', isPre: false}],
-        ['/login', 'www.ewt360.com'], // 页面跳转
-        ['/externalapi', 'study.ewt360.com'],
-        ['/PCCourseListService', 'teacher.ewt360.com'],
-        ['/ewtbend/report/', 'teacher.ewt360.com'], // 页面跳转
-        ['/Teacher/', 'teacher.ewt360.com'], // 页面跳转
-        ['/student/', 'teacher.ewt360.com'], // 页面跳转
-        ['/member/', 'www.ewt360.com'], // 页面跳转
-        ['/manageapi/', {host: 'teacher.ewt360.com', isHttps: true, isPre: false}], // oatasklist
-    ],
-    mistong: [
-        ['/api', 'teacher.test.mistong.com'],
-        ['/login', 'www.test.mistong.com'], // 页面跳转
-        ['/externalapi', 'study.test.mistong.com'],
-        ['/PCCourseListService', 'teacher.test.mistong.com'],
-        ['/ewtbend/report/', 'teacher.test.mistong.com'], // 页面跳转
-        ['/Teacher/', 'teacher.test.mistong.com'], // 页面跳转
-        ['/student/', 'teacher.test.mistong.com'], // 页面跳转
-        ['/member/', 'www.test.mistong.com'], // 页面跳转
-        ['/manageapi/', {host: 'teacher.ewt360.com', isHttps: true, isPre: false}], // oatasklist
-    ],
-};
+
 app.use((req, resp, next) => {
-    const isOnline = req.hostname.indexOf('ewt360.com') > -1;
-    let cfg = null;
-    forwardCfg[isOnline ? 'ewt360' : 'mistong'].some((item) => {
-        const [uri, config] = item;
-        if (req.originalUrl.toLowerCase().indexOf(uri.toLowerCase()) > -1) {
-            cfg = config;
-            return true;
-        }
-        return false;
-    });
-    if (cfg) {
-        let host = cfg;
-        let ip = cfg;
-        let isHttps = true;
-        let isPre = true;
-        if (typeof cfg !== 'string') {
-            host = cfg.host;
-            ip = cfg.ip || host;
-            isHttps = cfg.isHttps !== undefined ? cfg.isHttps : true;
-            isPre = cfg.isPre === undefined ? true : !!cfg.isPre;
-        }
-        if (isOnline && isPre) {
-            ip = '121.52.240.85'; // 预发
-        }
-        forward({
-            req,
-            resp,
-            isHttps,
-            host,
-            ip,
-            path: req.originalUrl,
-            showLog: false,
-        });
-    } else {
-        next();
-    }
-}); */
+   if (req.originalUrl.indexOf('/auth') > -1) {
+       forward({
+           req,
+           resp,
+           port: 9999,
+           host: '10.207.188.236',
+           ip: '192.168.89.21',
+           showLog: false,
+       });
+   } else if (req.originalUrl.indexOf('/tspauth') > -1) {
+       forward({
+           req,
+           resp,
+           port: 9999,
+           host: '10.207.188.87',
+           ip: '192.168.89.21',
+           showLog: false,
+       });
+   } else if (req.originalUrl.indexOf('/KMS/learning') > -1) {
+       forward({
+           req,
+           resp,
+           port: 9999,
+           host: 'kms.sf-express.com',
+           ip: '192.168.89.21',
+           showLog: false,
+       });
+   } else {
+       next();
+   }
+});
 
 /** 启动服务 * */
 app.listen(PORT, '0.0.0.0', () => {
