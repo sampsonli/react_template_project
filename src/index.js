@@ -6,7 +6,7 @@ import {ConfigProvider} from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
 import 'moment/locale/zh-cn';
 import store from './store';
-import Router from './router';
+import Routes from './routes';
 
 if (process.env.NODE_ENV !== 'development') {
     require('./assets/common.less');
@@ -16,7 +16,7 @@ const render = () => {
     ReactDOM.render(
         <ConfigProvider locale={zhCN}>
             <Provider store={store}>
-                <Router />
+                <Routes />
             </Provider>
         </ConfigProvider>,
         document.getElementById('app'),

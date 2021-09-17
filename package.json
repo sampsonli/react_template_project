@@ -58,7 +58,7 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-react": "^7.25.1",
+    "eslint-plugin-react": "^7.25.2",
     "express": "^4.16.4",
     "file-loader": "^6.2.0",
     "forward-request": "^1.0.3",
@@ -75,5 +75,6 @@
     "webpack-cli": "^4.8.0",
     "webpack-dev-middleware": "^5.1.0",
     "webpack-hot-middleware": "^2.25.1"
-  }
+  },
+  "main": "server.js"
 }
