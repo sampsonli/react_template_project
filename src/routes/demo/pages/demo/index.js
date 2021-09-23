@@ -3,7 +3,7 @@ import {useModel} from 'redux-spring';
 import {DatePicker} from 'antd';
 import style from './style.less';
 import DemoModel from '~/routes/demo/models/DemoModel';
-import {reloadPushPath} from '~/common/pathTools';
+
 
 export default () => {
     const model = useModel(DemoModel);
