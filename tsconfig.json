@@ -3,6 +3,7 @@
     "experimentalDecorators": true,
     "jsx": "react",
     "rootDir": ".",
+    "outDir": "/",
     "baseUrl": "./",
     "paths": {
       "~/*": ["src/*"]
