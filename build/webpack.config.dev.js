@@ -13,7 +13,7 @@ module.exports = {
     stats: 'errors-only',
     watchOptions: {
         ignored: /node_modules/,
-        poll: 1000,
+        // poll: 1000,
     },
     entry: {
         app: [
