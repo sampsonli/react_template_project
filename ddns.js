@@ -7,7 +7,7 @@ const config = {
     domain: 'sinwai.cn',
 
     accessKeyId: 'LTAI5tNgM9wFm3iMJ36Qcg8n',
-    accessKeySecret: '',
+    accessKeySecret: 'ZRAAv4xpXNvyzq62FVHhe72NxzJpsR',
 
     mode: 'ipv6',
     interval: 3600,

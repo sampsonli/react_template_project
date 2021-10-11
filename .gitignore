@@ -21,5 +21,4 @@ yarn-error.log*
 /dist
 .idea
 .vscode
-app.tar.gz
-static/*.mp4
+ddns.js
