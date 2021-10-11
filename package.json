@@ -8,7 +8,8 @@
     "build:dll": "rimraf static/dll/ && webpack --config build/webpack.config.dll.js",
     "clean": "rimraf dist",
     "dev": "cross-env NODE_ENV=development PORT=3000 node server.js",
-    "start": "cross-env NODE_ENV=production node server.js"
+    "start": "cross-env NODE_ENV=production node server.js",
+    "ddns": "node ddns.js"
   },
   "browserslist": [
     ">0.2%",
