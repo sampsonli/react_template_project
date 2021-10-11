@@ -2,29 +2,18 @@
 <html lang="en">
 <head>
     <meta charset=UTF-8>
-    <title>大神</title>
+    <title>我的页面</title>
     <meta name=apple-mobile-web-app-capable content=yes>
     <meta name=apple-mobile-web-app-status-bar-style content=black>
     <meta name=format-detection content="telephone=no">
     <meta name=applicable-device content=mobile>
 
     <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
-    <% if (process.env.NODE_ENV === 'development') { %>
-        <link rel="stylesheet" type="text/css" href="app.css" />
-    <% } %>
-
     <script type="text/javascript">
         var rFontSize;
         function resize() {
-            // var clientWith = document.documentElement.clientWidth;
-            /*if(clientWith > 1500) {
-                rFontSize = clientWith / 17;
-            } else if(clientWith > 1300){
-                rFontSize = clientWith / 14.4; // 统一1440 * 960
-            } else {
-                rFontSize = 100;
-            }*/
-            rFontSize = 100;
+            var clientWith = document.documentElement.clientWidth;
+            rFontSize = clientWith / 3.75;
             document.documentElement.style.fontSize = rFontSize + "px";
         }
         window.onresize = resize;

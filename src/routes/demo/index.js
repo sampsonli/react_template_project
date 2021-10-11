@@ -2,7 +2,6 @@ import React from 'react';
 import {
 Switch, Route, useRouteMatch, Redirect,
 } from 'react-router-dom';
-import 'moment/locale/zh-cn';
 import load from '~/common/load';
 import {resetQuery, useQueryParams} from '~/common/pathTools';
 
