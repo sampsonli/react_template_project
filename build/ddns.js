@@ -7,8 +7,8 @@ const config = {
     rr: 'phone',
     domain: 'sinwai.cn',
 
-    accessKeyId: 'LTAI5tNNWp7L2XrrnAxPo2Ay',
-    accessKeySecret: 'Ie7Mep580n92TNxO2NuwZCVGw7Immi',
+    accessKeyId: '',
+    accessKeySecret: '',
 
     mode: 'ipv6',
     interval: 900,
