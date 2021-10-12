@@ -21,3 +21,5 @@ yarn-error.log*
 /dist
 .idea
 .vscode
+
+ddns.js
