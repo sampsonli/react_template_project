@@ -10,7 +10,7 @@ const config = {
     accessKeySecret: 'ZRAAv4xpXNvyzq62FVHhe72NxzJpsR',
 
     mode: 'ipv6',
-    interval: 3600,
+    interval: 900,
 
     alidnsAPI: 'https://alidns.aliyuncs.com/',
     ip4Api: 'https://api.ipify.org/?format=json',
@@ -249,7 +249,7 @@ async function start() {
         try {
             const record = await getRecord6()
             if (record && record.Value === ip6) {
-                console.log(`(No change) (IPv6) ${config.rr}.${config.domain} ${ip6}`)
+                // console.log(`(No change) (IPv6) ${config.rr}.${config.domain} ${ip6}`)
             } else if (record && record.Value !== ip6) {
                 await updateRecord6(ip6, record.RecordId)
                 console.log(`(Updated) (IPv6) ${config.rr}.${config.domain} ${record.Value} -> ${ip6}`)
