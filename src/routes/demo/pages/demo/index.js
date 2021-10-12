@@ -3,21 +3,64 @@ import {useModel} from 'redux-spring';
 import style from './style.less';
 import DemoModel from '~/routes/demo/models/DemoModel';
 
-
 export default () => {
     const model = useModel(DemoModel);
     useEffect(() => {
         model.init();
     }, []);
-    const {
-        num,
-        loaded,
-    } = model;
     return (
         <div className={style.container}>
+            <div className={style.header}>title12</div>
             <div className={style.content}>
-               哈哈哈哈， 我不骂你了。
-               hello 我又回来了
+
+               <div className={style.item}>
+                   dkdkkldkldklklfklf444555
+               </div>
+               <div className={style.item}>
+                   dkdkkldkldklklfklf
+               </div>
+               <div className={style.item}>
+                   dkdkkldkldklklfklf
+               </div>
+               <div className={style.item}>
+                   dkdkkldkldklklfklf
+               </div>
+               <div className={style.item}>
+                   dkdkkldkldklklfklf
+               </div>
+               <div className={style.item}>
+                   dkdkkldkldklklfklf
+               </div>
+               <div className={style.item}>
+                   dkdkkldkldklklfklf
+               </div>
+               <div className={style.item}>
+                   dkdkkldkldklklfklf
+               </div>
+               <div className={style.item}>
+                   dkdkkldkldklklfklf
+               </div>
+               <div className={style.item}>
+                   dkdkkldkldklklfklf
+               </div>
+               <div className={style.item}>
+                   dkdkkldkldklklfklf
+               </div>
+               <div className={style.item}>
+                   dkdkkldkldklklfklf
+               </div>
+               <div className={style.item}>
+                   dkdkkldkldklklfklf
+               </div>
+               <div className={style.item}>
+                   dkdkkldkldklklfklf
+               </div>
+               <div className={style.item}>
+                   dkdkkldkldklklfklf
+               </div>
+               <div className={style.item}>
+                   dkdkkldkldklklfklf
+               </div>
 
             </div>
         </div>

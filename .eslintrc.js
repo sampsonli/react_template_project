@@ -29,6 +29,8 @@ module.exports = {
         'react/jsx-indent': 'off',
         'react/jsx-first-prop-new-line': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
+        'react/jsx-indent-props': [2, 4],
+        'react/jsx-props-no-spreading': 0,
         'react/jsx-filename-extension': 'off',
         'no-restricted-syntax': 'off',
         'linebreak-style': 'off',
