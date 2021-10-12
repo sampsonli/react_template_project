@@ -8,9 +8,10 @@ export default () => {
     useEffect(() => {
         model.init();
     }, []);
+    const { loaded } = model;
     return (
         <div className={style.container}>
-            <div className={style.header}>李春你好</div>
+            <div className={style.header}>李春你好12</div>
             <div className={style.content}>
 
                <div className={style.item}>

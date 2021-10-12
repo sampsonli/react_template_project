@@ -9,7 +9,8 @@
     "clean": "rimraf dist",
     "dev": "cross-env NODE_ENV=development PORT=3000 node server.js",
     "start": "cross-env NODE_ENV=production node server.js",
-    "ddns": "node ddns.js"
+    "ddns": "node ddns.js",
+    "prepare": "husky install"
   },
   "browserslist": [
     ">0.2%",
@@ -69,11 +70,16 @@
     "rimraf": "^3.0.2",
     "style-loader": "^3.3.0",
     "url-loader": "^4.1.1",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
     "webpack": "^5.58.1",
     "webpack-bundle-analyzer": "^4.4.1",
     "webpack-cli": "^4.9.0",
     "webpack-dev-middleware": "^5.2.1",
     "webpack-hot-middleware": "^2.25.1"
   },
-  "main": "server.js"
+  "main": "server.js",
+  "lint-staged": {
+    "*.{jsx,js,ts,tsx}": "eslint --fix"
+  }
 }
