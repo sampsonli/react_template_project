@@ -10,7 +10,7 @@ export default () => {
     }, []);
     return (
         <div className={style.container}>
-            <div className={style.header}>title12</div>
+            <div className={style.header}>李春你好</div>
             <div className={style.content}>
 
                <div className={style.item}>
