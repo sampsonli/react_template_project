@@ -1,4 +1,4 @@
-import {service, Model, inject} from 'redux-spring';
+import { service, Model, inject } from 'redux-spring';
 import UserModel from '~/models/UserModel';
 import api from './api';
 
@@ -21,9 +21,7 @@ class DemoModel extends Model {
 
     * init() {
         if (this.loaded) return;
-        const info = yield api.getRemoteData();
-        // console.log(info);
-        this.num = info.data.list.length;
+        this.num = 1111;
         this.loaded = true;
     }
 
@@ -38,8 +36,8 @@ class DemoModel extends Model {
     }
 
     jumpLogin() {
-        const {href} = window.location;
-        const link = `${href.split('#')[0] }#/user/login?from=${ encodeURIComponent(href)}`;
+        const { href } = window.location;
+        const link = `${href.split('#')[0]}#/user/login?from=${encodeURIComponent(href)}`;
         window.location.replace(link);
     }
 }
