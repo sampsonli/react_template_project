@@ -19,7 +19,7 @@ class DemoModel extends Model {
      */
     num;
 
-    * init() {
+    init() {
         if (this.loaded) return;
         this.num = 1111;
         this.loaded = true;
