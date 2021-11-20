@@ -38,11 +38,12 @@ export const parseQueryStr = (qs) => {
     return result;
 };
 /**
+ * @param type {'hash'|'history'}
  * hooks获取所有请求参数key-value 对象
  * @return {{}}
  */
-export const useQueryParams = () => useMemo(
-    () => parseQueryStr(window.location.hash ? window.location.hash.split('?')[1] : window.location.href.split('?')[1]),
+export const useQueryParams = (type = 'hash') => useMemo(
+    () => parseQueryStr(type === 'hash' ? window.location.hash.split('?')[1] : window.location.href.split('?')[1]),
     [window.location.href],
 );
 

@@ -4,7 +4,6 @@
  */
 import axios from 'axios';
 
-
 const isDev = process.env.NODE_ENV === 'development';
 const options = {
   baseURL: '',
@@ -53,7 +52,7 @@ export const generator = (Apis) => {
   const result = {};
   Object.keys(Apis).forEach(key => {
     const {
-      url, method, config, mockUrl, isMock = false, type = 'json'
+      url, method, config = {}, mockUrl, isMock = false, type = 'json',
     } = Apis[key];
     let furl = isMock ? (mockUrl || url) : url;
     if (!isDev) { // 防止mock上生产、测试环境
