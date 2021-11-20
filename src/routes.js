@@ -19,7 +19,7 @@ let init = ''; // 初始化加载模块
 init = init || routes[0].path;
 export default class Routes extends Component {
     componentDidCatch(e) {
-        if (process.env.NODE_ENV === 'production') {
+        if (process.env.NODE_ENV !== 'production') {
             console.error(e.message);
         }
     }

@@ -13,6 +13,7 @@ module.exports = {
     ],
     rules: {
         indent: 'off',
+        'import/no-import-module-exports': 'off',
         'template-curly-spacing': 'off',
         'object-curly-spacing': [0, 'never'],
         'global-require': 'off',
