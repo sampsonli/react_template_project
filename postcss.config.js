@@ -9,8 +9,7 @@ module.exports = {
       autoprefixer,
         pxtorem({
             replace: true,
-            propList: ['font', 'font-size', 'line-height', 'letter-spacing', 'margin*', 'padding*',
-                'width', 'height', 'left', 'top', 'right', 'bottom', 'transform', 'box-shadow'],
+            propList: ['*'],
             rootValue: 100,
         }),
     ],
