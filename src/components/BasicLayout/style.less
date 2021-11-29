@@ -1,0 +1,104 @@
+.basic-layout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    .left {
+        background: #001529;
+        transition: width 200ms linear;
+        .logo {
+            color: white;
+            height: 0.8rem;
+            overflow: hidden;
+            width: 3rem;
+            .ico {
+                position: absolute;
+                top: .2rem;
+                left: .05rem;
+                display: inline-block;
+                width: .5rem;
+                height: .4rem;
+                background: url(../../assets/logo.svg) no-repeat;
+                background-size: contain;
+            }
+            .title {
+                position: absolute;
+                top: .2rem;
+                left: .6rem;
+                font-size: 0.22rem;
+                margin-left: 0.1rem;
+            }
+        }
+        .menu {
+            font-size: 0.18rem;
+            .sub-menu {
+                font-size: 0.16rem;
+            }
+            & > .sub-menu {
+                font-size: 0.2rem;
+            }
+        }
+    }
+    .right {
+        width: 0;
+        flex: 1;
+        position: relative;
+        //display: flex;
+        //flex-direction: column;
+        .top {
+            box-shadow: 0 0.01rem 0.04rem rgb(0 21 41 / 8%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+            height: .5rem;
+            .t-left {
+                display: flex;
+                align-items: center;
+                .btn {
+                    margin-top: .04rem;
+                    color:#000;
+                }
+                .nav {
+
+                }
+            }
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .user {
+                margin-right: .2rem;
+                display: flex;
+                align-items: center;
+                .info {
+                    display: inline-block;
+                    border-right: .02rem solid #EBEEF5;
+                    line-height: .2rem;
+                    font-size: .14rem;
+                    color: #999999;
+                    padding-right: .1rem;
+                    margin-right: .1rem;
+                }
+                .logout {
+                    height: .18rem;
+                    width: .18rem;
+                    background: url(../../assets/icon_logout.svg) no-repeat;
+                    background-size: contain;
+                    cursor: pointer;
+                }
+            }
+        }
+        .content {
+            position: absolute;
+            top: .5rem;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            overflow: auto;
+        }
+    }
+}
