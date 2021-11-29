@@ -13,7 +13,14 @@
         var rFontSize;
         function resize() {
             var clientWith = document.documentElement.clientWidth;
-            rFontSize = clientWith / 3.75;
+            if(clientWith > 1500) {
+                rFontSize = clientWith / 19.2;
+            } else if(clientWith > 1300){
+                rFontSize = clientWith / 17; // 统一1440 * 960
+            } else {
+                rFontSize = 1300 / 17;
+            }
+            // rFontSize = 100;
             document.documentElement.style.fontSize = rFontSize + "px";
         }
         window.onresize = resize;

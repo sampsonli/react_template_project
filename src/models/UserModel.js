@@ -7,6 +7,10 @@ class UserModel extends Model {
      */
     info
 
+    menus = [
+        {key: 1, value: '首页'},
+    ]
+
     init() {
         if (this.info) return;
         this.getUserInfo();
