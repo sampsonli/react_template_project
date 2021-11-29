@@ -12,7 +12,7 @@ module.exports = {
     mode: 'development',
     stats: 'errors-only',
     watchOptions: {
-        ignored: /node_modules/,
+        ignored: /(node_modules)|(dist)|(static)|(build)/,
         // poll: 1000,
     },
     entry: {
