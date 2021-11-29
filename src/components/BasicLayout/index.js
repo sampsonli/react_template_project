@@ -3,7 +3,9 @@ import {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
 } from '@ant-design/icons';
-import React, { useCallback, useEffect, useState, useMemo } from 'react';
+import React, {
+ useCallback, useEffect, useState, useMemo,
+} from 'react';
 import { Menu, Button, Breadcrumb } from 'antd';
 import style from './style.less';
 import { pushPath } from '~/common/pathTools';

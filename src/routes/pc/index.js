@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
     Routes, Route,
 } from 'react-router-dom';
@@ -12,7 +12,11 @@ const Demo = load(() => import('./pages/demo' /* webpackChunkName: demo */));
 const Rain = load(() => import('./pages/rain' /* webpackChunkName: rain */));
 export default () => {
     const model = useModel(UserModel);
-    const {menus, userInfo} = model;
+    const {menus, userInfo, loaded} = model;
+    useEffect(() => {
+        model.init();
+    }, []);
+    if (!loaded) return '';
     return (
         <BasicLayout menuList={menus} userInfo={userInfo}>
            <Routes>
