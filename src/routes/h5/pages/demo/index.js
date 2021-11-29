@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useModel } from 'redux-spring';
 import style from './style.less';
-import DemoModel from '~/routes/demo/models/DemoModel';
+import DemoModel from '~/routes/h5/models/DemoModel';
 
 export default () => {
     const model = useModel(DemoModel);

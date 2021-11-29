@@ -25,6 +25,7 @@ module.exports = {
         'no-mixed-operators': 'off',
         'no-param-reassign': 'off',
         'react/prefer-stateless-function': 'off',
+        'react/function-component-definition': 'off',
         'react/no-multi-comp': 'off',
         'react/jsx-no-bind': 'off',
         'react/jsx-indent': 'off',
