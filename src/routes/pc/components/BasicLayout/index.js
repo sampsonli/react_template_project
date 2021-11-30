@@ -87,7 +87,7 @@ const { SubMenu } = Menu;
  * @returns {JSX.Element}
  * @constructor
  */
-export const BasicLayout = ({
+const BasicLayout = ({
  menuList, children, userInfo = {}, doLogout = () => null,
 }) => {
     const location = useLocation();
