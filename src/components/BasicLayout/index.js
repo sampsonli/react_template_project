@@ -7,6 +7,7 @@ import React, {
  useCallback, useEffect, useState, useMemo,
 } from 'react';
 import { Menu, Button, Breadcrumb } from 'antd';
+import { useLocation } from 'react-router';
 import style from './style.less';
 import { pushPath } from '~/common/pathTools';
 
@@ -89,27 +90,25 @@ const { SubMenu } = Menu;
 export const BasicLayout = ({
  menuList, children, userInfo = {}, doLogout = () => null,
 }) => {
-    const [key, setKey] = useState('');
+    const location = useLocation();
+    const [key, setKey] = useState(location.pathname);
     const [titles, setTitles] = useState([]);
     const [collapsed, setCollapsed] = useState(false);
     useEffect(() => {
-        const hashChangeHandler = () => {
-            const path = window.location.hash.replace('#', '').split('?')[0];
-            const titleList = findMenuPath(menuList, path);
-            if (key === path) {
-                return;
-            }
-            setKey(path);
-            setTitles(titleList);
-        };
-        hashChangeHandler();
-        window.addEventListener('hashchange', hashChangeHandler);
-        return () => window.removeEventListener('hashchange', hashChangeHandler);
-    }, []);
-    const provide = useMemo(() => ({setKey, setTitles}), []);
+        const titleList = findMenuPath(menuList, location.pathname);
+        if (key === location.pathname && titles.length) {
+            return;
+        }
+        setKey(location.pathname);
+        setTitles(titleList);
+    }, [location.pathname]);
     const onChangeKey = useCallback((e) => {
         pushPath(e.key);
     }, []);
+    const provide = useMemo(() => ({
+        setKey,
+        setTitles,
+    }), []);
     return (
         <div className={style.basicLayout}>
             <div className={style.left} style={{ width: collapsed ? '.8rem' : '2.3rem' }}>

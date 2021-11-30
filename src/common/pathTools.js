@@ -37,15 +37,6 @@ export const parseQueryStr = (qs) => {
     }
     return result;
 };
-/**
- * @param type {'hash'|'history'}
- * hooks获取所有请求参数key-value 对象
- * @return {{}}
- */
-export const useQueryParams = (type = 'hash') => useMemo(
-    () => parseQueryStr(type === 'hash' ? window.location.hash.split('?')[1] : window.location.href.split('?')[1]),
-    [window.location.href],
-);
 
 const getFinalPath = (path, query = {}) => {
     const queryStr = Object.keys(query)

@@ -1,18 +1,10 @@
-import { service, Model, inject } from 'redux-spring';
-import UserModel from '~/models/UserModel';
+import { service, Model } from 'redux-spring';
+
 import api from './api';
 
 @service(module.id)
 class DemoModel extends Model {
     loaded = false;
-
-    /**
-     * 此处可以拿到用户信息
-     * @type {UserModel}
-     * @private
-     */
-    @inject(UserModel)
-    user;
 
     /**
      * @type {number}
