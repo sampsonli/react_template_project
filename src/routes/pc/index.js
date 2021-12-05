@@ -32,7 +32,7 @@ export default () => {
                 <BasicLayout menuList={menuList} userInfo={userInfo}>
                         <Routes>
                             <Route path="home" element={<Home />} />
-                            <Route path="*" element={<Redirect to="home" />} />
+                            <Route path="" element={<Redirect to="home" />} />
                         </Routes>
                 </BasicLayout>
             )}
