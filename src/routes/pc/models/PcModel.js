@@ -1,6 +1,10 @@
 import {service, Model} from 'redux-spring';
 import { replacePath } from '~/common/pathTools';
 
+/**
+ * @typedef {import('./types/Common').UserInfo} UserInfo
+ */
+
 @service(module.id)
 class PcModel extends Model {
     loaded = true;
@@ -17,12 +21,13 @@ class PcModel extends Model {
     ];
 
     /**
-     * @type {User}
+     * @type {UserInfo}
      */
     userInfo = {name: '李春'};
 
     init() {
         this.userInfo = {name: '李春'};
+
         this.loaded = true;
     }
 
