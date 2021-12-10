@@ -5,7 +5,7 @@ import style from './style.less';
 const Logo = () => (
     <div className={style.sidebarLogoContainer}>
       <img src={logo} className={style.sidebarLogo} alt="logo" />
-      <h1 className={style.sidebarTitle}>难凉热血</h1>
+      <h1 className={style.sidebarTitle}>通用管理后台</h1>
     </div>
   );
 

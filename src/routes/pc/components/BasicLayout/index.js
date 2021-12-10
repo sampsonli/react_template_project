@@ -2,6 +2,10 @@
 import {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
+    LogoutOutlined,
+    HomeOutlined,
+    WechatOutlined,
+    QqOutlined,
 } from '@ant-design/icons';
 import React, {
  useCallback, useEffect, useState, useMemo,
@@ -14,7 +18,12 @@ import style from './style.less';
 import { pushPath } from '~/common/pathTools';
 import Logo from './Logo';
 
+const {Sider, Header, Content} = Layout;
+
 const key2Icon = {
+    '/pc/home': <HomeOutlined />,
+    '/pc/demo1': <WechatOutlined />,
+    '/pc/demo2': <QqOutlined />,
 };
 /**
  * @typedef MenuItem {{title, key, children?: [MenuItem]}}
@@ -115,7 +124,7 @@ const BasicLayout = ({
     return (
         <Layout className={style.basicLayout}>
 
-            <Layout.Sider
+            <Sider
                 collapsible
                 collapsed={collapsed}
                 onCollapse={setCollapsed}
@@ -135,9 +144,9 @@ const BasicLayout = ({
                     {genSubMenu(menuList)}
 </Menu>
 
-            </Layout.Sider>
+            </Sider>
             <Layout className={style.right}>
-                <div className={style.top}>
+                <Header className={style.top}>
                     <div className={style.tLeft}>
                         <Button
                             className={style.btn}
@@ -145,9 +154,9 @@ const BasicLayout = ({
                             onClick={() => setCollapsed(!collapsed)}
                         >
                             {collapsed ? (
-                                <MenuFoldOutlined style={{ fontSize: '0.18rem' }} />
+                                <MenuFoldOutlined className={style.menuBtn} />
                             ) : (
-                                <MenuUnfoldOutlined style={{ fontSize: '0.18rem' }} />
+                                <MenuUnfoldOutlined className={style.menuBtn} />
                             )}
                         </Button>
                         <Breadcrumb>
@@ -158,10 +167,10 @@ const BasicLayout = ({
                     </div>
                     <div className={style.user}>
                         <div className={style.info}>{userInfo.name}</div>
-                        <div className={style.logout} title="退出登录" onClick={doLogout} />
+                        <LogoutOutlined onClick={doLogout} title="退出登录" />
                     </div>
-                </div>
-                <div className={style.content}><BasicLayoutContext.Provider value={provide}>{children}</BasicLayoutContext.Provider></div>
+                </Header>
+                <Content className={style.content}><BasicLayoutContext.Provider value={provide}>{children}</BasicLayoutContext.Provider></Content>
             </Layout>
         </Layout>
     );
