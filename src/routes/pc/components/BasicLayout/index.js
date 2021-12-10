@@ -6,10 +6,13 @@ import {
 import React, {
  useCallback, useEffect, useState, useMemo,
 } from 'react';
-import { Menu, Button, Breadcrumb } from 'antd';
+import {
+ Menu, Button, Breadcrumb, Layout,
+} from 'antd';
 import { useLocation } from 'react-router';
 import style from './style.less';
 import { pushPath } from '~/common/pathTools';
+import Logo from './Logo';
 
 const key2Icon = {
 };
@@ -110,26 +113,30 @@ const BasicLayout = ({
         setTitles,
     }), []);
     return (
-        <div className={style.basicLayout}>
-            <div className={style.left} style={{ width: collapsed ? '.8rem' : '2.3rem' }}>
-                <div className={style.logo}>
-                    <i className={style.ico} />
-                    {!collapsed && <div className={style.title}>通用管理平台</div>}
-                </div>
-                <Menu
-                    theme="dark"
-                    className={`${style.menu}`}
-                    onClick={onChangeKey}
-                    defaultSelectedKeys={[key]}
-                    selectedKeys={[key]}
-                    mode="inline"
-                    defaultOpenKeys={['1', '2', '3', '4', '5']}
-                    inlineCollapsed={collapsed}
-                >
+        <Layout className={style.basicLayout}>
+
+            <Layout.Sider
+                collapsible
+                collapsed={collapsed}
+                onCollapse={setCollapsed}
+
+            >
+<Logo />
+<Menu
+    theme="dark"
+    className={`${style.menu}`}
+    onClick={onChangeKey}
+    defaultSelectedKeys={[key]}
+    selectedKeys={[key]}
+    mode="inline"
+    defaultOpenKeys={['1', '2', '3', '4', '5']}
+    inlineCollapsed={collapsed}
+>
                     {genSubMenu(menuList)}
-                </Menu>
-            </div>
-            <div className={style.right}>
+</Menu>
+
+            </Layout.Sider>
+            <Layout className={style.right}>
                 <div className={style.top}>
                     <div className={style.tLeft}>
                         <Button
@@ -155,8 +162,8 @@ const BasicLayout = ({
                     </div>
                 </div>
                 <div className={style.content}><BasicLayoutContext.Provider value={provide}>{children}</BasicLayoutContext.Provider></div>
-            </div>
-        </div>
+            </Layout>
+        </Layout>
     );
 };
 export default BasicLayout;

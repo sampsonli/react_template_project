@@ -24,6 +24,7 @@ export default () => {
              >
           <Column title="序号" dataIndex="id" key="id" width={200} align="center" sorter={(a, b) => a.id - b.id} />
           <Column title="标题" dataIndex="title" key="title" width={200} align="center" />
+          <Column title="推荐指数" dataIndex="star" key="star" width={195} align="center" />
 
           <Column title="时间" dataIndex="date" key="date" width={195} align="center" />
           <Column title="操作"
