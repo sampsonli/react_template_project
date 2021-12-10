@@ -12,7 +12,7 @@ export default () => {
         <div className={style.container}>
             <div className={style.content}>
 
-               demo2
+               demo2gtt
 
             </div>
         </div>

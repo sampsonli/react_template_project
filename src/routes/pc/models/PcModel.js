@@ -1,5 +1,6 @@
 import {service, Model} from 'redux-spring';
 import { replacePath } from '~/common/pathTools';
+import { wait } from '~/common/utils';
 
 /**
  * @typedef {import('./types/Common').UserInfo} UserInfo
@@ -7,7 +8,7 @@ import { replacePath } from '~/common/pathTools';
 
 @service(module.id)
 class PcModel extends Model {
-    loaded = true;
+    loaded = false;
 
     static ignoreSet = new Set(['/pc/login', '/pc/rain']);
 
@@ -23,16 +24,15 @@ class PcModel extends Model {
     /**
      * @type {UserInfo}
      */
-    userInfo = {name: '李春'};
+    userInfo;
 
-    init() {
+    * init() {
+        yield wait(16.6);
         this.userInfo = {name: '李春'};
-
         this.loaded = true;
     }
 
     doLogout() {
-        //
         replacePath('/pc/login');
     }
 }

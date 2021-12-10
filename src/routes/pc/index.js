@@ -9,11 +9,11 @@ import Redirect from '~/components/Redirect';
 import PcModel from './models/PcModel';
 import BasicLayout from './components/BasicLayout';
 
-const Login = load(() => import('./pages/Login' /* webpackChunkName: login */));
-const Rain = load(() => import('./pages/rain' /* webpackChunkName: rain */));
-const Demo1 = load(() => import('./pages/Demo1' /* webpackChunkName: rain */));
-const Demo2 = load(() => import('./pages/Demo2' /* webpackChunkName: rain */));
-const Home = load(() => import('./pages/Home' /* webpackChunkName: home */));
+const Login = load(() => import('./pages/Login'));
+const Rain = load(() => import('./pages/rain'));
+const Demo1 = load(() => import('./pages/Demo1'));
+const Demo2 = load(() => import('./pages/Demo2'));
+const Home = load(() => import('./pages/Home'));
 export default () => {
     const model = useModel(PcModel);
     const location = useLocation();
@@ -22,10 +22,10 @@ export default () => {
         menuList, userInfo, loaded,
     } = model;
     useEffect(() => {
-        if (!model.userInfo && !ignore) {
+        if (!loaded && !ignore) {
             model.init();
         }
-    }, [ignore]);
+    }, [ignore, loaded]);
 
     return (
         <>
