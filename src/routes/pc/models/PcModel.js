@@ -4,6 +4,8 @@ import {service, Model} from 'redux-spring';
 class PcModel extends Model {
     loaded = true;
 
+    static ignoreSet = new Set(['/pc/login', '/pc/rain']);
+
     /**
      * 后续左侧菜单可以从后端接口获取
      */
@@ -19,7 +21,7 @@ class PcModel extends Model {
      */
     userInfo = {name: '李春'};
 
-    getUserInfo() {
+    init() {
         this.userInfo = {name: '李春'};
         this.loaded = true;
     }

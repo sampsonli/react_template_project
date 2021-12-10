@@ -12,17 +12,16 @@ import BasicLayout from './components/BasicLayout';
 const Login = load(() => import('./pages/Login' /* webpackChunkName: login */));
 const Home = load(() => import('./pages/Home' /* webpackChunkName: home */));
 const Rain = load(() => import('./pages/rain' /* webpackChunkName: rain */));
-const ignoreSet = new Set(['/pc/login', '/pc/rain']);
 export default () => {
     const model = useModel(PcModel);
     const location = useLocation();
-    const ignore = ignoreSet.has(location.pathname);
+    const ignore = PcModel.ignoreSet.has(location.pathname);
     const {
         menuList, userInfo, loaded,
     } = model;
     useEffect(() => {
         if (!model.userInfo && !ignore) {
-            model.getUserInfo();
+            model.init();
         }
     }, [ignore]);
 
