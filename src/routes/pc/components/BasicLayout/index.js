@@ -8,17 +8,17 @@ import {
     QqOutlined,
 } from '@ant-design/icons';
 import React, {
- useCallback, useEffect, useState, useMemo,
+    useCallback, useEffect, useState, useMemo,
 } from 'react';
 import {
- Menu, Button, Breadcrumb, Layout,
+    Menu, Button, Breadcrumb, Layout,
 } from 'antd';
 import { useLocation } from 'react-router';
 import style from './style.less';
 import { pushPath } from '~/common/pathTools';
 import Logo from './Logo';
 
-const {Sider, Header, Content} = Layout;
+const { Sider, Header, Content } = Layout;
 
 const key2Icon = {
     '/pc/home': <HomeOutlined />,
@@ -64,24 +64,24 @@ const findMenuPath = (list, key) => {
  * @param mList {[MenuItem]}
  */
 const genSubMenu = (mList) => mList.map((item) => {
-        if (item.children && item.children.length > 0) {
-            return (
-                <SubMenu
-                    key={item.key}
-                    title={item.title}
-                    icon={key2Icon[item.key]}
-                >
-                    {genSubMenu(item.children)}
-                </SubMenu>
-            );
-        }
-
+    if (item.children && item.children.length > 0) {
         return (
-            <Menu.Item className={style.subMenu} key={item.key} icon={key2Icon[item.key]}>
-                {item.title}
-            </Menu.Item>
+            <SubMenu
+                key={item.key}
+                title={item.title}
+                icon={key2Icon[item.key]}
+            >
+                {genSubMenu(item.children)}
+            </SubMenu>
         );
-    });
+    }
+
+    return (
+        <Menu.Item className={style.subMenu} key={item.key} icon={key2Icon[item.key]}>
+            {item.title}
+        </Menu.Item>
+    );
+});
 
 export const BasicLayoutContext = React.createContext({
     setKey: () => null,
@@ -100,7 +100,7 @@ const { SubMenu } = Menu;
  * @constructor
  */
 const BasicLayout = ({
- menuList, children, userInfo = {}, doLogout = () => null,
+    menuList, children, userInfo = {}, doLogout = () => null,
 }) => {
     const location = useLocation();
     const [key, setKey] = useState(location.pathname);
@@ -130,19 +130,19 @@ const BasicLayout = ({
                 onCollapse={setCollapsed}
 
             >
-<Logo />
-<Menu
-    theme="dark"
-    className={`${style.menu}`}
-    onClick={onChangeKey}
-    defaultSelectedKeys={[key]}
-    selectedKeys={[key]}
-    mode="inline"
-    defaultOpenKeys={['1', '2', '3', '4', '5']}
-    inlineCollapsed={collapsed}
->
+                <Logo />
+                <Menu
+                    theme="dark"
+                    className={`${style.menu}`}
+                    onClick={onChangeKey}
+                    defaultSelectedKeys={[key]}
+                    selectedKeys={[key]}
+                    mode="inline"
+                    defaultOpenKeys={['1', '2', '3', '4', '5']}
+                    inlineCollapsed={collapsed}
+                >
                     {genSubMenu(menuList)}
-</Menu>
+                </Menu>
 
             </Sider>
             <Layout className={style.right}>
