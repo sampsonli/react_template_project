@@ -10,8 +10,10 @@ import PcModel from './models/PcModel';
 import BasicLayout from './components/BasicLayout';
 
 const Login = load(() => import('./pages/Login' /* webpackChunkName: login */));
-const Home = load(() => import('./pages/Home' /* webpackChunkName: home */));
 const Rain = load(() => import('./pages/rain' /* webpackChunkName: rain */));
+const Demo1 = load(() => import('./pages/Demo1' /* webpackChunkName: rain */));
+const Demo2 = load(() => import('./pages/Demo2' /* webpackChunkName: rain */));
+const Home = load(() => import('./pages/Home' /* webpackChunkName: home */));
 export default () => {
     const model = useModel(PcModel);
     const location = useLocation();
@@ -28,9 +30,11 @@ export default () => {
     return (
         <>
             {!ignore && loaded && (
-                <BasicLayout menuList={menuList} userInfo={userInfo}>
+                <BasicLayout menuList={menuList} doLogout={model.doLogout} userInfo={userInfo}>
                         <Routes>
                             <Route path="home" element={<Home />} />
+                            <Route path="demo1" element={<Demo1 />} />
+                            <Route path="demo2" element={<Demo2 />} />
                             <Route path="" element={<Redirect to="home" />} />
                         </Routes>
                 </BasicLayout>

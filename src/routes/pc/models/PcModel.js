@@ -1,4 +1,5 @@
 import {service, Model} from 'redux-spring';
+import { replacePath } from '~/common/pathTools';
 
 @service(module.id)
 class PcModel extends Model {
@@ -11,7 +12,6 @@ class PcModel extends Model {
      */
     menuList = [
         {key: '/pc/home', title: '首页'},
-        {key: '/pc/rain', title: '测试'},
         {key: '/pc/demo1', title: '测试1'},
         {key: '/pc/demo2', title: '测试2'},
     ];
@@ -28,6 +28,7 @@ class PcModel extends Model {
 
     doLogout() {
         //
+        replacePath('/pc/login');
     }
 }
 
