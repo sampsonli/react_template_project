@@ -1,5 +1,3 @@
-import {useMemo} from 'react';
-
 const resolvePath = (path) => {
     path = path.replace(/\/\.\//g, '/')
         .replace(/^\.\//, '');
@@ -93,32 +91,7 @@ export const replacePath = (path, query = {}) => {
 export const openNewTab = (path, query = {}) => {
     window.open(getFinalPath(path, query), '_blank');
 };
-/**
- * 刷新跳转新页面
- * @param path {string}
- * @param query {Object}
- */
-export const reloadPushPath = (path, query = {}) => {
-    // const tmp = getFinalPath(path, query).split('#');
-    // window.open([`${tmp[0].split('?')[0]}?_t=${Date.now()}`, tmp[1]].join('#'), '_self');
-    window.location.href = getFinalPath(path, query);
-    window.location.reload();
-    // const url = `jump.html?type=reload&url=/${encodeURIComponent(getFinalPath(path, query))}`;
-    // window.location.href = url;
-};
-/**
- * 刷新替换当前页面
- * @param path {string}
- * @param query {Object}
- */
-export const reloadReplacePath = (path, query = {}) => {
-    // const tmp = getFinalPath(path, query).split('#');
-    // window.location.replace([`${tmp[0].split('?')[0]}?_t=${Date.now()}`, tmp[1]].join('#'), '_self');
-    window.location.replace(getFinalPath(path, query));
-    window.location.reload();
-    // const url = `jump.html?type=reload&url=/${encodeURIComponent(getFinalPath(path, query))}`;
-    // window.location.replace(url);
-};
+
 export const back = () => {
     window.history.back();
 };
