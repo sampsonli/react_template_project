@@ -11,19 +11,23 @@ import React, {
     useCallback, useEffect, useState, useMemo,
 } from 'react';
 import {
-    Menu, Button, Breadcrumb, Layout,
+    Menu, Button, Breadcrumb, Layout, Divider, Drawer,
 } from 'antd';
-import { useLocation } from 'react-router';
+import {useLocation} from 'react-router';
 import style from './style.less';
-import { pushPath } from '~/common/pathTools';
+import {pushPath} from '~/common/pathTools';
 import Logo from './Logo';
 
-const { Sider, Header, Content } = Layout;
+const {
+    Sider,
+    Header,
+    Content
+} = Layout;
 
 const key2Icon = {
-    '/pc/home': <HomeOutlined />,
-    '/pc/demo1': <WechatOutlined />,
-    '/pc/demo2': <QqOutlined />,
+    '/pc/home': <HomeOutlined/>,
+    '/pc/demo1': <WechatOutlined/>,
+    '/pc/demo2': <QqOutlined/>,
 };
 /**
  * @typedef MenuItem {{title, key, children?: [MenuItem]}}
@@ -88,7 +92,7 @@ export const BasicLayoutContext = React.createContext({
     setTitles: () => null,
 });
 
-const { SubMenu } = Menu;
+const {SubMenu} = Menu;
 /**
  *
  *
@@ -100,8 +104,11 @@ const { SubMenu } = Menu;
  * @constructor
  */
 const BasicLayout = ({
-    menuList, children, userInfo = {}, doLogout = () => null,
-}) => {
+                         menuList,
+                         children,
+                         userInfo = {},
+                         doLogout = () => null,
+                     }) => {
     const location = useLocation();
     const [key, setKey] = useState(location.pathname);
     const [titles, setTitles] = useState([]);
@@ -121,30 +128,64 @@ const BasicLayout = ({
         setKey,
         setTitles,
     }), []);
+    const isMobile = true;
     return (
         <Layout className={style.basicLayout}>
 
-            <Sider
-                collapsible
-                collapsed={collapsed}
-                onCollapse={setCollapsed}
-
-            >
-                <Logo />
-                <Menu
-                    theme="dark"
-                    className={`${style.menu}`}
-                    onClick={onChangeKey}
-                    defaultSelectedKeys={[key]}
-                    selectedKeys={[key]}
-                    mode="inline"
-                    defaultOpenKeys={['1', '2', '3', '4', '5']}
-                    inlineCollapsed={collapsed}
+            {!isMobile ? (
+                <Sider
+                    collapsible
+                    collapsed={collapsed}
+                    onCollapse={setCollapsed}
+                    width="2.4rem"
                 >
-                    {genSubMenu(menuList)}
-                </Menu>
+                    <Logo/>
+                    <Menu
+                        theme="dark"
+                        onClick={onChangeKey}
+                        defaultSelectedKeys={[key]}
+                        selectedKeys={[key]}
+                        mode="inline"
+                        defaultOpenKeys={['1', '2', '3', '4', '5']}
+                        inlineCollapsed={collapsed}
+                    >
+                        {genSubMenu(menuList)}
+                    </Menu>
 
-            </Sider>
+                </Sider>
+            ) : (
+                <Drawer
+                    className={style.drawerComp}
+                    visible={collapsed}
+                    placement="left"
+                    width={200}
+                    closable={false}
+                    maskClosable
+                    onClose={() => setCollapsed(!collapsed)}
+                >
+                    <Sider
+                        collapsible
+                        collapsed={false}
+                        onCollapse={setCollapsed}
+                        // width="2.4rem"
+                        trigger={null}
+                    >
+                        <Logo />
+                        <Menu
+                            theme="dark"
+                            onClick={onChangeKey}
+                            defaultSelectedKeys={[key]}
+                            selectedKeys={[key]}
+                            mode="inline"
+                            defaultOpenKeys={['1', '2', '3', '4', '5']}
+                            inlineCollapsed={false}
+                        >
+                            {genSubMenu(menuList)}
+                        </Menu>
+
+                    </Sider>
+                </Drawer>
+            )}
             <Layout className={style.right}>
                 <Header className={style.top}>
                     <div className={style.tLeft}>
@@ -152,13 +193,12 @@ const BasicLayout = ({
                             className={style.btn}
                             type="link"
                             onClick={() => setCollapsed(!collapsed)}
-                        >
-                            {collapsed ? (
-                                <MenuFoldOutlined className={style.menuBtn} />
+                            icon={collapsed ? (
+                                <MenuFoldOutlined/>
                             ) : (
-                                <MenuUnfoldOutlined className={style.menuBtn} />
+                                <MenuUnfoldOutlined/>
                             )}
-                        </Button>
+                        />
                         <Breadcrumb>
                             {titles.map((tit) => (
                                 <Breadcrumb.Item key={tit}>{tit}</Breadcrumb.Item>
@@ -166,11 +206,13 @@ const BasicLayout = ({
                         </Breadcrumb>
                     </div>
                     <div className={style.user}>
-                        <div className={style.info}>{userInfo.name}</div>
-                        <LogoutOutlined onClick={doLogout} title="退出登录" />
+                        <span className={style.info}>{userInfo.name}</span>
+                        <Divider type="vertical"/>
+                        <Button onClick={doLogout} type="link" icon={<LogoutOutlined/>} title="退出登录"/>
                     </div>
                 </Header>
-                <Content className={style.content}><BasicLayoutContext.Provider value={provide}>{children}</BasicLayoutContext.Provider></Content>
+                <Content className={style.content}><BasicLayoutContext.Provider
+                    value={provide}>{children}</BasicLayoutContext.Provider></Content>
             </Layout>
         </Layout>
     );
