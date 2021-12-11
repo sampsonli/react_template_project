@@ -42,7 +42,6 @@ export default () => {
         };
     }, []);
 
-    console.log(isMobile);
     return (
         <>
             {!ignore && loaded && (
