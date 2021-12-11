@@ -21,13 +21,13 @@ import Logo from './Logo';
 const {
     Sider,
     Header,
-    Content
+    Content,
 } = Layout;
 
 const key2Icon = {
-    '/pc/home': <HomeOutlined/>,
-    '/pc/demo1': <WechatOutlined/>,
-    '/pc/demo2': <QqOutlined/>,
+    '/pc/home': <HomeOutlined />,
+    '/pc/demo1': <WechatOutlined />,
+    '/pc/demo2': <QqOutlined />,
 };
 /**
  * @typedef MenuItem {{title, key, children?: [MenuItem]}}
@@ -125,6 +125,9 @@ const BasicLayout = ({
     }, [location.pathname]);
     const onChangeKey = useCallback((e) => {
         pushPath(e.key);
+        if (isMobile) {
+            setCollapsed(false);
+        }
     }, []);
     const provide = useMemo(() => ({
         setKey,
@@ -193,9 +196,9 @@ const BasicLayout = ({
                             type="link"
                             onClick={() => setCollapsed(!collapsed)}
                             icon={collapsed ? (
-                                <MenuFoldOutlined/>
+                                <MenuFoldOutlined />
                             ) : (
-                                <MenuUnfoldOutlined/>
+                                <MenuUnfoldOutlined />
                             )}
                         />
                         <Breadcrumb>
@@ -206,12 +209,17 @@ const BasicLayout = ({
                     </div>
                     <div className={style.user}>
                         <span className={style.info}>{userInfo.name}</span>
-                        <Divider type="vertical"/>
-                        <Button onClick={doLogout} type="link" icon={<LogoutOutlined/>} title="退出登录"/>
+                        <Divider type="vertical" />
+                        <Button onClick={doLogout} type="link" icon={<LogoutOutlined />} title="退出登录" />
                     </div>
                 </Header>
-                <Content className={style.content}><BasicLayoutContext.Provider
-                    value={provide}>{children}</BasicLayoutContext.Provider></Content>
+                <Content className={style.content}>
+<BasicLayoutContext.Provider
+    value={provide}
+>
+{children}
+</BasicLayoutContext.Provider>
+                </Content>
             </Layout>
         </Layout>
     );
