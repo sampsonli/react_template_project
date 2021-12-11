@@ -13,7 +13,7 @@ const Login = load(() => import('./pages/Login'));
 const Rain = load(() => import('./pages/rain'));
 const Demo1 = load(() => import('./pages/Demo1'));
 const Demo2 = load(() => import('./pages/Demo2'));
-const Home = load(() => import('./pages/Home'));
+const Dashboard = load(() => import('./pages/Dashboard'));
 export default () => {
     const model = useModel(PcModel);
     const location = useLocation();
@@ -47,7 +47,7 @@ export default () => {
             {!ignore && loaded && (
                 <BasicLayout isMobile={isMobile} menuList={menuList} doLogout={model.doLogout} userInfo={userInfo}>
                         <Routes>
-                            <Route path="home" element={<Home />} />
+                            <Route path="home" element={<Dashboard />} />
                             <Route path="demo1" element={<Demo1 />} />
                             <Route path="demo2" element={<Demo2 />} />
                             <Route path="" element={<Redirect to="home" />} />
