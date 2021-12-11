@@ -12,6 +12,8 @@ class PcModel extends Model {
 
     static ignoreSet = new Set(['/pc/login', '/pc/rain']);
 
+    isMobile = false;
+
     /**
      * 后续左侧菜单可以从后端接口获取
      */

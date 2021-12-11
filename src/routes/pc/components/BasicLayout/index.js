@@ -100,6 +100,7 @@ const {SubMenu} = Menu;
  * @param children {JSX.Element}
  * @param userInfo {{userName}}
  * @param doLogout {function}
+ * @param isMobile {boolean}
  * @returns {JSX.Element}
  * @constructor
  */
@@ -108,6 +109,7 @@ const BasicLayout = ({
                          children,
                          userInfo = {},
                          doLogout = () => null,
+                        isMobile = false,
                      }) => {
     const location = useLocation();
     const [key, setKey] = useState(location.pathname);
@@ -128,7 +130,6 @@ const BasicLayout = ({
         setKey,
         setTitles,
     }), []);
-    const isMobile = true;
     return (
         <Layout className={style.basicLayout}>
 
@@ -139,7 +140,7 @@ const BasicLayout = ({
                     onCollapse={setCollapsed}
                     width="2.4rem"
                 >
-                    <Logo/>
+                    <Logo />
                     <Menu
                         theme="dark"
                         onClick={onChangeKey}
@@ -147,7 +148,6 @@ const BasicLayout = ({
                         selectedKeys={[key]}
                         mode="inline"
                         defaultOpenKeys={['1', '2', '3', '4', '5']}
-                        inlineCollapsed={collapsed}
                     >
                         {genSubMenu(menuList)}
                     </Menu>
@@ -178,7 +178,6 @@ const BasicLayout = ({
                             selectedKeys={[key]}
                             mode="inline"
                             defaultOpenKeys={['1', '2', '3', '4', '5']}
-                            inlineCollapsed={false}
                         >
                             {genSubMenu(menuList)}
                         </Menu>

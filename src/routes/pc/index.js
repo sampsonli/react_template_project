@@ -19,18 +19,34 @@ export default () => {
     const location = useLocation();
     const ignore = PcModel.ignoreSet.has(location.pathname);
     const {
-        menuList, userInfo, loaded,
+        menuList, userInfo, loaded, isMobile,
     } = model;
     useEffect(() => {
         if (!loaded && !ignore) {
             model.init();
         }
     }, [ignore, loaded]);
+    useEffect(() => {
+        const onResize = window.onresize;
+        window.onresize = () => {
+            onResize();
+            if (window.innerWidth > 600) {
+                model.setData({isMobile: false});
+            } else {
+                model.setData({isMobile: true});
+            }
+        };
+        window.onresize();
+        return () => {
+            window.onresize = onResize;
+        };
+    }, []);
 
+    console.log(isMobile);
     return (
         <>
             {!ignore && loaded && (
-                <BasicLayout menuList={menuList} doLogout={model.doLogout} userInfo={userInfo}>
+                <BasicLayout isMobile={isMobile} menuList={menuList} doLogout={model.doLogout} userInfo={userInfo}>
                         <Routes>
                             <Route path="home" element={<Home />} />
                             <Route path="demo1" element={<Demo1 />} />
