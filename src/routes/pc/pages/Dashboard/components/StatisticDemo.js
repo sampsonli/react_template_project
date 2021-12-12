@@ -54,7 +54,7 @@ const StatisticDemo = () => (
                 </Col>
                 <Col span={8}>
                     <Card>
-                        <Countdown title="倒计时" value={deadline} format="HH:mm:ss:SSS" />
+                        <Countdown title="倒计时" value={deadline} format="HH:mm:ss" />
                     </Card>
                 </Col>
                 <Col span={8}>
