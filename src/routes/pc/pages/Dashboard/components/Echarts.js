@@ -15,7 +15,7 @@ const Echarts = () => {
             const option = {
                 xAxis: {
                     type: 'category',
-                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
                 },
                 yAxis: {
                     type: 'value',
@@ -35,9 +35,8 @@ const Echarts = () => {
     return (
         <Row gutter={[16, 16]}>
             <Col span={24}>
-                <Card bodyStyle={{width: 800, height: 600}}>
-                    <canvas ref={ref} />
-
+                <Card bodyStyle={{marginTop: '.2rem'}}>
+                    <div style={{width: 900, height: 500}} ref={ref} />
                 </Card>
             </Col>
 
