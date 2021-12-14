@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react';
 import { useLocation } from 'react-router';
+import zhCN from 'antd/lib/locale/zh_CN';
+import { ConfigProvider } from 'antd';
 import {
     Routes, Route,
 } from 'react-router-dom';
@@ -8,6 +10,7 @@ import load from '~/common/load';
 import Redirect from '~/components/Redirect';
 import PcModel from './models/PcModel';
 import BasicLayout from './components/BasicLayout';
+import './assets/style.less';
 
 const Login = load(() => import('./pages/Login'));
 const Rain = load(() => import('./pages/rain'));
@@ -43,7 +46,7 @@ export default () => {
     }, []);
 
     return (
-        <>
+        <ConfigProvider locale={zhCN}>
             {!ignore && loaded && (
                 <BasicLayout isMobile={isMobile} menuList={menuList} doLogout={model.doLogout} userInfo={userInfo}>
                         <Routes>
@@ -61,7 +64,7 @@ export default () => {
                     </Routes>
             )}
 
-        </>
+        </ConfigProvider>
 
 );
 };
