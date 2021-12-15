@@ -11,8 +11,10 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
     <script type="text/javascript">
          var rFontSize;
+         var _isMobile = false;
         function resize() {
             var clientWith = document.documentElement.clientWidth;
+            _isMobile = false;
             if(clientWith > 1500) {
                 rFontSize = clientWith / 19.2;
             } else if(clientWith > 1200){
@@ -21,7 +23,10 @@
                 rFontSize = 1300 / 17;
             } else { // 移动端
                 rFontSize = clientWith / 3.75
+                _isMobile = true;
             }
+
+            window.eventBus && eventBus.emit('switchSize', _isMobile);
             // rFontSize = 100;
             document.documentElement.style.fontSize = rFontSize + "px";
         }

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router';
 import zhCN from 'antd/lib/locale/zh_CN';
 import { ConfigProvider } from 'antd';
@@ -11,6 +11,7 @@ import Redirect from '~/components/Redirect';
 import PcModel from './models/PcModel';
 import BasicLayout from './components/BasicLayout';
 import './assets/style.less';
+import EventBus from '~/common/EventBus';
 
 const Login = load(() => import('./pages/Login'));
 const Rain = load(() => import('./pages/rain'));
@@ -30,41 +31,33 @@ export default () => {
         }
     }, [ignore, loaded]);
     useEffect(() => {
-        const onResize = window.onresize;
-        window.onresize = () => {
-            onResize();
-            if (window.innerWidth > 600) {
-                model.setData({isMobile: false});
-            } else {
-                model.setData({isMobile: true});
-            }
+        const cb = (type) => {
+            model.setData({ isMobile: type });
         };
-        window.onresize();
-        return () => {
-            window.onresize = onResize;
-        };
+        EventBus.instance.on('switchSize', cb);
+        return () => EventBus.instance.off('switchSize', cb);
     }, []);
 
     return (
         <ConfigProvider locale={zhCN}>
             {!ignore && loaded && (
                 <BasicLayout isMobile={isMobile} menuList={menuList} doLogout={model.doLogout} userInfo={userInfo}>
-                        <Routes>
-                            <Route path="home" element={<Dashboard />} />
-                            <Route path="demo1" element={<Demo1 />} />
-                            <Route path="demo2" element={<Demo2 />} />
-                            <Route path="" element={<Redirect to="home" />} />
-                        </Routes>
+                    <Routes>
+                        <Route path="home" element={<Dashboard />} />
+                        <Route path="demo1" element={<Demo1 />} />
+                        <Route path="demo2" element={<Demo2 />} />
+                        <Route path="" element={<Redirect to="home" />} />
+                    </Routes>
                 </BasicLayout>
             )}
             {ignore && (
-                    <Routes>
-                        <Route path="login" element={<Login />} />
-                        <Route path="rain" element={<Rain />} />
-                    </Routes>
+                <Routes>
+                    <Route path="login" element={<Login />} />
+                    <Route path="rain" element={<Rain />} />
+                </Routes>
             )}
 
         </ConfigProvider>
 
-);
+    );
 };
