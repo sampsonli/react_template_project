@@ -13,7 +13,7 @@ module.exports = {
     stats: 'errors-only',
     watchOptions: {
         ignored: /(node_modules)|(\.git)|(static)/,
-        poll: 1000,
+        // poll: 1000,
     },
     entry: {
         app: [
@@ -112,7 +112,7 @@ module.exports = {
             filename: 'index.html', // 生成的html存放路径，相对于 output.path
             template: path.join(srcPath, 'index.ejs'), // html模板路径
             inject: true, // 是否将js放在body的末尾
-            favicon: path.join(ctxPath, 'static/favicon.ico'), // 自动把根目录下的favicon.ico图片加入html
+            // favicon: path.join(ctxPath, 'static/favicon.ico'), // 自动把根目录下的favicon.ico图片加入html
             dllName: isDll ? bundleConfig.vendors.js : null,
         }),
     ],
