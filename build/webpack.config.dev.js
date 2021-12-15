@@ -12,7 +12,7 @@ module.exports = {
     mode: 'development',
     stats: 'errors-only',
     watchOptions: {
-        ignored: /(node_modules)|(\.git)|(static)/,
+        ignored: /(node_modules)|(\.git)|(static)|(dist)/,
         // poll: 1000,
     },
     entry: {
