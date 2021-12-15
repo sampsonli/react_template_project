@@ -95,3 +95,32 @@ export const openNewTab = (path, query = {}) => {
 export const back = () => {
     window.history.back();
 };
+
+/**
+ * 合并请求参数到hash
+ * @param href -需要转换的url
+ * @param defaultPath -hash 路由, 如果为空， 首先获取查询参数中的path 属性， 如果没有则为 '/'
+ * @returns {string|*} -转换后端url
+ */
+ export const getMergedQSUrl = (href, defaultPath = '') => {
+    const [url, hash] = href.split('#');
+    if (url.indexOf('?') > -1) {
+        const qs = url.split('?')[1];
+        if (hash && hash.indexOf('?') > -1) {
+            const tmp = hash.split('?');
+            const queryObj = {...parseQueryStr(tmp[1]), ...parseQueryStr(qs)};
+            const qString = Object.keys(queryObj)
+                .map(key => `${key}=${queryObj[key]}`)
+                .join('&');
+
+            return `${url.split('?')[0]}#${tmp[0]}?${qString}`;
+        } if (hash) {
+            return `${url.split('?')[0]}#${hash}?${qs}`;
+        }
+        if (!defaultPath) {
+            defaultPath = parseQueryStr(qs).path || '/';
+        }
+        return `${url.split('?')[0]}#${defaultPath}?${qs}`;
+    }
+    return href;
+};
