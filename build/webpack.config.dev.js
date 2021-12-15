@@ -12,8 +12,8 @@ module.exports = {
     mode: 'development',
     stats: 'errors-only',
     watchOptions: {
-        ignored: /(node_modules)|(dist)|(static)|(build)|(\.git)/,
-        // poll: 1000,
+        ignored: /(node_modules)|(\.git)|(static)/,
+        poll: 1000,
     },
     entry: {
         app: [
