@@ -1,4 +1,5 @@
 import { service, Model } from 'redux-spring';
+import { eventBus } from '~/common/EventBus';
 import { wait } from '~/common/utils';
 
 @service(module.id)
@@ -11,6 +12,12 @@ class Demo1Model extends Model {
 
     init() {
         this.getList();
+    }
+
+    doSearch() {
+        eventBus.emit('setMenuInfo', {
+            paths: ['测试1', '详情'],
+        });
     }
 
     * getList() {

@@ -26,7 +26,7 @@ export default () => {
                             <Input className={style.sInput} value={keyword} onChange={({ target: { value } }) => model.setData({ keyword: value })} />
                         </Col>
                         <Col span={6} className={style.sItem}>
-                            <Button className={style.searchBtn} type="primary" onClick={model.getList} icon={<SearchOutlined />}>查询</Button>
+                            <Button className={style.searchBtn} type="primary" onClick={model.doSearch} icon={<SearchOutlined />}>查询</Button>
                         </Col>
                     </Row>
 

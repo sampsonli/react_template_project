@@ -8,15 +8,16 @@ import {
     QqOutlined,
 } from '@ant-design/icons';
 import React, {
-    useCallback, useEffect, useState, useMemo,
+    useCallback, useEffect, useState,
 } from 'react';
 import {
     Menu, Button, Breadcrumb, Layout, Divider, Drawer,
 } from 'antd';
-import {useLocation} from 'react-router';
+import { useLocation } from 'react-router';
 import style from './style.less';
-import {pushPath} from '~/common/pathTools';
+import { pushPath } from '~/common/pathTools';
 import Logo from './Logo';
+import { eventBus } from '~/common/EventBus';
 
 const {
     Sider,
@@ -87,12 +88,7 @@ const genSubMenu = (mList) => mList.map((item) => {
     );
 });
 
-export const BasicLayoutContext = React.createContext({
-    setKey: () => null,
-    setTitles: () => null,
-});
-
-const {SubMenu} = Menu;
+const { SubMenu } = Menu;
 /**
  *
  *
@@ -105,12 +101,12 @@ const {SubMenu} = Menu;
  * @constructor
  */
 const BasicLayout = ({
-                         menuList,
-                         children,
-                         userInfo = {},
-                         doLogout = () => null,
-                        isMobile = false,
-                     }) => {
+    menuList,
+    children,
+    userInfo = {},
+    doLogout = () => null,
+    isMobile = false,
+}) => {
     const location = useLocation();
     const [key, setKey] = useState(location.pathname);
     const [titles, setTitles] = useState([]);
@@ -123,16 +119,20 @@ const BasicLayout = ({
         setKey(location.pathname);
         setTitles(titleList);
     }, [location.pathname]);
+    useEffect(() => {
+        const cb = ({ selected, paths } = {}) => {
+            paths && setTitles(paths);
+            selected && setKey(selected);
+        };
+        eventBus.on('setMenuInfo', cb);
+        return () => eventBus.off('setMenuInfo', cb);
+    }, []);
     const onChangeKey = useCallback((e) => {
         pushPath(e.key);
         if (isMobile) {
             setCollapsed(false);
         }
     }, []);
-    const provide = useMemo(() => ({
-        setKey,
-        setTitles,
-    }), []);
     return (
         <Layout className={style.basicLayout}>
 
@@ -214,11 +214,7 @@ const BasicLayout = ({
                     </div>
                 </Header>
                 <Content className={style.content}>
-<BasicLayoutContext.Provider
-    value={provide}
->
-{children}
-</BasicLayoutContext.Provider>
+                    {children}
                 </Content>
             </Layout>
         </Layout>
