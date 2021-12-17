@@ -22,4 +22,4 @@ yarn-error.log*
 .idea
 .vscode
 
-ddns.js
+ddns-config.js

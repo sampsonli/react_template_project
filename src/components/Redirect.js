@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 import { replacePath } from '~/common/pathTools';
 
 const Redirect = ({to = ''}) => {

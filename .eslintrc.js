@@ -7,6 +7,11 @@ module.exports = {
     },
     globals: {
     // "React": true
+        eventBus: true,
+        _isMobile: true,
+        rem2px: true,
+        px2rem: true,
+
     },
     plugins: [
         'react',
