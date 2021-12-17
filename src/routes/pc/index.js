@@ -5,7 +5,7 @@ import { ConfigProvider } from 'antd';
 import {
     Routes, Route,
 } from 'react-router-dom';
-import { useModel } from 'redux-spring';
+import { useModel } from '~/common/spring';
 import load from '~/common/load';
 import Redirect from '~/components/Redirect';
 import PcModel from './models/PcModel';

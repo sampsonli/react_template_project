@@ -1,4 +1,4 @@
-import { service, Model } from 'redux-spring';
+import { service, Model } from '~/common/spring';
 
 import api from './api';
 

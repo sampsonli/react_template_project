@@ -12,7 +12,7 @@
  // 保存所有模块的static属性, 方便开发模式热更新静态数据保留
  const allStatic = {};
 
- const allState = {};
+ let allState = {};
 
  const FLAG_PREFIX = 'spring/';
 
@@ -116,26 +116,33 @@
              }
          });
 
+
          /**
           * 设置模块数据
           * @param props， 要设置属性的集合， 为普通对象，比如 {a: 1, b:2}, 代表设置模块中a属性为1， b属性为2
           */
+         // @ts-ignore
          prototype.setData = function (props: Object) {
              const state = allState[ns];
              const keys = Object.keys(props);
              if (keys.some(key => props[key] !== state[key])) {
-                 const fState = {...state, ...props};
-                 allState[ns] = fState;
-                 eventBus.emit(TYPE, fState)
+                 const newObj = Object.create(allProto[ns]);
+                 assign(newObj, state);
+                 assign(newObj, props);
+                 allState[ns] = newObj;
+                 eventBus.emit(TYPE, newObj);
              }
          };
+         // @ts-ignore
          _prototype.setData = prototype.setData; // 模块内部也支持 调用setData方法
 
          const initState = Object.create(prototype);
 
+
          /**
           * 重置模块数据到初始状态， 一般用于组件销毁的时候调用
           */
+         // @ts-ignore
          prototype.reset = function () {
              wiredList.forEach(key => {
                  initState[key] = allState[__wired[key]];
@@ -143,6 +150,7 @@
              allState[ns] = initState;
              eventBus.emit(TYPE, initState);
          };
+         // @ts-ignore
          _prototype.reset = prototype.reset;
          const finalInstance = allState[ns] ? allState[ns] : instance;
          Object.getOwnPropertyNames(instance).forEach(key => {
@@ -184,6 +192,7 @@
 
          // 初始化提供created 方法调用, 热更新不重复调用
          if (typeof prototype.created === 'function' && !isHotReload) {
+             // @ts-ignore
              prototype.created();
          }
          allProto[ns] = prototype;
@@ -251,4 +260,9 @@
   */
  export const convert = <T>(gen: Generator<unknown, T, unknown>): Promise<T> => {
      return <any>gen;
+ }
+
+
+ export default (rootState = {}) => {
+     allState = rootState;
  }

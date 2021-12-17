@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useModel } from 'redux-spring';
+import { useModel } from '~/common/spring';
 import style from './style.less';
 import LoginModel from '../../models/LoginModel';
 
