@@ -17,7 +17,7 @@
             var rFontSize;
             function resize() {
                 var clientWith = document.documentElement.clientWidth;
-                _isMobile = false;
+                var isMobile = false;
                 if(clientWith > 1500) {
                     rFontSize = clientWith / 19.2;
                 } else if(clientWith > 1200){
@@ -26,11 +26,15 @@
                     rFontSize = 1300 / 17;
                 } else { // 移动端
                     rFontSize = clientWith / 3.75
-                    _isMobile = true;
+                    isMobile = true;
                 }
-                window.eventBus && eventBus.emit('switchSize', _isMobile);
-                // rFontSize = 100;
+               
                 document.documentElement.style.fontSize = rFontSize + "px";
+                if(window.eventBus && isMobile !== _isMobile) {
+                    eventBus.emit('switchSize', isMobile);
+                }
+                _isMobile = isMobile;
+
             }
             window.onresize = resize;
             resize();
@@ -41,6 +45,7 @@
                 return size / rFontSize;
             }
        })();
+
     </script>
 </head>
 <body>
