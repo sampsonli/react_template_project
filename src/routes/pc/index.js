@@ -11,10 +11,9 @@ import Redirect from '~/components/Redirect';
 import PcModel from './models/PcModel';
 import BasicLayout from './components/BasicLayout';
 import './assets/style.less';
-import EventBus from '~/common/EventBus';
+import {eventBus} from '~/common/EventBus';
 
 const Login = load(() => import('./pages/Login'));
-const Rain = load(() => import('./pages/rain'));
 const Demo1 = load(() => import('./pages/Demo1'));
 const Dashboard = load(() => import('./pages/Dashboard'));
 export default () => {
@@ -33,8 +32,8 @@ export default () => {
         const cb = (type) => {
             model.setData({ isMobile: type });
         };
-        EventBus.instance.on('switchSize', cb);
-        return () => EventBus.instance.off('switchSize', cb);
+        eventBus.on('switchSize', cb);
+        return () => eventBus.off('switchSize', cb);
     }, []);
 
     return (
@@ -51,7 +50,6 @@ export default () => {
             {ignore && (
                 <Routes>
                     <Route path="login" element={<Login />} />
-                    <Route path="rain" element={<Rain />} />
                 </Routes>
             )}
 

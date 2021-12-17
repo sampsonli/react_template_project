@@ -14,7 +14,7 @@
     "allowJs": true /* Allow javascript files to be compiled. */,
     "checkJs": false /* Report errors in .js files. */,
     "skipLibCheck": true,
-    "typeRoots": ["node", "node_modules/@types", "./typings"],
+    "typeRoots": ["node", "node_modules/@types"],
     "noUnusedLocals": true,
     /* Strict Type-Checking Options */
     "strict": true /* Enable all strict type-checking options. */,
