@@ -3,7 +3,7 @@ import {
     Button, Card, Col, Divider, Input, Row, Table, Spin,
 } from 'antd';
 import React, { useEffect } from 'react';
-import { useModel } from 'redux-spring';
+import { useModel } from '~/common/spring';
 import Demo1Model from '~/routes/pc/models/Demo1Model';
 import style from './style.less';
 

@@ -7,7 +7,7 @@ export function assign(target, from) {
     return target;
 }
 
-export function isGenerator(fn: Function): boolean {
+export function isGenerator(fn) {
     // ts 配置es5 有个bug, 只能按照下面的方式解决了
     if(process.env.NODE_ENV !== 'test') { // 浏览器环境
         if(fn.prototype) {
