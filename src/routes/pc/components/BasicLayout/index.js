@@ -45,6 +45,7 @@ const findMenuPath = (list, key) => {
      * @param menus {[MenuItem]}
      * @param path {[]}
      */
+    // eslint-disable-next-line consistent-return
     const findEle = (menus, path) => {
         for (let i = 0; i < menus.length; i++) {
             path.push(menus[i].title);
