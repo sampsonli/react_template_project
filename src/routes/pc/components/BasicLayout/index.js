@@ -133,7 +133,7 @@ const BasicLayout = ({
         if (isMobile) {
             setCollapsed(false);
         }
-    }, []);
+    }, [isMobile]);
     return (
         <Layout className={style.basicLayout}>
 

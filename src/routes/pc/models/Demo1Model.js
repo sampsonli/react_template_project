@@ -16,6 +16,7 @@ class Demo1Model extends Model {
     }
 
     doSearch() {
+        this.keyword = Math.random() * 10000 << 0;
         eventBus.emit('setMenuInfo', {
             paths: ['测试13', '详情'],
         });
