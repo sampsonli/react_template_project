@@ -18,7 +18,7 @@ class Demo1Model extends Model {
     doSearch() {
         this.keyword = Math.random() * 10000 << 0;
         eventBus.emit('setMenuInfo', {
-            paths: ['测试13', '详情'],
+            paths: ['测试', '详情q2'],
         });
         this.getList();
         // this.pcModel.setData({isMobile: !this.pcModel.isMobile});

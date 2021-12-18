@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useModel } from 'mtor';
 import style from './style.less';
-import DemoModel from '~/routes/pc/models/DemoModel';
+// import Demo2Model from '~/routes/pc/models/Demo2Model';
 import StatisticDemo from '~/routes/pc/pages/Dashboard/components/StatisticDemo';
 import Echarts from '~/routes/pc/pages/Dashboard/components/Echarts';
 
 export default () => {
-    const model = useModel(DemoModel);
+    // const model = useModel(Demo2Model);
     useEffect(() => {
-        model.init();
+        // model.init();
     }, []);
     return (
         <div
