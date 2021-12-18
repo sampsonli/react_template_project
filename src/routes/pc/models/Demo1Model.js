@@ -1,4 +1,4 @@
-import {service, Model, inject} from '~/common/spring';
+import {service, Model, inject} from 'mtor';
 import { eventBus } from '~/common/EventBus';
 import { wait } from '~/common/utils';
 import PcModel from '~/routes/pc/models/PcModel';

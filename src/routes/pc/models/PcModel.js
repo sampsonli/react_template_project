@@ -1,4 +1,4 @@
-import {service, Model} from '~/common/spring';
+import {service, Model} from 'mtor';
 import { replacePath } from '~/common/pathTools';
 import { wait } from '~/common/utils';
 

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useModel } from '~/common/spring';
+import { useModel } from 'mtor';
 import style from './style.less';
 import LoginModel from '../../models/LoginModel';
 
