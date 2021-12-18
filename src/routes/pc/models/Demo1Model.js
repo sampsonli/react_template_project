@@ -17,8 +17,9 @@ class Demo1Model extends Model {
 
     doSearch() {
         eventBus.emit('setMenuInfo', {
-            paths: ['测试', '详情'],
+            paths: ['测试13', '详情'],
         });
+        this.getList();
         // this.pcModel.setData({isMobile: !this.pcModel.isMobile});
         // this.loading = true;
     }
