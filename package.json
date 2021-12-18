@@ -28,11 +28,8 @@
     "prop-types": "^15.6.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-redux": "^7.2.6",
     "react-router": "^6.1.1",
-    "react-router-dom": "^6.1.1",
-    "redux": "^4.1.2",
-    "redux-spring": "^2.0.19"
+    "react-router-dom": "^6.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.16.5",

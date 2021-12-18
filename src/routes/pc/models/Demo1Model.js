@@ -1,6 +1,7 @@
-import { service, Model } from '~/common/spring';
+import {service, Model, inject} from '~/common/spring';
 import { eventBus } from '~/common/EventBus';
 import { wait } from '~/common/utils';
+import PcModel from '~/routes/pc/models/PcModel';
 
 @service(module.id)
 class Demo1Model extends Model {
@@ -16,10 +17,19 @@ class Demo1Model extends Model {
     }
 
     doSearch() {
-        eventBus.emit('setMenuInfo', {
-            paths: ['测试1', '详情'],
-        });
+        console.log('begin')
+        // eventBus.emit('setMenuInfo', {
+        //     paths: ['测试1', '详情'],
+        // });
+        this.pcModel.setData({isMobile: !this.pcModel.isMobile});
+        // this.loading = true;
     }
+
+    /**
+     * @type {PcModel}
+     */
+    @inject(PcModel)
+    pcModel;
 
     * getList() {
         this.loading = true;

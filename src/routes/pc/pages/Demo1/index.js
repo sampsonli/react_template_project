@@ -15,14 +15,14 @@ export default () => {
         model.init();
         return model.reset;
     }, []);
-    const { list, keyword, loading } = model;
+    const { list, keyword, loading, pcModel } = model;
     return (
         <div className={style.container}>
             <div>
                 <Card className={style.search}>
                     <Row>
                         <Col span={4} className={style.sItem}>
-                            <span className={style.label}>查询条件：</span>
+                            <span className={style.label}>查询条件{pcModel.isMobile ? 'true': 'false'}：</span>
                             <Input className={style.sInput} value={keyword} onChange={({ target: { value } }) => model.setData({ keyword: value })} />
                         </Col>
                         <Col span={6} className={style.sItem}>

@@ -1,5 +1,5 @@
 /**
- * redux-spring
+ * spring
  * Copyright (c) 2020 Sampson Li (lichun) <740056710@qq.com>
  * @license MIT
  */
@@ -35,7 +35,7 @@
          function doUpdate(newState) {
              const keys = Object.keys(newState);
              const oldState = allState[ns];
-             const diff = keys.some(key => newState[key] !== oldState[key]);
+             const diff = keys.some(key => !__wired[key] && newState[key] !== oldState[key]);
              if (diff) {
                  const newObj = Object.create(allProto[ns]);
                  assign(newObj, newState);
@@ -45,7 +45,7 @@
          }
 
          // 给外面用的原型实例
-         const prototype = {setData: null, reset: null, created: null};
+         const prototype = {setData: undefined, reset: undefined, created: undefined};
 
          // 给内部用的原型实例
          const _prototype = {setData: undefined, reset: undefined};
@@ -116,11 +116,6 @@
              }
          });
 
-
-         /**
-          * 设置模块数据
-          * @param props， 要设置属性的集合， 为普通对象，比如 {a: 1, b:2}, 代表设置模块中a属性为1， b属性为2
-          */
          // @ts-ignore
          prototype.setData = function (props: Object) {
              const state = allState[ns];
@@ -211,6 +206,9 @@
      const [data, setData] = useState(allState[ns]);
      useEffect(() => {
          const eventName = `${FLAG_PREFIX}${ns}`;
+         eventBus.on(eventName, () => {
+             console.log('触发')
+         })
          eventBus.on(eventName, setData);
          return () => eventBus.off(eventName, setData);
      }, []);
@@ -263,6 +261,10 @@
  }
 
 
- export default (rootState = {}) => {
-     allState = rootState;
+/**
+ * 批量注册模块
+ * @param mds
+ */
+export const register = (mds = {}) => {
+     assign(allState, mds);
  }
