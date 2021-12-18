@@ -105,6 +105,7 @@
                              return data;
                          });
                      }
+                     // console.log('hello111')
                      doUpdate(_this);
                      return result;
                  };
@@ -174,6 +175,8 @@
          const isHotReload = !!allProto[ns];
          if (isHotReload) { // 热更新时候用得到
              allState[ns] = initState;
+             eventBus.emit(TYPE, initState); // 热更新替换老的模型实例
+
          }
          /**
           * 开发模式 static数据保存和恢复
@@ -206,9 +209,6 @@
      const [data, setData] = useState(allState[ns]);
      useEffect(() => {
          const eventName = `${FLAG_PREFIX}${ns}`;
-         eventBus.on(eventName, () => {
-             console.log('触发')
-         })
          eventBus.on(eventName, setData);
          return () => eventBus.off(eventName, setData);
      }, []);

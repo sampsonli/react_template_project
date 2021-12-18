@@ -12,16 +12,14 @@ class Demo1Model extends Model {
     keyword;
 
     init() {
-        // console.log('init')
         this.getList();
     }
 
     doSearch() {
-        console.log('begin')
-        // eventBus.emit('setMenuInfo', {
-        //     paths: ['测试1', '详情'],
-        // });
-        this.pcModel.setData({isMobile: !this.pcModel.isMobile});
+        eventBus.emit('setMenuInfo', {
+            paths: ['测2试331', '详情2'],
+        });
+        // this.pcModel.setData({isMobile: !this.pcModel.isMobile});
         // this.loading = true;
     }
 
