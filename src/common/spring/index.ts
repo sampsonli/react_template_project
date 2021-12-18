@@ -140,11 +140,15 @@
           */
          // @ts-ignore
          prototype.reset = function () {
+             const newObj = Object.create(prototype);
+             Object.getOwnPropertyNames(instance).forEach(key => {
+                 newObj[key] = instance[key];
+             });
              wiredList.forEach(key => {
-                 initState[key] = allState[__wired[key]];
-             })
-             allState[ns] = initState;
-             eventBus.emit(TYPE, initState);
+                 newObj[key] = allState[__wired[key]];
+             });
+             allState[ns] = newObj;
+             eventBus.emit(TYPE, newObj);
          };
          // @ts-ignore
          _prototype.reset = prototype.reset;
@@ -258,13 +262,4 @@
   */
  export const convert = <T>(gen: Generator<unknown, T, unknown>): Promise<T> => {
      return <any>gen;
- }
-
-
-/**
- * 批量注册模块
- * @param mds
- */
-export const register = (mds = {}) => {
-     assign(allState, mds);
  }
