@@ -2,7 +2,6 @@ import {service, Model, inject} from 'mtor';
 import { eventBus } from '~/common/EventBus';
 import { wait } from '~/common/utils';
 import PcModel from '~/routes/pc/models/PcModel';
-import {notification} from 'antd';
 
 @service(module.id)
 class Demo1Model extends Model {
@@ -23,14 +22,7 @@ class Demo1Model extends Model {
         eventBus.emit('setMenuInfo', {
             paths: ['测试', '详情q2'],
         });
-        notification.open({
-            message: '查找成功',
-            description:
-                'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
-            onClick: () => {
-                console.log('Notification Clicked!');
-            },
-        });
+    
     }
 
     /**

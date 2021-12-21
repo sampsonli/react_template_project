@@ -108,6 +108,7 @@ module.exports = {
             filename: 'index.html', // 生成的html存放路径，相对于 output.path
             template: path.join(srcPath, 'index.ejs'), // html模板路径
             // favicon: path.join(ctxPath, 'static/favicon.ico'), // 自动把根目录下的favicon.ico图片加入html
+            minify: {minifyJS: true, collapseWhitespace: true},
             inject: true, // 是否将js放在body的末尾
             dllName: bundleConfig.vendors.js,
         }),
