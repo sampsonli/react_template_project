@@ -19,9 +19,9 @@ class Demo1Model extends Model {
     }
 
     doSearch() {
-        this.keyword = Math.random() * 10000 << 0;
+        // this.keyword = Math.random() * 10000 << 0;
         eventBus.emit('setMenuInfo', {
-            paths: ['测试', '详情1222'],
+            paths: ['测试', '详情1'],
         });
         this.getList();
     }
@@ -69,7 +69,7 @@ class Demo1Model extends Model {
             {
                 id: 5,
                 title: 'hello5',
-                star: ''.padStart(4, '★'),
+                star: ''.padStart(14, '★'),
                 date: moment()
                     .format('YYYY-MM-DD'),
             },
