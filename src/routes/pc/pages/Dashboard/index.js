@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { useModel } from 'mtor';
 import style from './style.less';
 // import Demo2Model from '~/routes/pc/models/Demo2Model';
 import StatisticDemo from '~/routes/pc/pages/Dashboard/components/StatisticDemo';
@@ -15,9 +14,13 @@ export default () => {
             // loading={loading.models.dashboard && sales.length === 0}
             className={style.dashboard}
         >
-            <StatisticDemo />
-            <div style={{marginTop: '.2rem'}}></div>
-            <Echarts/>
+            <div className={style.statistic}>
+                <StatisticDemo />
+            </div>
+            <div className={style.echart}>
+                <Echarts />
+            </div>
+
         </div>
 
     );

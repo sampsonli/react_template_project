@@ -201,8 +201,8 @@ const Echarts = () => {
     return (
         <Row gutter={[16, 16]}>
             <Col span={24}>
-                <Card bodyStyle={{marginTop: '.2rem'}}>
-                    <div style={{height: '6rem'}} ref={ref} />
+                <Card>
+                    <div style={{height: '5.5rem'}} ref={ref} />
                 </Card>
             </Col>
 

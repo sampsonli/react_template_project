@@ -20,7 +20,7 @@ class Demo1Model extends Model {
     doSearch() {
         this.keyword = Math.random() * 10000 << 0;
         evtBus.emit('setMenuInfo', {
-            paths: ['测试', '详情q2'],
+            paths: ['测试1', '查询'],
         });
         this.getList();
     }
