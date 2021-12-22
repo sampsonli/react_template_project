@@ -1,7 +1,4 @@
-import React, {useEffect, useRef} from 'react';
-import {
-    Card, Col, Row,
-} from 'antd';
+import React, { useEffect, useRef } from 'react';
 import loadjs from '~/common/loadjs';
 
 const Echarts = () => {
@@ -31,7 +28,7 @@ const Echarts = () => {
                 },
                 toolbox: {
                     feature: {
-                        saveAsImage: {},
+                        saveAsImage: { show: false },
                     },
                 },
                 grid: {
@@ -199,14 +196,11 @@ const Echarts = () => {
         });
     }, []);
     return (
-        <Row gutter={[16, 16]}>
-            <Col span={24}>
-                <Card>
-                    <div style={{height: '5.5rem'}} ref={ref} />
-                </Card>
-            </Col>
-
-        </Row>
+        <div style={{
+            position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, padding: '.2rem',
+        }}
+            ref={ref}
+        />
     );
 };
 

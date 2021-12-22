@@ -19,8 +19,8 @@ class PcModel extends Model {
      */
     menuList = [
         {key: '/pc/home', title: '首页'},
-        {key: '/pc/demo1', title: '测试1'},
-        {key: '/pc/demo2', title: '测试2'},
+        {key: '/pc/demo1', title: '列表'},
+        {key: '/pc/demo2', title: '图表'},
     ];
 
     /**

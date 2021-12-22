@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import { useModel } from 'mtor';
-import Demo2Model from '~/routes/pc/models/Demo2Model';
+// import { useModel } from 'mtor';
+// import Demo2Model from '~/routes/pc/models/Demo2Model';
 import style from './style.less';
 import loadjs from '~/common/loadjs';
 
 export default () => {
-    const model = useModel(Demo2Model);
+    // const model = useModel(Demo2Model);
     const ref = useRef();
     useEffect(() => {
         loadjs('lib/echarts.js', 'echarts').then(echarts => {
@@ -26,9 +26,9 @@ export default () => {
                 },
                 toolbox: {
                     feature: {
-                        dataView: { show: true, readOnly: false },
-                        restore: { show: true },
-                        saveAsImage: { show: true },
+                        dataView: { show: false, readOnly: false },
+                        restore: { show: false },
+                        saveAsImage: { show: false },
                     },
                 },
                 legend: {
@@ -122,7 +122,6 @@ export default () => {
             myChart.setOption(option);
         });
     }, []);
-    const { num, num2, num3 } = model;
     return (
         <div className={style.container}>
 

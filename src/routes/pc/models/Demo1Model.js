@@ -1,6 +1,8 @@
-import {service, Model, inject, evtBus} from 'mtor';
+import {
+ service, Model, inject, evtBus,
+} from 'mtor';
 import moment from 'moment';
-import {wait} from '~/common/utils';
+import { wait } from '~/common/utils';
 import PcModel from '~/routes/pc/models/PcModel';
 
 @service(module.id)
@@ -11,16 +13,15 @@ class Demo1Model extends Model {
 
     current;
 
-    keyword = '李春1';
+    keyword = '查询';
 
     init() {
         this.getList();
     }
 
     doSearch() {
-        this.keyword = Math.random() * 10000 << 0;
         evtBus.emit('setMenuInfo', {
-            paths: ['测试1', '查询'],
+            paths: ['列表', this.keyword],
         });
         this.getList();
     }
@@ -34,7 +35,7 @@ class Demo1Model extends Model {
     * getList() {
         this.loading = true;
         // console.log('list1');
-        yield wait(500);
+        yield wait(300);
         // console.log('list2')
         this.list = [
             {
