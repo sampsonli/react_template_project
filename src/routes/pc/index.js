@@ -12,8 +12,6 @@ import PcModel from './models/PcModel';
 import BasicLayout from './components/BasicLayout';
 import './assets/style.less';
 
-window.eventBus = eventBus;
-
 const Login = load(() => import('./pages/Login'));
 const Demo1 = load(() => import('./pages/Demo1'));
 const Demo2 = load(() => import('./pages/Demo2'));
