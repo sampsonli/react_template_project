@@ -1,6 +1,6 @@
 import {DeleteOutlined, EditOutlined, SearchOutlined} from '@ant-design/icons';
 import {
-    Button, Card, Col, Divider, Input, Row, Table, Spin,
+    Button, Card, Col, Divider, Input, Row, Table, Spin, Popconfirm,
 } from 'antd';
 import React, {useEffect} from 'react';
 import {useModel} from 'mtor';
@@ -71,7 +71,7 @@ export default () => {
                                 key="action"
                                 width={195}
                                 align="center"
-                                render={() => (
+                                render={(value, record, index) => (
                                         <span>
                                         <Button type="primary"
                                             shape="circle"
@@ -80,7 +80,10 @@ export default () => {
                                             title="编辑"
                                         />
                                         <Divider type="vertical" />
-                                        <Button type="primary" shape="circle" icon={<DeleteOutlined />} title="删除" />
+                                            <Popconfirm title="确认删除？" onConfirm={() => model.doDelete(record)}>
+                                                <Button type="primary" shape="circle" icon={<DeleteOutlined />} title="删除" />
+                                            </Popconfirm>
+
                                         </span>
                                     )}
                             />

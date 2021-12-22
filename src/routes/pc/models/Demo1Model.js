@@ -73,8 +73,32 @@ class Demo1Model extends Model {
                 date: moment()
                     .format('YYYY-MM-DD'),
             },
+            {
+                id: 6,
+                title: '李春',
+                star: ''.padStart(1, '★'),
+                date: moment()
+                    .format('YYYY-MM-DD'),
+            },
+            {
+                id: 7,
+                title: '李春7',
+                star: ''.padStart(12, '★'),
+                date: moment()
+                    .format('YYYY-MM-DD'),
+            },
+            {
+                id: 8,
+                title: '李春8',
+                star: ''.padStart(4, '★'),
+                date: moment()
+                    .format('YYYY-MM-DD'),
+            },
         ];
         this.loading = false;
+    }
+    doDelete(record) {
+        this.list = this.list.filter(item => item !== record);
     }
 }
 

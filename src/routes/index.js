@@ -25,7 +25,7 @@ export default () => (
                 path,
                 Element,
             }) => <Route key={path} element={<Element />} path={`${path}/*`} />)}
-            <Route path="*" element={<Redirect to={`${routes[0].path}/`} />} />
+            <Route path="*" element={<Redirect to="/pc/" />} />
         </Routes>
     </HashRouter>
 );
