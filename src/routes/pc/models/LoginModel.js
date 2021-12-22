@@ -16,6 +16,10 @@ class LoginModel extends Model {
         console.log('登錄中');
         this.loaded = true;
     }
+
+    changeNum() {
+        this.num = 2222;
+    }
 }
 export default LoginModel;
 

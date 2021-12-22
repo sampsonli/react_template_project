@@ -16,6 +16,7 @@ export default () => {
             className={style.dashboard}
         >
             <StatisticDemo />
+            <div style={{marginTop: '.2rem'}}></div>
             <Echarts/>
         </div>
 
