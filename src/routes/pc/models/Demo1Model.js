@@ -1,5 +1,4 @@
-import {service, Model, inject} from 'mtor';
-import { eventBus } from '~/common/EventBus';
+import {service, Model, inject, evtBus} from 'mtor';
 import { wait } from '~/common/utils';
 import PcModel from '~/routes/pc/models/PcModel';
 
@@ -19,7 +18,7 @@ class Demo1Model extends Model {
 
     doSearch() {
         this.keyword = Math.random() * 10000 << 0;
-        eventBus.emit('setMenuInfo', {
+        evtBus.emit('setMenuInfo', {
             paths: ['测试', '详情q2'],
         });
     

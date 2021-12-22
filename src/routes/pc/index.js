@@ -5,18 +5,19 @@ import { ConfigProvider } from 'antd';
 import {
     Routes, Route,
 } from 'react-router-dom';
-import { useModel } from 'mtor';
+import { useModel, evtBus } from 'mtor';
 import load from '~/common/load';
 import Redirect from '~/components/Redirect';
 import PcModel from './models/PcModel';
 import BasicLayout from './components/BasicLayout';
 import './assets/style.less';
-import {eventBus} from '~/common/EventBus';
 
 const Login = load(() => import('./pages/Login'));
 const Demo1 = load(() => import('./pages/Demo1'));
 const Demo2 = load(() => import('./pages/Demo2'));
 const Dashboard = load(() => import('./pages/Dashboard'));
+
+window.eventBus = evtBus;
 export default () => {
     const model = useModel(PcModel);
     const location = useLocation();
@@ -33,8 +34,8 @@ export default () => {
         const cb = (type) => {
             model.setData({ isMobile: type });
         };
-        eventBus.on('switchSize', cb);
-        return () => eventBus.off('switchSize', cb);
+        evtBus.on('switchSize', cb);
+        return () => evtBus.off('switchSize', cb);
     }, []);
 
     return (

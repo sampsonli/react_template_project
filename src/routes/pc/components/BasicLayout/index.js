@@ -14,10 +14,10 @@ import {
     Menu, Button, Breadcrumb, Layout, Divider, Drawer,
 } from 'antd';
 import { useLocation } from 'react-router';
+import { evtBus } from 'mtor';
 import style from './style.less';
 import { pushPath } from '~/common/pathTools';
 import Logo from './Logo';
-import { eventBus } from '~/common/EventBus';
 
 const {
     Sider,
@@ -125,8 +125,8 @@ const BasicLayout = ({
             paths && setTitles(paths);
             selected && setKey(selected);
         };
-        eventBus.on('setMenuInfo', cb);
-        return () => eventBus.off('setMenuInfo', cb);
+        evtBus.on('setMenuInfo', cb);
+        return () => evtBus.off('setMenuInfo', cb);
     }, []);
     const onChangeKey = useCallback((e) => {
         pushPath(e.key);
