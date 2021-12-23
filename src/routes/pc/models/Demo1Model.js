@@ -1,5 +1,5 @@
 import {
- service, Model, inject, evtBus,
+    service, Model, inject, evtBus,
 } from 'mtor';
 import moment from 'moment';
 import { wait } from '~/common/utils';
@@ -97,6 +97,7 @@ class Demo1Model extends Model {
         ];
         this.loading = false;
     }
+
     doDelete(record) {
         this.list = this.list.filter(item => item !== record);
     }
