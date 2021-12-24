@@ -40,7 +40,7 @@ class Demo1Model extends Model {
         this.list = [
             {
                 id: 1,
-                title: 'hello1',
+                title: 'hello',
                 star: ''.padStart(1, '★'),
                 date: moment()
                     .format('YYYY-MM-DD'),

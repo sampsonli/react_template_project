@@ -14,10 +14,10 @@ const {Column} = Table;
 export default ({hot}) => {
     const model = useModel(Demo1Model);
     useEffect(() => {
-        clearTimeout(Demo1Model._timeId);
+        clearTimeout(tempObj[module.id]);
         hot || model.init();
         return () => {
-            Demo1Model._timeId = setTimeout(model.reset, 20);
+            tempObj[module.id] = setTimeout(model.reset, 20);
         };
     }, []);
     const {
@@ -45,7 +45,7 @@ export default ({hot}) => {
                                 onClick={model.doSearch}
                                 icon={<SearchOutlined />}
                             >
-查询
+                                查询
                             </Button>
                         </Col>
                     </Row>
@@ -60,7 +60,7 @@ export default ({hot}) => {
                             loading={loading}
                             pagination={false}
                         >
-                            <Column title="序号1"
+                            <Column title="序号"
                                 dataIndex="id"
                                 key="id"
                                 width={200}

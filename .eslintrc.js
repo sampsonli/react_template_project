@@ -12,6 +12,7 @@ module.exports = {
         rem2px: true,
         px2rem: true,
 
+        tempObj: true,
     },
     plugins: [
         'react',
