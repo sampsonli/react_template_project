@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {DeleteOutlined, EditOutlined, SearchOutlined} from '@ant-design/icons';
 import {
     Button, Card, Col, Divider, Input, Row, Table, Spin, Popconfirm,
@@ -10,11 +11,14 @@ import Edit from '~/routes/pc/pages/Demo1/components/Edit';
 
 const {Column} = Table;
 
-export default () => {
+export default ({hot}) => {
     const model = useModel(Demo1Model);
     useEffect(() => {
-        model.init();
-        return model.reset;
+        clearTimeout(Demo1Model._timeId);
+        hot || model.init();
+        return () => {
+            Demo1Model._timeId = setTimeout(model.reset, 20);
+        };
     }, []);
     const {
         list,
@@ -71,7 +75,7 @@ export default () => {
                                 key="action"
                                 width={195}
                                 align="center"
-                                render={(value, record, index) => (
+                                render={(value, record) => (
                                         <span>
                                         <Button type="primary"
                                             shape="circle"

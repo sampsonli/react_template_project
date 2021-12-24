@@ -4,11 +4,10 @@ import React from 'react';
  * 动态加载组件
  * @template T
  * @param {function(): Promise<{default: T, onUpdate?: function({default: T})}>} loadComp - 组件加载方法
- * @param {React.Component|function(...arg)} [Wrap] - 包装组件
  * @param {React.Component|function(...arg)} [LoadingComp] - 加载中渲染组件
  * @return {T}
  */
-export default (loadComp, Wrap = ({children}) => children, LoadingComp = () => null) => (
+export default (loadComp, LoadingComp = () => null) => (
     class AsyncComponent extends React.Component {
         constructor(args) {
             super(args);
@@ -39,7 +38,7 @@ export default (loadComp, Wrap = ({children}) => children, LoadingComp = () => n
         render() {
             const {Comp, hot} = this.state;
             // eslint-disable-next-line react/jsx-props-no-spreading
-            return (Comp) ? <Wrap><Comp {...this.props} hot={hot} /></Wrap> : <LoadingComp {...this.props} />;
+            return (Comp) ? <Comp {...this.props} hot={hot} /> : <LoadingComp {...this.props} />;
         }
     }
 );
