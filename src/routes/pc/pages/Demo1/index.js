@@ -3,23 +3,18 @@ import {DeleteOutlined, EditOutlined, SearchOutlined} from '@ant-design/icons';
 import {
     Button, Card, Col, Divider, Input, Row, Table, Spin, Popconfirm,
 } from 'antd';
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useModel} from 'mtor';
 import Demo1Model from '~/routes/pc/models/Demo1Model';
 import style from './style.less';
 import Edit from '~/routes/pc/pages/Demo1/components/Edit';
+import { useInitPage} from '~/common/utils';
 
 const {Column} = Table;
 
-export default ({hot}) => {
+export default () => {
     const model = useModel(Demo1Model);
-    useEffect(() => {
-        clearTimeout(tempObj[module.id]);
-        hot || model.init();
-        return () => {
-            tempObj[module.id] = setTimeout(model.reset, 20);
-        };
-    }, []);
+    useInitPage(model.init, model.reset, module.id);
     const {
         list,
         keyword,

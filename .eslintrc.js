@@ -11,8 +11,6 @@ module.exports = {
         _isMobile: true,
         rem2px: true,
         px2rem: true,
-
-        tempObj: true,
     },
     plugins: [
         'react',

@@ -20,7 +20,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "antd": "^4.17.4",
-    "antd-mobile": "^5.0.0-rc.7",
+    "antd-mobile": "^5.0.0-rc.8",
     "antd-mobile-icons": "^0.2.2",
     "axios": "^0.24.0",
     "classnames": "^2.3.1",
