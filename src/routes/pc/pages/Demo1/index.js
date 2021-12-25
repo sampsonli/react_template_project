@@ -12,7 +12,9 @@ import Edit from '~/routes/pc/pages/Demo1/components/Edit';
 const {Column} = Table;
 
 export default () => {
-    const model = useInitModel(Demo1Model);
+    const model = useInitModel(Demo1Model, () => {
+        model.init();
+    });
     const {
         list,
         keyword,

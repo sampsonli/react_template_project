@@ -7,7 +7,7 @@ class HomeModel extends Model {
     activeKey = 'home';
 
     init() {
-        this.name = '李春';
+        this.name = '李春2';
     }
 }
 export default HomeModel;

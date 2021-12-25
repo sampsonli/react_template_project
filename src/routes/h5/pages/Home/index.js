@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useModel } from 'mtor';
+import React from 'react';
+import {useInitModel} from 'mtor';
 import { Badge, TabBar, NavBar } from 'antd-mobile';
 import {
     AppOutline,
@@ -12,10 +12,7 @@ import HomeModel from '~/routes/h5/models/HomeModel';
 import style from './style.less';
 
 const Home = () => {
-    const model = useModel(HomeModel);
-    useEffect(() => {
-        model.init();
-    }, []);
+    const model = useInitModel(HomeModel);
     const { name, activeKey } = model;
     const tabs = [
         {
