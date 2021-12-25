@@ -4,17 +4,15 @@ import {
     Button, Card, Col, Divider, Input, Row, Table, Spin, Popconfirm,
 } from 'antd';
 import React from 'react';
-import {useModel} from 'mtor';
 import Demo1Model from '~/routes/pc/models/Demo1Model';
 import style from './style.less';
 import Edit from '~/routes/pc/pages/Demo1/components/Edit';
-import { useInitPage} from '~/common/utils';
+import {useInitModel} from '~/common/utils';
 
 const {Column} = Table;
 
 export default () => {
-    const model = useModel(Demo1Model);
-    useInitPage(model.init, model.reset, module.id);
+    const model = useInitModel(Demo1Model, 'init');
     const {
         list,
         keyword,
