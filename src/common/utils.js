@@ -39,29 +39,3 @@ export const useInitPage = (initFn, clearFn, flag) => {
         };
     }, []);
 };
-
-/**
- * 页面初始化以及销毁方法绑定
- * @template T
- * @param Clazz {{new ():T}} - Model类
- * @param initFnName {string} - 初始化方法名称， 默认调用 init方法
- * @param clean {boolean} - 是否页面销毁的时候执行reset
- * @returns {T} - 模型类实例
- */
-export const useInitModel = (Clazz, initFnName = 'init', clean = true) => {
-    const model = useModel(Clazz);
-    useEffect(() => {
-        if (tempObj[Clazz.ns]) {
-            clearTimeout(tempObj[Clazz.ns]);
-        } else {
-            model[initFnName] && model[initFnName]();
-        }
-        return () => {
-            tempObj[Clazz.ns] = setTimeout(() => {
-                clean && model.reset();
-                delete tempObj[Clazz.ns];
-            }, 20);
-        };
-    }, []);
-    return model;
-};

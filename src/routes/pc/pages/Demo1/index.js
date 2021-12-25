@@ -4,15 +4,15 @@ import {
     Button, Card, Col, Divider, Input, Row, Table, Spin, Popconfirm,
 } from 'antd';
 import React from 'react';
+import {useInitModel} from 'mtor';
 import Demo1Model from '~/routes/pc/models/Demo1Model';
 import style from './style.less';
 import Edit from '~/routes/pc/pages/Demo1/components/Edit';
-import {useInitModel} from '~/common/utils';
 
 const {Column} = Table;
 
 export default () => {
-    const model = useInitModel(Demo1Model, 'init');
+    const model = useInitModel(Demo1Model);
     const {
         list,
         keyword,
@@ -72,7 +72,7 @@ export default () => {
                                         <span>
                                         <Button type="primary"
                                             shape="circle"
-                                            onClick={() => model.setData({current: {}})}
+                                            onClick={() => model.doDelete(record)}
                                             icon={<EditOutlined />}
                                             title="编辑"
                                         />
