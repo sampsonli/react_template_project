@@ -8,6 +8,7 @@ import {useInitModel} from 'mtor';
 import Demo1Model from '~/routes/pc/models/Demo1Model';
 import style from './style.less';
 import Edit from '~/routes/pc/pages/Demo1/components/Edit';
+import moment from 'moment';
 
 const {Column} = Table;
 
@@ -62,10 +63,10 @@ export default () => {
                                 align="center"
                                 sorter={(a, b) => a.id - b.id}
                             />
-                            <Column title="标题" dataIndex="title" key="title" width={200} align="center" />
-                            <Column title="推荐指数" dataIndex="star" key="star" width={195} align="center" />
+                            <Column title="用户名" dataIndex="userName" key="userName" width={200} align="center" />
+                            <Column title="邮箱" dataIndex="email" key="email" width={195} align="center" />
 
-                            <Column title="时间" dataIndex="date" key="date" width={195} align="center" />
+                            <Column title="时间" dataIndex="updateTime" key="updateTime" width={195} align="center" render={(time) => moment(time).format('YYYY-MM-DD HH:mm')} />
                             <Column title="操作"
                                 key="action"
                                 width={195}
