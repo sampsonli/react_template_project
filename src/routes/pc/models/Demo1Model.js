@@ -21,7 +21,7 @@ class Demo1Model extends Model {
 
     doSearch() {
         evtBus.emit('setMenuInfo', {
-            paths: ['列表', this.keyword],
+            paths: ['列表122', this.keyword],
         });
         this.getList();
     }
@@ -32,10 +32,10 @@ class Demo1Model extends Model {
     @inject(PcModel)
     pcModel;
 
-    * getList() {
+    async getList() {
         this.loading = true;
         // console.log('list1');
-        yield wait(300);
+        await wait(300);
         // console.log('list2')
         this.list = [
             {

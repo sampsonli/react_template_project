@@ -12,13 +12,13 @@ class Demo2Model extends Model {
 
     num2;
 
-    * asyncFnDemo() {
+    async asyncFnDemo() {
         this.num = 1;
         this.num2 = 100;
-        yield wait(1000);
+        await wait(1000);
         this.num = 2;
         this.num2 = 300;
-        yield wait(2000);
+        await wait(2000);
         this.num = 3;
         this.num2 = 0;
         this.num3 = 3333;

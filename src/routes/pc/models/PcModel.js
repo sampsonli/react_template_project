@@ -28,8 +28,8 @@ class PcModel extends Model {
      */
     userInfo;
 
-    * init() {
-        yield wait(16.6);
+    async init() {
+        await wait(16.6);
         this.userInfo = {name: '李春'};
         this.loaded = true;
     }
