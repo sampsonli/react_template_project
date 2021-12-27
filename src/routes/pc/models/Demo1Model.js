@@ -4,6 +4,7 @@ import {
 import moment from 'moment';
 import { wait } from '~/common/utils';
 import PcModel from '~/routes/pc/models/PcModel';
+import api from '~/routes/pc/models/api';
 
 @service(module.id)
 class Demo1Model extends Model {
@@ -19,11 +20,12 @@ class Demo1Model extends Model {
         this.getList();
     }
 
-    doSearch() {
+    async doSearch() {
         evtBus.emit('setMenuInfo', {
             paths: ['列表122', this.keyword],
         });
-        this.getList();
+        const {data} = await api.getRemoteData();
+        console.log(data.list);
     }
 
     /**
