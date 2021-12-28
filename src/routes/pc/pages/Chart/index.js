@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 // import { useModel } from 'mtor';
-// import Demo2Model from '~/routes/pc/models/Demo2Model';
+// import TestModel from '~/routes/pc/models/TestModel';
 import style from './style.less';
 import loadjs from '~/common/loadjs';
 
 export default () => {
-    // const model = useModel(Demo2Model);
+    // const model = useModel(TestModel);
     const ref = useRef();
     useEffect(() => {
         loadjs('lib/echarts.js', 'echarts').then(echarts => {

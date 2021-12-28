@@ -7,7 +7,7 @@ import PcModel from '~/routes/pc/models/PcModel';
 import api from '~/routes/pc/models/api';
 
 @service(module.id)
-class Demo1Model extends Model {
+class ListModel extends Model {
     loading = false;
 
     list;
@@ -45,6 +45,6 @@ class Demo1Model extends Model {
     }
 }
 
-export default Demo1Model;
+export default ListModel;
 
 module.hot && module.hot.accept();

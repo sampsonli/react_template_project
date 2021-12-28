@@ -2,10 +2,6 @@ import {service, Model} from 'mtor';
 import { replacePath } from '~/common/pathTools';
 import { wait } from '~/common/utils';
 
-/**
- * @typedef {import('./types/Common').UserInfo} UserInfo
- */
-
 @service(module.id)
 class PcModel extends Model {
     loaded = false;
@@ -19,18 +15,19 @@ class PcModel extends Model {
      */
     menuList = [
         {key: '/pc/home', title: '首页'},
-        {key: '/pc/demo1', title: '列表'},
-        {key: '/pc/demo2', title: '图表'},
+        {key: '/pc/list', title: '列表'},
+        {key: '/pc/chart', title: '图表'},
+        {key: '/pc/test', title: '测试'},
     ];
 
     /**
-     * @type {UserInfo}
+     * @type {import('./types/Common').UserInfo}
      */
     userInfo;
 
     async init() {
         await wait(16.6);
-        this.userInfo = {name: '李春'};
+        this.userInfo = {name: '李春', userId: '1', avatar: '1'};
         this.loaded = true;
     }
 

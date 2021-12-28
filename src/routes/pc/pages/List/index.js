@@ -5,9 +5,9 @@ import {
 } from 'antd';
 import React from 'react';
 import {useInitModel} from 'mtor';
-import Demo1Model from '~/routes/pc/models/Demo1Model';
+import Demo1Model from '~/routes/pc/models/ListModel';
 import style from './style.less';
-import Edit from '~/routes/pc/pages/Demo1/components/Edit';
+import Edit from '~/routes/pc/pages/List/components/Edit';
 import moment from 'moment';
 
 const {Column} = Table;

@@ -13,8 +13,9 @@ import BasicLayout from './components/BasicLayout';
 import './assets/style.less';
 
 const Login = load(() => import('./pages/Login'));
-const Demo1 = load(() => import('./pages/Demo1'));
-const Demo2 = load(() => import('./pages/Demo2'));
+const List = load(() => import('./pages/List'));
+const Chart = load(() => import('./pages/Chart'));
+const Test = load(() => import('./pages/Test'));
 const Dashboard = load(() => import('./pages/Dashboard'));
 
 window.eventBus = evtBus;
@@ -44,8 +45,9 @@ export default () => {
                 <BasicLayout isMobile={isMobile} menuList={menuList} doLogout={model.doLogout} userInfo={userInfo}>
                     <Routes>
                         <Route path="home" element={<Dashboard />} />
-                        <Route path="demo1" element={<Demo1 />} />
-                        <Route path="demo2" element={<Demo2 />} />
+                        <Route path="list" element={<List />} />
+                        <Route path="chart" element={<Chart />} />
+                        <Route path="test" element={<Test />} />
                         <Route path="" element={<Redirect to="home" />} />
                     </Routes>
                 </BasicLayout>

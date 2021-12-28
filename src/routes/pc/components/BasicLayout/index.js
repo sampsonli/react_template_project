@@ -6,6 +6,7 @@ import {
     HomeOutlined,
     WechatOutlined,
     QqOutlined,
+    AlipayCircleOutlined,
 } from '@ant-design/icons';
 import React, {
     useCallback, useEffect, useState,
@@ -27,8 +28,9 @@ const {
 
 const key2Icon = {
     '/pc/home': <HomeOutlined />,
-    '/pc/demo1': <WechatOutlined />,
-    '/pc/demo2': <QqOutlined />,
+    '/pc/list': <WechatOutlined />,
+    '/pc/chart': <QqOutlined />,
+    '/pc/test': <AlipayCircleOutlined />,
 };
 /**
  * @typedef MenuItem {{title, key, children?: [MenuItem]}}
