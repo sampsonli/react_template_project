@@ -21,7 +21,9 @@ class Demo2Model extends Model {
         await wait(2000);
         this.num = 3;
         this.num2 = 0;
-        this.num3 = 3333;
+        this.setData({num3: 22222});
+        await wait(1000);
+        this.num3 = 11;
     }
 }
 export default Demo2Model;
