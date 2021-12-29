@@ -11,9 +11,10 @@ class Demo2Model extends Model {
     num = 0;
 
     async asyncFnDemo() {
+        this.num = 0;
         while (this.num < 100) {
             this.num += 1;
-            await wait(100);
+            await wait(250);
         }
     }
 }

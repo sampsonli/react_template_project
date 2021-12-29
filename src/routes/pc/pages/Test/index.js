@@ -15,7 +15,7 @@ export default () => {
             <div className={style.content}>
                 <Button onClick={model.asyncFnDemo} type="primary">开始</Button>
                 <div className={style.progress}>
-                    <Progress percent={model.num} width={200} type="circle" />
+                    <Progress percent={model.num} width={160} type="circle" />
                 </div>
                 <Button onClick={() => model.reset()}>重置</Button>
             </div>
