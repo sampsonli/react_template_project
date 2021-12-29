@@ -8,22 +8,13 @@ class Demo2Model extends Model {
     /**
      * @type {number}
      */
-    num;
-
-    num2;
+    num = 0;
 
     async asyncFnDemo() {
-        this.num = 1;
-        this.num2 = 100;
-        await wait(1000);
-        this.num = 2;
-        this.num2 = 300;
-        await wait(2000);
-        this.num = 3;
-        this.num2 = 0;
-        this.setData({num3: 22222});
-        await wait(1000);
-        this.num3 = 11;
+        while (this.num < 100) {
+            this.num += 1;
+            await wait(100);
+        }
     }
 }
 export default Demo2Model;

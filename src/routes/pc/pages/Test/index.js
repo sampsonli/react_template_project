@@ -2,9 +2,9 @@
 import React from 'react';
 import {useInitModel} from 'mtor';
 
+import {Button, Progress} from 'antd';
 import TestModel from '~/routes/pc/models/TestModel';
 import style from './style.less';
-import {Button} from 'antd';
 
 export default () => {
     const model = useInitModel(TestModel, () => {
@@ -12,13 +12,14 @@ export default () => {
     }, true);
     return (
         <div className={style.container}>
-            <Button onClick={() => model.asyncFnDemo()}>开始</Button>
-            {model.num}
-            <br/>
-            {model.num2}
-            <br/>
-            {model.num3}
-            <Button onClick={() => model.reset()}>清除</Button>
+            <div className={style.content}>
+                <Button onClick={model.asyncFnDemo} type="primary">开始</Button>
+                <div className={style.progress}>
+                    <Progress percent={model.num} width={200} type="circle" />
+                </div>
+                <Button onClick={() => model.reset()}>重置</Button>
+            </div>
+
         </div>
 
     );

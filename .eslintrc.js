@@ -50,6 +50,7 @@ module.exports = {
         'no-plusplus': 0,
         'no-unused-expressions': 0,
         'import/extensions': 'off',
+        'no-await-in-loop': 'off',
     },
 
 };
