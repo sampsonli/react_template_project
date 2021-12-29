@@ -3941,10 +3941,10 @@ ms@2.1.3, ms@^2.1.1:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.3.tgz#574c8138ce1d2b5861f0b44579dbadd60c6615b2"
   integrity sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==
 
-mtor@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/mtor/-/mtor-2.0.5.tgz#872957ecc5d1ea492f0236482d39ec2239f782fc"
-  integrity sha512-V9oicKeAi1vTJqGcZ7ooc1ZWI40KaAXH4d/gyogtc2qrMd2pT8vkvIi9OdZrn82A6MZbumdizj/0lvUWnN62PA==
+mtor@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/mtor/-/mtor-2.0.6.tgz#f44b0be7bc1f6051030164f04bcdd6d027dc94fc"
+  integrity sha512-Gw8q/WN0MmSzOXZ6+Hy4KmaxJAwFOfMHLYSjWWlSj0M72peZCr46skwD/nEMitlc4NerPE7ULxQlQrhMHEebZA==
 
 nanoid@^3.1.23:
   version "3.1.23"
