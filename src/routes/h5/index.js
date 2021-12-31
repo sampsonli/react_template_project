@@ -10,6 +10,7 @@ import H5Model from './models/H5Model';
 import './assets/style.less';
 
 const Home = load(() => import('./pages/Home'));
+const Demo = load(() => import('./pages/Demo'));
 
 window.eventBus = evtBus;
 export default () => {
@@ -30,6 +31,7 @@ export default () => {
             {!ignore && loaded && (
                 <Routes>
                     <Route path="home" element={<Home />} />
+                    <Route path="demo" element={<Demo />} />
                     <Route path="" element={<Redirect to="home" />} />
                 </Routes>
             )}

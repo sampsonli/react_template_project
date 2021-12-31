@@ -4,7 +4,7 @@ import {Model, service} from 'mtor';
 class HomeModel extends Model {
     name = 'lichun2';
 
-    activeKey = 'home';
+    active = {key: 'home', title: '首页'};
 
     init() {
         this.name = '李春2';

@@ -1,6 +1,6 @@
 import React from 'react';
 import {useInitModel} from 'mtor';
-import { Badge, TabBar, NavBar } from 'antd-mobile';
+import { Badge, TabBar, NavBar, Button } from 'antd-mobile';
 import {
     AppOutline,
     MessageOutline,
@@ -10,10 +10,11 @@ import {
 } from 'antd-mobile-icons';
 import HomeModel from '~/routes/h5/models/HomeModel';
 import style from './style.less';
+import { pushPath } from '~/common/pathTools';
 
 const Home = () => {
     const model = useInitModel(HomeModel);
-    const { name, activeKey } = model;
+    const { name, active } = model;
     const tabs = [
         {
             key: 'home',
@@ -31,7 +32,7 @@ const Home = () => {
             key: 'message',
             title: '我的消息',
             // eslint-disable-next-line react/no-unstable-nested-components
-            icon: (active) => (active ? <MessageFill /> : <MessageOutline />),
+            icon: (act) => (act ? <MessageFill /> : <MessageOutline />),
             badge: '99+',
         },
         {
@@ -43,14 +44,13 @@ const Home = () => {
     return (
         <div className={style.homePage}>
             <div className={style.top}>
-                <NavBar>配合路由使用</NavBar>
+                <NavBar>{active.title}</NavBar>
             </div>
             <div className={style.content}>
-                {name}
-                <br />
-                {activeKey}
+                跳转：
+                <Button color="primary" onClick={() => pushPath('demo')}>demo 测试页</Button>
             </div>
-            <TabBar activeKey={activeKey} onChange={(key) => model.setData({activeKey: key})} className={style.tabbar}>
+            <TabBar activeKey={active.key} onChange={(key) => model.setData({active: {key, title: tabs.find(item => item.key === key).title}})} className={style.tabbar}>
                 {tabs.map(item => (
                     <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
                 ))}
