@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 /**
  * 动态加载组件
@@ -7,38 +7,21 @@ import React from 'react';
  * @param {React.Component|function(...arg)} [LoadingComp] - 加载中渲染组件
  * @return {T}
  */
-export default (loadComp, LoadingComp = () => null) => (
-    class AsyncComponent extends React.Component {
-        constructor(args) {
-            super(args);
-            this.state = {
-                Comp: null,
-                hot: false,
-            };
-        }
-
-        componentDidMount() {
-            const {Comp} = this.state;
-            if (Comp) {
-                return;
-            }
-
-            loadComp()
-                .then((comp) => {
-                    comp.onUpdate = (args) => {
-                        this.setState({Comp: args.default, hot: true});
-                    };
-                    this.setState({Comp: comp.default});
-                })
-                .catch((err) => {
-                    console.error('Cannot load component in async component. ', err.message);
+export default (loadComp, LoadingComp = () => null) => (props) => {
+        const [comp, setComp] = useState({Component: null, hot: false});
+        useEffect(() => {
+            loadComp().then((cp) => {
+                comp.onUpdate = (args) => {
+                    setComp({
+                        Component: args.default,
+                        hot: true,
+                    });
+                };
+                setComp({
+                    Component: cp.default,
+                    hot: false,
                 });
-        }
-
-        render() {
-            const {Comp, hot} = this.state;
-            // eslint-disable-next-line react/jsx-props-no-spreading
-            return (Comp) ? <Comp {...this.props} hot={hot} /> : <LoadingComp {...this.props} />;
-        }
-    }
-);
+            });
+        }, []);
+        return comp.Component ? <comp.Component {...props} /> : <LoadingComp {...props} />;
+    };
