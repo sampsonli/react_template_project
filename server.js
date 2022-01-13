@@ -15,7 +15,7 @@ const forward = require('forward-request');
 const http = require('http');
 // eslint-disable-next-line
 const compression = require('compression');
-
+// eslint-disable-next-line
 const historyApiFallback = require('connect-history-api-fallback');
 
 const webpackConfig = require('./build/webpack.config.dev.js'); // webpack开发环境的配置文件
