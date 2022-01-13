@@ -4,7 +4,7 @@ import loadjs from '~/common/loadjs';
 const Echarts = () => {
     const ref = useRef();
     useEffect(() => {
-        loadjs('lib/echarts.js', 'echarts').then(echarts => {
+        loadjs('/lib/echarts.js', 'echarts').then(echarts => {
             // 基于准备好的dom，初始化echarts实例
             const myChart = echarts.init(ref.current);
 

@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 import React from 'react';
 import {
-    HashRouter, Routes, Route,
+    Routes, Route, BrowserRouter, HashRouter,
 } from 'react-router-dom';
 import Redirect from '~/components/Redirect';
 
