@@ -14,10 +14,9 @@ import React, {
 import {
     Menu, Button, Breadcrumb, Layout, Divider, Drawer,
 } from 'antd';
-import { useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { evtBus } from 'mtor';
 import style from './style.less';
-import { pushPath } from '~/common/pathTools';
 import Logo from './Logo';
 
 const {
@@ -111,6 +110,7 @@ const BasicLayout = ({
     isMobile = false,
 }) => {
     const location = useLocation();
+    const navigate = useNavigate();
     const [key, setKey] = useState(location.pathname);
     const [titles, setTitles] = useState([]);
     const [collapsed, setCollapsed] = useState(false);
@@ -131,7 +131,7 @@ const BasicLayout = ({
         return () => evtBus.off('setMenuInfo', cb);
     }, []);
     const onChangeKey = useCallback((e) => {
-        pushPath(e.key);
+        navigate(e.key);
         if (isMobile) {
             setCollapsed(false);
         }

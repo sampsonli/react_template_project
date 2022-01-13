@@ -49,6 +49,7 @@
     "babel-loader": "^8.2.3",
     "babel-plugin-webpack-dynamic-import": "^1.0.1",
     "compression": "^1.7.4",
+    "connect-history-api-fallback": "^1.6.0",
     "copy-webpack-plugin": "^10.2.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.5.1",

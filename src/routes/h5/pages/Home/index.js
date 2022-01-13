@@ -1,6 +1,8 @@
 import React from 'react';
 import {useInitModel} from 'mtor';
-import { Badge, TabBar, NavBar, Button } from 'antd-mobile';
+import {
+ Badge, TabBar, NavBar, Button,
+} from 'antd-mobile';
 import {
     AppOutline,
     MessageOutline,
@@ -8,13 +10,14 @@ import {
     UnorderedListOutline,
     UserOutline,
 } from 'antd-mobile-icons';
+import { useNavigate } from 'react-router';
 import HomeModel from '~/routes/h5/models/HomeModel';
 import style from './style.less';
-import { pushPath } from '~/common/pathTools';
 
 const Home = () => {
     const model = useInitModel(HomeModel);
-    const { name, active } = model;
+    const { active } = model;
+    const navigate = useNavigate();
     const tabs = [
         {
             key: 'home',
@@ -48,7 +51,7 @@ const Home = () => {
             </div>
             <div className={style.content}>
                 跳转：
-                <Button color="primary" onClick={() => pushPath('demo')}>demo 测试页</Button>
+                <Button color="primary" onClick={() => navigate('../demo')}>demo 测试页</Button>
             </div>
             <TabBar activeKey={active.key} onChange={(key) => model.setData({active: {key, title: tabs.find(item => item.key === key).title}})} className={style.tabbar}>
                 {tabs.map(item => (

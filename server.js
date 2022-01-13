@@ -1,5 +1,4 @@
 /** 用于开发环境的服务启动 * */
-const path = require('path'); // 获取绝对路径有用
 // eslint-disable-next-line import/no-extraneous-dependencies
 const express = require('express');
 // express服务器端框架
@@ -17,10 +16,11 @@ const http = require('http');
 // eslint-disable-next-line
 const compression = require('compression');
 
+const historyApiFallback = require('connect-history-api-fallback');
+
 const webpackConfig = require('./build/webpack.config.dev.js'); // webpack开发环境的配置文件
 
 const app = express(); // 实例化express服务
-const DIST_DIR = webpackConfig.output.path; // webpack配置中设置的文件输出路径，所有文件存放在内存中
 const {PORT = 3000} = process.env; // 服务启动端口号
 
 if (env === 'production') {
@@ -35,6 +35,7 @@ if (env === 'production') {
         },
     }));
 } else {
+    app.use(historyApiFallback());
     const compiler = webpack(webpackConfig); // 实例化webpack
     app.use(webpackDevMiddleware(compiler, {
         // 挂载webpack小型服务器
@@ -43,19 +44,19 @@ if (env === 'production') {
     // 挂载HMR热更新中间件
     app.use(webpackHotMiddleware(compiler));
     // 所有请求都返回index.html
-    app.get('/', (req, res, next) => {
-        const filename = path.join(DIST_DIR, 'index.html');
+    // app.get('/', (req, res, next) => {
+    //     const filename = path.join(DIST_DIR, 'index.html');
 
-        // 由于index.html是由html-webpack-plugin生成到内存中的，所以使用下面的方式获取
-        compiler.outputFileSystem.readFile(filename, (err, result) => {
-            if (err) {
-                return next(err);
-            }
-            res.set('content-type', 'text/html');
-            res.send(result);
-            res.end();
-        });
-    });
+    //     // 由于index.html是由html-webpack-plugin生成到内存中的，所以使用下面的方式获取
+    //     compiler.outputFileSystem.readFile(filename, (err, result) => {
+    //         if (err) {
+    //             return next(err);
+    //         }
+    //         res.set('content-type', 'text/html');
+    //         res.send(result);
+    //         res.end();
+    //     });
+    // });
 }
 
 app.use((req, resp, next) => {

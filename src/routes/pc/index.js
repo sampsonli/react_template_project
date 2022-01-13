@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import zhCN from 'antd/lib/locale/zh_CN';
 import { ConfigProvider } from 'antd';
 import {
@@ -21,6 +21,7 @@ const Dashboard = load(() => import('./pages/Dashboard'));
 window.eventBus = evtBus;
 export default () => {
     const model = useModel(PcModel);
+    const navigate = useNavigate();
     const location = useLocation();
     const ignore = PcModel.ignoreSet.has(location.pathname);
     const {
@@ -42,7 +43,7 @@ export default () => {
     return (
         <ConfigProvider locale={zhCN}>
             {!ignore && loaded && (
-                <BasicLayout isMobile={isMobile} menuList={menuList} doLogout={model.doLogout} userInfo={userInfo}>
+                <BasicLayout isMobile={isMobile} menuList={menuList} doLogout={() => navigate('/pc/login')} userInfo={userInfo}>
                     <Routes>
                         <Route path="home" element={<Dashboard />} />
                         <Route path="list" element={<List />} />

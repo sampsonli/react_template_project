@@ -14,7 +14,7 @@ module.exports = {
     },
 
     output: {
-        publicPath: 'dll',
+        publicPath: '/dll',
         filename: '[name].[chunkhash:8].dll.js',
         path: dllPath,
         library: '[name]_lib',

@@ -1,9 +1,10 @@
 import {useEffect} from 'react';
-import { replacePath } from '~/common/pathTools';
+import {useNavigate} from "react-router";
 
 const Redirect = ({to = ''}) => {
+    const navigate = useNavigate();
     useEffect(() => {
-        replacePath(to);
+        navigate(to, {replace: true});
     }, []);
     return null;
 };
