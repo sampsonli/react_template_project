@@ -8,13 +8,13 @@ const isDev = process.env.NODE_ENV === 'development';
 const options = {
   baseURL: '',
   timeout: 20000,
-  withCredentials: true,
+  withCredentials: false,
 };
 const _axios = axios.create(options);
 
 const jumpLogin = () => {
   sessionStorage.setItem('_back_url', window.location.href);
-  window.location.replace(`${window.location.href.split('?')[0] }/login`);
+  window.location.replace(`${window.location.href.split('?')[0]}/login`);
 };
 
 _axios.interceptors.request.use((config) => {
@@ -59,26 +59,27 @@ export const generator = (Apis) => {
       furl = url;
     }
     if (method === 'get' || method === 'GET') {
-      result[key] = (params = {}) => {
+      result[key] = (params = {}, cfg = {}) => {
         const p = Object.keys(params);
         let reqUrl = `${furl}?_t=${Date.now()}`;
         if (p.length) {
-          reqUrl = `${reqUrl }&${Object.keys(params).map((k) => [k, params[k]].join('=')).join('&')}`;
+          reqUrl = `${reqUrl}&${Object.keys(params).map((k) => [k, params[k]].join('=')).join('&')}`;
         }
-        return get(reqUrl, config);
+        return get(reqUrl, { ...config, ...cfg });
       };
     } else if (method === 'post' || method === 'POST') {
-      result[key] = (params = {}) => {
+      result[key] = (params = {}, cfg = {}) => {
         let p = params;
+        cfg = { ...config, ...cfg };
         if (type === 'form') {
-          config.headers = config.headers || {};
-          config.headers['content-type'] = 'application/x-www-form-urlencoded';
+          cfg.headers = cfg.headers || {};
+          cfg.headers['content-type'] = 'application/x-www-form-urlencoded';
           p = new URLSearchParams();
           Object.keys(params).forEach((k) => {
             p.append(k, params[k]);
           });
         }
-        return post(furl, p, config);
+        return post(furl, p, cfg);
       };
     }
   });
