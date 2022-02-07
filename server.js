@@ -10,7 +10,7 @@ const webpackDevMiddleware = require('webpack-dev-middleware'); // webpack服务
 // eslint-disable-next-line import/no-extraneous-dependencies
 const webpackHotMiddleware = require('webpack-hot-middleware'); // HMR热更新中间件
 // eslint-disable-next-line
-const forward = require('forward-request');
+const undici = require("undici");
 // eslint-disable-next-line
 const http = require('http');
 // eslint-disable-next-line
@@ -21,7 +21,7 @@ const historyApiFallback = require('connect-history-api-fallback');
 const webpackConfig = require('./build/webpack.config.dev.js'); // webpack开发环境的配置文件
 
 const app = express(); // 实例化express服务
-const {PORT = 3000} = process.env; // 服务启动端口号
+const { PORT = 3000 } = process.env; // 服务启动端口号
 
 if (env === 'production') {
     // 如果是生产环境，则运行build文件夹中的代码
@@ -60,39 +60,27 @@ if (env === 'production') {
 }
 
 app.use((req, resp, next) => {
-   if (req.originalUrl.indexOf('/auth') > -1) {
-       forward({
-           req,
-           resp,
-           port: 9999,
-           host: '10.207.188.236',
-           ip: '192.168.89.21',
-           showLog: false,
-       });
-   } else if (req.originalUrl.indexOf('/tspauth') > -1) {
-       forward({
-           req,
-           resp,
-           port: 9999,
-           host: '10.207.188.87',
-           ip: '192.168.89.21',
-           showLog: false,
-       });
-   } else if (req.originalUrl.indexOf('/KMS/learning') > -1) {
-       forward({
-           req,
-           resp,
-           port: 9999,
-           host: 'kms.sf-express.com',
-           ip: '192.168.89.21',
-           showLog: false,
-       });
-   } else {
-       next();
-   }
+    if (req.originalUrl.indexOf('/user') > -1) {
+        const headers = { ...req.headers };
+        delete headers.connection;
+        delete headers['content-length'];
+        delete headers['accept-encoding'];
+        headers.host = 'www.fastmock.site';
+        undici.request(`https://www.fastmock.site/mock/076e2f3ffbb3afe387cb325e29dc2d2b/v1${req.originalUrl}`, {
+            method: req.method,
+            headers,
+        }).then(({ body, statusCode }) => {
+            if (statusCode === 200) {
+                return body.json();
+            }
+            return Promise.reject(new Error('错误'));
+        }).then((result) => resp.send(result));
+    } else {
+        next();
+    }
 });
 
 /** 启动服务 * */
-app.listen(PORT, '::', () => {
+app.listen(PORT, () => {
     console.log(`本地服务启动地址: http://localhost:${PORT}`);
 });
