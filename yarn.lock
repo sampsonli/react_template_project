@@ -1577,10 +1577,10 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
   integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
 
-"@types/react@^17.0.39":
-  version "17.0.39"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.39.tgz#d0f4cde092502a6db00a1cded6e6bf2abb7633ce"
-  integrity sha512-UVavlfAxDd/AgAacMa60Azl7ygyQNRwC/DsHZmKgNvPmRR5p70AJ5Q9EAmL2NWOJmeV+vVUI4IAP7GZrN8h8Ug==
+"@types/react@^17.0.40":
+  version "17.0.40"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.40.tgz#dc010cee6254d5239a138083f3799a16638e6bad"
+  integrity sha512-UrXhD/JyLH+W70nNSufXqMZNuUD2cXHu6UjCllC6pmOQgBX4SGXOH8fjRka0O0Ee0HrFxapDD8Bwn81Kmiz6jQ==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -1899,10 +1899,10 @@ antd-mobile-v5-count@^1.0.1:
   resolved "https://registry.yarnpkg.com/antd-mobile-v5-count/-/antd-mobile-v5-count-1.0.1.tgz#85f20c46d1635c24e856bcf5ad55e8c98e44a523"
   integrity sha512-YGsiEDCPUDz3SzfXi6gLZn/HpeSMW+jgPc4qiYUr1fSopg3hkUie2TnooJdExgfiETHefH3Ggs58He0OVfegLA==
 
-antd-mobile@^5.5.0:
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/antd-mobile/-/antd-mobile-5.5.0.tgz#fb7a06519e68c2a3be93b7bf075ecceb5046fb26"
-  integrity sha512-3jS3X3iFBBVzsgEExppDaWAcVBRXVNwb8oiFvKpkimBDBE203n90SkOf4YpsCFDq5TB4lGGQ7TbYkdRed2sUtQ==
+antd-mobile@^5.5.1:
+  version "5.5.1"
+  resolved "https://registry.yarnpkg.com/antd-mobile/-/antd-mobile-5.5.1.tgz#f9ab298711083b144e47ad4779cc21efed6c1f77"
+  integrity sha512-UKpXun4XZOSox09HmSXGRQrmE+bEJGW5gzmcLO433LFF/+zqx3ZGGlQja99dDECHcUOtZ7JimNRRUM+oNgUmvw==
   dependencies:
     "@floating-ui/dom" "^0.3.1"
     "@react-spring/web" "^9.4.3"
