@@ -1,8 +1,6 @@
 import {
     service, Model, inject, evtBus,
 } from 'mtor';
-import moment from 'moment';
-import { wait } from '~/common/utils';
 import PcModel from '~/routes/pc/models/PcModel';
 import api from '~/routes/pc/models/api';
 

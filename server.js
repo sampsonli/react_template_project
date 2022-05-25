@@ -12,6 +12,8 @@ const webpackHotMiddleware = require('webpack-hot-middleware'); // HMR热更新�
 // eslint-disable-next-line
 const undici = require("undici");
 // eslint-disable-next-line
+const bodyParser = require('body-parser');
+// eslint-disable-next-line
 const http = require('http');
 // eslint-disable-next-line
 const compression = require('compression');
@@ -21,6 +23,7 @@ const historyApiFallback = require('connect-history-api-fallback');
 const webpackConfig = require('./build/webpack.config.dev.js'); // webpack开发环境的配置文件
 
 const app = express(); // 实例化express服务
+app.use(bodyParser.json());
 const { PORT = 3000 } = process.env; // 服务启动端口号
 
 if (env === 'production') {
@@ -69,6 +72,7 @@ app.use((req, resp, next) => {
         undici.request(`https://www.fastmock.site/mock/076e2f3ffbb3afe387cb325e29dc2d2b/v1${req.originalUrl}`, {
             method: req.method,
             headers,
+            body: req.body && JSON.stringify(req.body),
         }).then(({ body, statusCode }) => {
             if (statusCode === 200) {
                 return body.json();
