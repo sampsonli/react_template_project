@@ -9,7 +9,7 @@ import {
     AlipayCircleOutlined,
 } from '@ant-design/icons';
 import React, {
-    useCallback, useEffect, useState,
+    useCallback, useEffect, useMemo, useState,
 } from 'react';
 import {
     Menu, Button, Breadcrumb, Layout, Divider, Drawer,
@@ -49,7 +49,7 @@ const findMenuPath = (list, key) => {
     // eslint-disable-next-line consistent-return
     const findEle = (menus, path) => {
         for (let i = 0; i < menus.length; i++) {
-            path.push(menus[i].title);
+            path.push(menus[i].label);
             if (menus[i].key === key) {
                 return true;
             }
@@ -68,30 +68,6 @@ const findMenuPath = (list, key) => {
 };
 
 /**
- * @param mList {[MenuItem]}
- */
-const genSubMenu = (mList) => mList.map((item) => {
-    if (item.children && item.children.length > 0) {
-        return (
-            <SubMenu
-                key={item.key}
-                title={item.title}
-                icon={key2Icon[item.key]}
-            >
-                {genSubMenu(item.children)}
-            </SubMenu>
-        );
-    }
-
-    return (
-        <Menu.Item className={style.subMenu} key={item.key} icon={key2Icon[item.key]}>
-            {item.title}
-        </Menu.Item>
-    );
-});
-
-const { SubMenu } = Menu;
-/**
  *
  *
  * @param menuList {[MenuItem]}
@@ -109,6 +85,7 @@ const BasicLayout = ({
     doLogout = () => null,
     isMobile = false,
 }) => {
+    const menus = useMemo(() => menuList.map(m => ({...m, icon: key2Icon[m.key]})), [menuList]);
     const location = useLocation();
     const navigate = useNavigate();
     const [key, setKey] = useState(location.pathname);
@@ -154,9 +131,8 @@ const BasicLayout = ({
                         selectedKeys={[key]}
                         mode="inline"
                         defaultOpenKeys={['1', '2', '3', '4', '5']}
-                    >
-                        {genSubMenu(menuList)}
-                    </Menu>
+                        items={menus}
+                    />
 
                 </Sider>
             ) : (
@@ -184,9 +160,8 @@ const BasicLayout = ({
                             selectedKeys={[key]}
                             mode="inline"
                             defaultOpenKeys={['1', '2', '3', '4', '5']}
-                        >
-                            {genSubMenu(menuList)}
-                        </Menu>
+                            items={menus}
+                        />
 
                     </Sider>
                 </Drawer>
