@@ -1,1 +1,1 @@
-## webpack5+react17+mtor 通用脚手架
+## webpack5+react18+mtor 通用脚手架
