@@ -1,5 +1,4 @@
 import {service, Model} from 'mtor';
-import { wait } from '~/common/utils';
 
 @service(module.id)
 class PcModel extends Model {
@@ -25,7 +24,7 @@ class PcModel extends Model {
     userInfo;
 
     async init() {
-        await wait(16.6);
+        // await wait(16.6);
         this.userInfo = {name: '李春', userId: '1', avatar: '1'};
         this.loaded = true;
     }
