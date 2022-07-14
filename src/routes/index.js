@@ -19,7 +19,7 @@ const routes = [];
 })(require.context('./', true, /\.\/[^/]+\/index\.js$/));
 
 export default () => (
-    <HashRouter>
+    <BrowserRouter>
         <Routes>
             {routes.map(({
                 path,
@@ -27,5 +27,5 @@ export default () => (
             }) => <Route key={path} element={<Element />} path={`${path}/*`} />)}
             <Route path="*" element={<Redirect to="/pc/" />} />
         </Routes>
-    </HashRouter>
+    </BrowserRouter>
 );
