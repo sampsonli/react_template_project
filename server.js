@@ -25,7 +25,7 @@ const webpackConfig = require('./build/webpack.config.dev.js'); // webpack开发
 const app = express(); // 实例化express服务
 app.use(bodyParser.json());
 const { PORT = 3000 } = process.env; // 服务启动端口号
-
+app.use(historyApiFallback());
 if (env === 'production') {
     // 如果是生产环境，则运行build文件夹中的代码
     app.use(compression());
@@ -38,7 +38,6 @@ if (env === 'production') {
         },
     }));
 } else {
-    app.use(historyApiFallback());
     const compiler = webpack(webpackConfig); // 实例化webpack
     app.use(webpackDevMiddleware(compiler, {
         // 挂载webpack小型服务器
