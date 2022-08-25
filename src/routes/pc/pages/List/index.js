@@ -3,7 +3,7 @@ import {DeleteOutlined, EditOutlined, SearchOutlined} from '@ant-design/icons';
 import {
     Button, Card, Col, Divider, Input, Row, Table, Spin, Popconfirm,
 } from 'antd';
-import React from 'react';
+import React, {useCallback, useMemo} from 'react';
 import {useInitModel} from 'mtor';
 import moment from 'moment';
 import Demo1Model from '~/routes/pc/models/ListModel';
@@ -16,6 +16,9 @@ export default () => {
     const model = useInitModel(Demo1Model, () => {
         model.init();
     });
+    const update = useCallback(() => {
+        model.doSearch();
+    }, []);
     const {
         list,
         keyword,
@@ -38,7 +41,7 @@ export default () => {
                         <Col span={6} className={style.sItem}>
                             <Button className={style.searchBtn}
                                 type="primary"
-                                onClick={model.doSearch}
+                                onClick={update}
                                 icon={<SearchOutlined />}
                             >
                                 查询
