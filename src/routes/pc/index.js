@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router';
+import React, {useEffect} from 'react';
+import {useLocation, useNavigate} from 'react-router';
 import zhCN from 'antd/lib/locale/zh_CN';
-import { ConfigProvider } from 'antd';
+import {ConfigProvider} from 'antd';
 import {
     Routes, Route,
 } from 'react-router-dom';
-import { useModel, evtBus } from 'mtor';
+import {useModel, evtBus} from 'mtor';
 import load from '~/common/load';
 import Redirect from '~/components/Redirect';
 import PcModel from './models/PcModel';
@@ -25,23 +25,28 @@ export default () => {
     const location = useLocation();
     const ignore = PcModel.ignoreSet.has(location.pathname);
     const {
-        menuList, userInfo, loaded, isMobile,
+        menuList,
+        userInfo,
+        loaded,
+        isMobile,
     } = model;
     useEffect(() => {
         if (!loaded && !ignore) {
             model.init();
         }
     }, [ignore, loaded]);
-    useEffect(() => {
-        return evtBus.on('switchSize', (type) => {
-            model.setData({ isMobile: type });
-        });
-    }, []);
+    useEffect(() => evtBus.on('switchSize', (type) => {
+        model.setData({isMobile: type});
+    }), []);
 
     return (
         <ConfigProvider locale={zhCN}>
             {!ignore && loaded && (
-                <BasicLayout isMobile={isMobile} menuList={menuList} doLogout={() => navigate('/pc/login')} userInfo={userInfo}>
+                <BasicLayout isMobile={isMobile}
+                    menuList={menuList}
+                    doLogout={() => navigate('/pc/login')}
+                    userInfo={userInfo}
+                >
                     <Routes>
                         <Route path="home" element={<Dashboard />} />
                         <Route path="list" element={<List />} />

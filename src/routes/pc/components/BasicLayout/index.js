@@ -72,7 +72,7 @@ const findMenuPath = (list, key) => {
  *
  * @param menuList {[MenuItem]}
  * @param children {JSX.Element}
- * @param userInfo {{userName}}
+ * @param userInfo {{name}}
  * @param doLogout {function}
  * @param isMobile {boolean}
  * @returns {JSX.Element}
