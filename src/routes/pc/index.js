@@ -33,11 +33,9 @@ export default () => {
         }
     }, [ignore, loaded]);
     useEffect(() => {
-        const cb = (type) => {
+        return evtBus.on('switchSize', (type) => {
             model.setData({ isMobile: type });
-        };
-        evtBus.on('switchSize', cb);
-        return () => evtBus.off('switchSize', cb);
+        });
     }, []);
 
     return (

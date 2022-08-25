@@ -20,7 +20,7 @@ class ListModel extends Model {
 
     async doSearch() {
         evtBus.emit('setMenuInfo', {
-            paths: ['列表32333', this.keyword],
+            paths: ['列表33', this.keyword],
         });
         await this.getList();
     }
