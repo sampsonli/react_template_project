@@ -3,7 +3,7 @@ import {DeleteOutlined, EditOutlined, SearchOutlined} from '@ant-design/icons';
 import {
     Button, Card, Col, Divider, Input, Row, Table, Spin, Popconfirm,
 } from 'antd';
-import React, {useCallback, useMemo} from 'react';
+import React, {useCallback, useEffect, useMemo} from 'react';
 import {useInitModel} from 'mtor';
 import moment from 'moment';
 import Demo1Model from '~/routes/pc/models/ListModel';
@@ -19,6 +19,10 @@ export default () => {
     const update = useCallback(() => {
         model.doSearch();
     }, []);
+    useEffect(() => {
+        console.log('update');
+
+    }, [model.doSearch]);
     const {
         list,
         keyword,
