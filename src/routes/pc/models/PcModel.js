@@ -1,6 +1,6 @@
-import {service, Model} from 'mtor';
+import {Model, define} from 'mtor';
 
-@service(module.id)
+@define(module)
 class PcModel extends Model {
     loaded = false;
 
@@ -31,5 +31,3 @@ class PcModel extends Model {
 }
 
 export default PcModel;
-
-module.hot && module.hot.accept();

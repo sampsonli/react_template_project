@@ -1,10 +1,10 @@
 import {
-    service, Model, inject, evtBus,
+    Model, inject, evtBus, define,
 } from 'mtor';
 import PcModel from '~/routes/pc/models/PcModel';
 import api from '~/routes/pc/models/api';
 
-@service(module.id)
+@define(module)
 class ListModel extends Model {
     loading = false;
 
@@ -44,5 +44,3 @@ class ListModel extends Model {
 }
 
 export default ListModel;
-
-module.hot && module.hot.accept();

@@ -1,7 +1,7 @@
-import { service, Model } from 'mtor';
+import {Model, define} from 'mtor';
 import {wait} from '~/common/utils';
 
-@service(module.id)
+@define(module)
 class Demo2Model extends Model {
     loaded = false;
 
@@ -19,5 +19,3 @@ class Demo2Model extends Model {
     }
 }
 export default Demo2Model;
-
-module.hot && module.hot.accept();
