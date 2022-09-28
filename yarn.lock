@@ -4133,10 +4133,10 @@ ms@2.1.3, ms@^2.1.1:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.3.tgz#574c8138ce1d2b5861f0b44579dbadd60c6615b2"
   integrity sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==
 
-mtor@^2.1.4:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/mtor/-/mtor-2.1.4.tgz#7e547351ee26ffd6d03fdb1c1d68a24d050d98e7"
-  integrity sha512-9sVcFaepAXSBfE4FcVJytmUjrk34ZcC7bkzu92aBaWWZyShORarqA51wROm1MDV+gf+zi+Vg/vaOf+p3DSaHng==
+mtor@^2.1.5:
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/mtor/-/mtor-2.1.5.tgz#f3085680b66e300e0ee8e01cecfc673ca8e5f6c0"
+  integrity sha512-SZynysCvtetyq9MHhhMKzUeK2FeWeUhWPSmcR0alI643Ny57d0fi1Jji7OKH/hI3YVPrq5rptBBaL3G0iNvWNQ==
 
 nanoid@^3.3.4:
   version "3.3.4"
