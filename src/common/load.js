@@ -11,7 +11,7 @@ export default (loadComp, LoadingComp = () => null) => (props) => {
         const [comp, setComp] = useState({Component: null, hot: false});
         useEffect(() => {
             loadComp().then((cp) => {
-                comp.onUpdate = (args) => {
+                cp.onUpdate = (args) => {
                     setComp({
                         Component: args.default,
                         hot: true,
