@@ -15,7 +15,7 @@ const Edit = ({
     }, current);
     return (
         <Modal
-            visible={!!current}
+            open={!!current}
             width="3rem"
             title="编辑"
             onCancel={onClose}

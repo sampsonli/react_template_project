@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "private": true,
   "scripts": {
-    "build": "rimraf dist/* && webpack --config build/webpack.config.prod.js",
+    "build": "rimraf dist && webpack --config build/webpack.config.prod.js",
     "analyse": "cross-env ANALYSE=1 npm run build",
     "build:dll": "rimraf static/dll/ && webpack --config build/webpack.config.dll.js && git add static/*",
     "clean": "rimraf dist",
