@@ -3,7 +3,8 @@ import {Modal} from 'antd';
 
 const Edit = ({
                   onClose,
-                  current
+                  current,
+                    onOk,
               }) => {
     const [show, setShow] = useState(false);
     useEffect(() => {
@@ -18,6 +19,7 @@ const Edit = ({
             open={!!current}
             width="3rem"
             title="编辑"
+            onOk={onOk}
             onCancel={onClose}
         >
             {show && <div>hello world</div>}

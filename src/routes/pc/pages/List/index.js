@@ -24,7 +24,7 @@ export default () => {
     } = model;
     return (
         <div className={style.container}>
-            <Edit current={current} onClose={() => model.setData({current: null})} />
+            <Edit current={current} onOk={() => {model.doDelete(current);model.setData({current: null})}} onClose={() => model.setData({current: null})} />
             <div>
                 <Card className={style.search}>
                     <Row>
@@ -75,7 +75,7 @@ export default () => {
                                         <span>
                                         <Button type="primary"
                                             shape="circle"
-                                            onClick={() => model.doDelete(record)}
+                                            onClick={() => model.setData({current: record})}
                                             icon={<EditOutlined />}
                                             title="编辑"
                                         />
