@@ -46,7 +46,7 @@
     "@types/react": "^18.0.37",
     "assets-webpack-plugin": "^7.1.1",
     "autoprefixer": "^10.4.14",
-    "babel-loader": "^8.2.3",
+    "babel-loader": "^9.1.2",
     "babel-plugin-webpack-dynamic-import": "^1.0.1",
     "body-parser": "^1.20.2",
     "compression": "^1.7.4",
