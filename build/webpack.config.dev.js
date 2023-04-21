@@ -7,7 +7,7 @@ const bundleConfig = require('../static/dll/bundle-config');
 
 const ctxPath = path.resolve(__dirname, '../');
 const srcPath = path.join(ctxPath, 'src');
-const isDll = true;
+const isDll = false;
 module.exports = {
     mode: 'development',
     stats: 'errors-only',

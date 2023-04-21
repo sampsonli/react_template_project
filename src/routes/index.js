@@ -1,9 +1,8 @@
 /* eslint-disable react/function-component-definition */
 import React from 'react';
 import {
-    Routes, Route, BrowserRouter, HashRouter,
+    createBrowserRouter, RouterProvider,
 } from 'react-router-dom';
-import Redirect from '~/components/Redirect';
 
 const routes = [];
 ((r) => {
@@ -12,20 +11,22 @@ const routes = [];
             const module = r(key);
             const md = {
                 Element: module.default,
-                path: `/${key.split('/')[1]}`,
+                path: `/${key.split('/')[1]}/*`,
             };
             routes.push(md);
         });
 })(require.context('./', true, /\.\/[^/]+\/index\.js$/));
 
+const router = createBrowserRouter(
+    routes.map(({
+        path,
+        Element,
+    }) => ({
+            path,
+            element: <Element />,
+        })),
+);
+
 export default () => (
-    <BrowserRouter>
-        <Routes>
-            {routes.map(({
-                path,
-                Element,
-            }) => <Route key={path} element={<Element />} path={`${path}/*`} />)}
-            <Route path="*" element={<Redirect to="/pc/" />} />
-        </Routes>
-    </BrowserRouter>
+    <RouterProvider router={router} />
 );

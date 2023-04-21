@@ -1,18 +1,11 @@
 import 'core-js';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Routes from './routes';
-
 import './assets/common.less';
+import root from './root';
 
-const render = () => {
-    ReactDOM.render(
-        <Routes />,
-        document.getElementById('app'),
-    );
-};
-render();
-export default render;
+root.render(<Routes />);
+
 if (module.hot) {
     module.hot.accept();
 }

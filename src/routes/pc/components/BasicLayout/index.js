@@ -179,11 +179,7 @@ const BasicLayout = ({
                                 <MenuUnfoldOutlined />
                             )}
                         />
-                        <Breadcrumb>
-                            {titles.map((tit) => (
-                                <Breadcrumb.Item key={tit}>{tit}</Breadcrumb.Item>
-                            ))}
-                        </Breadcrumb>
+                        <Breadcrumb items={titles.map(title => ({title}))} />
                     </div>
                     <div className={style.user}>
                         <span className={style.info}>{userInfo.name}</span>
