@@ -7,7 +7,6 @@ import {
 } from 'react-router-dom';
 import {useModel, evtBus} from 'mtor';
 import load from '~/common/load';
-import Redirect from '~/components/Redirect';
 import PcModel from './models/PcModel';
 import BasicLayout from './components/BasicLayout';
 import './assets/style.less';
@@ -48,11 +47,10 @@ export default () => {
                     userInfo={userInfo}
                 >
                     <Routes>
-                        <Route path="home" element={<Dashboard />} />
+                        <Route index element={<Dashboard />} />
                         <Route path="list" element={<List />} />
                         <Route path="chart" element={<Chart />} />
-                        <Route path="test" element={<Test />} />
-                        <Route path="" element={<Redirect to="home" />} />
+                        <Route path="test" Component={Test} />
                     </Routes>
                 </BasicLayout>
             )}

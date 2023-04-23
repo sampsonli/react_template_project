@@ -14,7 +14,7 @@ import React, {
 import {
     Menu, Button, Breadcrumb, Layout, Divider, Drawer,
 } from 'antd';
-import { useLocation, useNavigate } from 'react-router';
+import {useHref, useLocation, useNavigate} from 'react-router';
 import { evtBus } from 'mtor';
 import style from './style.less';
 import Logo from './Logo';
@@ -26,7 +26,7 @@ const {
 } = Layout;
 
 const key2Icon = {
-    '/pc/home': <HomeOutlined />,
+    '/pc': <HomeOutlined />,
     '/pc/list': <WechatOutlined />,
     '/pc/chart': <QqOutlined />,
     '/pc/test': <AlipayCircleOutlined />,
@@ -90,7 +90,8 @@ const BasicLayout = ({
     const navigate = useNavigate();
     const [key, setKey] = useState(location.pathname);
     const [titles, setTitles] = useState([]);
-    const [collapsed, setCollapsed] = useState(false);
+    // const [collapsed, setCollapsed] = useState(false);
+    const [collapsed, setCollapsed] = useState(true);
     useEffect(() => {
         const titleList = findMenuPath(menuList, location.pathname);
         if (key === location.pathname && titles.length) {

@@ -12,7 +12,7 @@ class PcModel extends Model {
      * 后续左侧菜单可以从后端接口获取
      */
     menuList = [
-        {key: '/pc/home', label: '首页'},
+        {key: '/pc', label: '首页'},
         {key: '/pc/list', label: '列表'},
         {key: '/pc/chart', label: '图表'},
         {key: '/pc/test', label: '测试'},

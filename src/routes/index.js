@@ -3,6 +3,7 @@ import React from 'react';
 import {
     createBrowserRouter, RouterProvider,
 } from 'react-router-dom';
+import Redirect from '~/components/Redirect';
 
 const routes = [];
 ((r) => {
@@ -18,13 +19,16 @@ const routes = [];
 })(require.context('./', true, /\.\/[^/]+\/index\.js$/));
 
 const router = createBrowserRouter(
-    routes.map(({
+    [...routes.map(({
         path,
         Element,
     }) => ({
             path,
             element: <Element />,
-        })),
+        })), {
+        path: '/*',
+        element: <Redirect to="/pc" />,
+    }],
 );
 
 export default () => (
