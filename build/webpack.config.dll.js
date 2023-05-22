@@ -6,7 +6,7 @@ const dllPath = path.resolve(__dirname, '../static/dll');
 module.exports = {
     mode: 'production',
     entry: {
-        vendors: ['react', 'prop-types', 'react-dom', 'react-router', 'dayjs', 'moment',
+        vendors: ['react', 'prop-types', 'react-dom', 'react-router', 'dayjs',
             'axios', 'classnames', 'react-router-dom', 'mtor',
             'regenerator-runtime/runtime',
             'core-js/stable',

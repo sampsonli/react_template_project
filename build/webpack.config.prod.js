@@ -27,12 +27,14 @@ module.exports = {
     module: {
         rules: [
             {
+                // .js .jsx用babel解析
                 test: /\.[tj]sx?$/,
                 include: srcPath,
                 exclude: /node_modules/,
-                use: [
-                    'babel-loader',
-                ],
+                loader: 'ts-loader',
+                options: {
+                    transpileOnly: true,
+                },
             },
             {
                 // .less 解析

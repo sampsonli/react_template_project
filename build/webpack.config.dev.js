@@ -38,9 +38,10 @@ module.exports = {
                 test: /\.[tj]sx?$/,
                 include: srcPath,
                 exclude: /node_modules/,
-                use: [
-                    'babel-loader?cacheDirectory',
-                ],
+                loader: 'ts-loader',
+                options: {
+                    transpileOnly: true,
+                },
             },
             {
                 // .less 解析

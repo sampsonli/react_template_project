@@ -5,7 +5,7 @@ import {
 } from 'antd';
 import React from 'react';
 import {useInitModel} from 'mtor';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import Demo1Model from '~/routes/pc/models/ListModel';
 import style from './style.less';
 import Edit from '~/routes/pc/pages/List/components/Edit';
@@ -66,7 +66,7 @@ export default () => {
                             <Column title="用户名" dataIndex="userName" key="userName" width={200} align="center" />
                             <Column title="邮箱" dataIndex="email" key="email" width={195} align="center" />
 
-                            <Column title="时间" dataIndex="updateTime" key="updateTime" width={195} align="center" render={(time) => moment(time).format('YYYY-MM-DD HH:mm')} />
+                            <Column title="时间" dataIndex="updateTime" key="updateTime" width={195} align="center" render={(time) => dayjs(time).format('YYYY-MM-DD HH:mm')} />
                             <Column title="操作"
                                 key="action"
                                 width={195}

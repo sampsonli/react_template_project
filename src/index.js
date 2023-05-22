@@ -1,4 +1,4 @@
-import 'core-js';
+// import 'core-js';
 import React from 'react';
 import Routes from './routes';
 import './assets/common.less';
