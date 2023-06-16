@@ -7,7 +7,7 @@ module.exports = {
     mode: 'production',
     entry: {
         vendors: ['react', 'prop-types', 'react-dom', 'react-router', 'dayjs', 'moment',
-            'axios', 'classnames', 'react-router-dom', 'mtor',
+            'axios', 'react-router-dom', 'mtor',
             'regenerator-runtime/runtime',
             'core-js/stable',
         ],

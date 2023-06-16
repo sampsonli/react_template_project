@@ -2,23 +2,25 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const vendorManifest = require('../static/dll/vendors-manifest');
-const bundleConfig = require('../static/dll/bundle-config');
 
 const ctxPath = path.resolve(__dirname, '../');
 const srcPath = path.join(ctxPath, 'src');
-const isDll = true;
 module.exports = {
     mode: 'development',
-    stats: 'errors-only',
-    watchOptions: {
-        ignored: /(node_modules)|(\.git)|(static)|(dist)/,
-        // poll: 1000,
+    // stats: 'errors-only',
+    devServer: {
+        proxy: {
+            '/user': {
+                target: 'https://www.fastmock.site/mock/076e2f3ffbb3afe387cb325e29dc2d2b/v1',
+                changeOrigin: true,
+            },
+        },
+        compress: true,
+        port: 9000,
     },
     entry: {
         app: [
-            'webpack-hot-middleware/client?reload=true&path=/__webpack_hmr', // webpack热更新插件，就这么写
-            srcPath, // 项目入口
+            path.resolve(__dirname, '../src/index.js'),
         ],
     },
     output: {
@@ -97,15 +99,10 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.HotModuleReplacementPlugin(), // 热更新插件
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development'),
             'process.env.SF_ENV': JSON.stringify(process.env.SF_ENV || 'sit'),
         }),
-        ...(isDll ? [new webpack.DllReferencePlugin({
-            context: ctxPath,
-            manifest: vendorManifest,
-        })] : []),
         new CopyWebpackPlugin({patterns: [{from: path.join(ctxPath, 'static')}]}),
         new HtmlWebpackPlugin({
             // 根据模板插入css/js等生成最终HTML
@@ -113,7 +110,6 @@ module.exports = {
             template: path.join(srcPath, 'index.ejs'), // html模板路径
             inject: true, // 是否将js放在body的末尾
             // favicon: path.join(ctxPath, 'static/favicon.ico'), // 自动把根目录下的favicon.ico图片加入html
-            dllName: isDll ? bundleConfig.vendors.js : null,
         }),
     ],
     optimization: {

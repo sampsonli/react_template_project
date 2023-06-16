@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 import React from 'react';
 import {
-    createBrowserRouter, RouterProvider,
+    createBrowserRouter, RouterProvider, createHashRouter,
 } from 'react-router-dom';
 import Redirect from '~/components/Redirect';
 
@@ -18,7 +18,7 @@ const routes = [];
         });
 })(require.context('./', true, /\.\/[^/]+\/index\.js$/));
 
-const router = createBrowserRouter(
+const router = createHashRouter(
     [...routes.map(({
         path,
         Element,
