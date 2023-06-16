@@ -8,7 +8,7 @@
     "build:dll": "rimraf static/dll/ && webpack --config build/webpack.config.dll.js && git add static/*",
     "clean": "rimraf dist",
     "dev": "webpack serve --config build/webpack.config.dev.js",
-    "start": "cross-env NODE_ENV=production node server.js",
+    "start": "node server.js",
     "ddns": "node ddns.js"
   },
   "browserslist": [
