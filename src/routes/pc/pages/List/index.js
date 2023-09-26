@@ -56,7 +56,7 @@ export default () => {
                             loading={loading}
                             pagination={false}
                         >
-                            <Column title="序号1"
+                            <Column title="序号"
                                 dataIndex="id"
                                 key="id"
                                 width={200}

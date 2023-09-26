@@ -1,0 +1,14 @@
+.dashboard-YSjSf {
+  padding: 0.24rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.dashboard-YSjSf .echart-dBunP {
+  margin-top: 0.2rem;
+  height: 0;
+  flex: 1;
+  position: relative;
+  background-color: white;
+}
+

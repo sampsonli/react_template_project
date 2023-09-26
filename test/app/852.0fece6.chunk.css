@@ -1,0 +1,33 @@
+.container-Nywbz {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+.container-Nywbz .header-giYt5 {
+  height: 0.5rem;
+  background-color: yellowgreen;
+  text-align: center;
+  line-height: 0.5rem;
+  color: white;
+  font-size: 0.2rem;
+}
+.container-Nywbz .content-IqcYp {
+  height: 0;
+  flex: 1;
+  overflow: auto;
+}
+.container-Nywbz .content-IqcYp .item-unOzJ {
+  height: 1rem;
+  border-bottom: 0.01rem solid yellow;
+}
+.container-Nywbz .content-IqcYp .item-unOzJ:nth-child(2n) {
+  background-color: yellowgreen;
+}
+.container-Nywbz .content-IqcYp .item-unOzJ:nth-child(2n + 1) {
+  background-color: blueviolet;
+}
+

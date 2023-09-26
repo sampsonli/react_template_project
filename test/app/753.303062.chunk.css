@@ -1,0 +1,19 @@
+.container-Lvm4b {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.3rem;
+}
+.container-Lvm4b .content-lcJiU {
+  height: 0;
+  flex: 1;
+  background-color: white;
+  margin: 0.2rem;
+  border-radius: 0.05rem;
+  padding: 0.2rem;
+}
+

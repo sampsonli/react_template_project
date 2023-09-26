@@ -1,0 +1,21 @@
+.home-page-Gt606 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+.home-page-Gt606 .top-dQppy {
+  flex: 0;
+  border-bottom: solid 0.01rem var(--adm-border-color);
+}
+.home-page-Gt606 .content-YcZCN {
+  height: 0;
+  flex: 1;
+}
+.home-page-Gt606 .tabbar-Vu6p0 {
+  border-top: solid 0.01rem var(--adm-border-color);
+}
+

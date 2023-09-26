@@ -51,6 +51,6 @@ app.use((req, resp, next) => {
 });
 
 /** 启动服务 * */
-app.listen(PORT, () => {
+app.listen(PORT, 'localhost', () => {
     console.log(`本地服务启动地址: http://localhost:${PORT}`);
 });
