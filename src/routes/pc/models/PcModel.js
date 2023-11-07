@@ -4,7 +4,7 @@ import {Model, define} from 'mtor';
 class PcModel extends Model {
     loaded = false;
 
-    static ignoreSet = new Set(['/pc/login', '/pc/rain']);
+    static ignoreSet = new Set(['/pc/login', '/pc/test']);
 
     isMobile = window._isMobile;
 
@@ -15,7 +15,6 @@ class PcModel extends Model {
         {key: '/pc', label: '首页'},
         {key: '/pc/list', label: '列表'},
         {key: '/pc/chart', label: '图表'},
-        {key: '/pc/test', label: '测试'},
     ];
 
     /**

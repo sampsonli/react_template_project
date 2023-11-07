@@ -1,23 +1,25 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, {useRef} from 'react';
 import {useInitModel} from 'mtor';
 
-import {Button, Progress} from 'antd';
-import TestModel from '~/routes/pc/models/TestModel';
+import TestModel, {all} from '~/routes/pc/models/TestModel';
 import style from './style.less';
 
 export default () => {
+    const ct = useRef();
     const model = useInitModel(TestModel, () => {
-        // model.init();
+        model.init();
     }, true);
     return (
         <div className={style.container}>
-            <div className={style.content}>
-                <Button onClick={model.asyncFnDemo} type="primary">开始</Button>
-                <div className={style.progress}>
-                    <Progress percent={model.num} size={160} type="circle" />
-                </div>
-                <Button onClick={() => model.reset()}>重置</Button>
+            <div className={style.content} ref={ct}>
+                <div className={style.btn} onClick={model.play}>播放</div>
+                {all.map((row) => (
+                    <div key={row.key} className={style.row}>
+                        {row.map(col => <div key={col} id={col} className={`${style.col} current`} />)}
+                    </div>
+                ))}
+
             </div>
 
         </div>

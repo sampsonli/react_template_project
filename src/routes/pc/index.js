@@ -50,13 +50,13 @@ export default () => {
                         <Route index element={<Dashboard />} />
                         <Route path="list" element={<List />} />
                         <Route path="chart" element={<Chart />} />
-                        <Route path="test" Component={Test} />
                     </Routes>
                 </BasicLayout>
             )}
             {ignore && (
                 <Routes>
                     <Route path="login" element={<Login />} />
+                    <Route path="test" Component={Test} />
                 </Routes>
             )}
 
