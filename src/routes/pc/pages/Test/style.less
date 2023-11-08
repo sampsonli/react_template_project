@@ -9,17 +9,49 @@
 
   font-size: .3rem;
   .content {
-    .btn {
-      width: 1rem;
-      height: .4rem;
-      border-radius: .2rem;
-      background: darkgreen;
-      color: white;
-      text-align: center;
-      line-height: .4rem;
-      font-size: .2rem;
-      cursor: pointer;
+    .opts {
+      display: flex;
+      display: none;
+      .btn {
+        width: .5rem;
+        height: .2rem;
+        border-radius: .2rem;
+        background: darkgreen;
+        color: white;
+        text-align: center;
+        line-height: .2rem;
+        font-size: .1rem;
+        cursor: pointer;
+      }
     }
+
+    &.mobile {
+      .row {
+        height: .05rem;
+        display: flex;
+        font-size: .05rem;
+        .col {
+          height: .05rem;
+          width: .05rem;
+          border-radius: .2rem;
+          //background: pink;
+
+          &::before {
+            content: '';
+          }
+          &:global(.current) {
+            //background: red;
+            &::before {
+              content: '0';
+
+            }
+          }
+
+
+        }
+      }
+    }
+
     .row {
       height: .1rem;
       display: flex;
