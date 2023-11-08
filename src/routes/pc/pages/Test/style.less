@@ -35,16 +35,16 @@
           width: .05rem;
           border-radius: .2rem;
           //background: pink;
-
           &::before {
             content: '';
           }
-          &:global(.current) {
-            //background: red;
-            &::before {
-              content: '0';
 
+          &:global(.current) {
+            background: red;
+            &::before {
+              content: '';
             }
+
           }
 
 
