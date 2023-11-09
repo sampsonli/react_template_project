@@ -117,7 +117,6 @@ class Demo2Model extends Model {
         let flag = true; // 保持30fps
         const {ctx, width, height} = this;
         ctx.fillStyle = 'green';
-        ctx.strokeStyle = 'red';
         function render() {
             if (index >= dataView.byteLength) return;
             window.requestAnimationFrame(render);
@@ -134,22 +133,15 @@ class Demo2Model extends Model {
                 for (let c = 0; c < vWidth; c++) {
                     if (byte & (2 ** offset)) {
                         ctx.fillRect(c * rt, r * rt, rt / 1.2, rt / 1.2);
-                        // ctx.beginPath();
-                        // ctx.arc(c * rt + rt/2, r * rt + rt/2, 3, 0, 2 * Math.PI, false);
-                        // ctx.stroke();
-                        // ctx.closePath();
-                    } else {
-                        // ele.classList.remove('current');
                     }
                     offset++;
                     if (offset === 8) {
                         index++;
                         offset = 0;
                         if (index >= dataView.byteLength) {
-                            byte = 0;
-                        } else {
-                            byte = dataView.getUint8(index);
+                            return;
                         }
+                        byte = dataView.getUint8(index);
                     }
                 }
             }
