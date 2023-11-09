@@ -1,17 +1,7 @@
 import {Model, define} from 'mtor';
 
-export const all = (() => {
-    const _all = [];
-    for (let i = 0; i < 60; i++) {
-        const row = [];
-        row.key = i;
-        _all.push(row);
-        for (let j = 0; j < 80; j++) {
-            row.push(`${i}-${j}`);
-        }
-    }
-    return _all;
-})();
+const vHeight = 60;
+const vWidth = 80;
 
 @define(module)
 class Demo2Model extends Model {
@@ -19,22 +9,25 @@ class Demo2Model extends Model {
 
     dataView;
 
-    allElements = [];
-
     video;
+
+    width;
+
+    height;
+
+    ctx;
 
     generateFromVideo() {
         return new Promise((resolve => {
-            const {allElements} = this;
             const video = document.createElement('video');
             this.video = video;
             video.autoplay = true;
             video.src = 'Badapplesmall.mp4';
             const canvas = document.createElement('canvas');
-            canvas.width = allElements[0].length;
-            canvas.height = allElements.length;
+            canvas.width = vWidth;
+            canvas.height = vHeight;
             const ctx = canvas.getContext('2d');
-            const dataView = new DataView(new ArrayBuffer(60 * 80 / 8 * 30 * 240));
+            const dataView = new DataView(new ArrayBuffer(vHeight * vWidth / 8 * 30 * 240));
             let index = 0;
             let offset = 0;
             let byte = 0;
@@ -56,14 +49,11 @@ class Demo2Model extends Model {
 
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, canvas.width, canvas.height);
-                allElements.forEach((row, i) => {
-                    row.forEach((ele, j) => {
-                        const image = ctx.getImageData(j, i, 1, 1);
+                for (let r = 0; r < vHeight; r++) {
+                    for (let c = 0; c < vWidth; c++) {
+                        const image = ctx.getImageData(c, r, 1, 1);
                         if (image.data[0] <= 80) {
-                            ele.classList.add('current');
                             byte |= 2 ** offset;
-                        } else {
-                            ele.classList.remove('current');
                         }
                         offset++;
                         if (offset === 8) {
@@ -72,8 +62,8 @@ class Demo2Model extends Model {
                             byte = 0;
                             index++;
                         }
-                    });
-                });
+                    }
+                }
             }
             video.onplay = () => {
                 render();
@@ -100,16 +90,10 @@ class Demo2Model extends Model {
         }));
     }
 
-    init() {
-        const allElements = [];
-        all.forEach(row => {
-            const rowEle = [];
-            allElements.push(rowEle);
-            row.forEach(col => {
-                rowEle.push(document.getElementById(col));
-            });
-        });
-        this.allElements = allElements;
+    init(canvas) {
+        this.ctx = canvas.getContext('2d');
+        this.width = canvas.width;
+        this.height = canvas.height;
     }
 
     async playAndSaveFile() {
@@ -126,13 +110,14 @@ class Demo2Model extends Model {
     }
 
     async play() {
-        const {allElements} = this;
         const dataView = await this.loadFromFile();
-
         let index = 0;
         let offset = 0;
         let byte = dataView.getUint8(index);
         let flag = true; // 保持30fps
+        const {ctx, width, height} = this;
+        ctx.fillStyle = 'green';
+        ctx.strokeStyle = 'red';
         function render() {
             if (index >= dataView.byteLength) return;
             window.requestAnimationFrame(render);
@@ -141,12 +126,19 @@ class Demo2Model extends Model {
                 return;
             }
             flag = true;
-            allElements.forEach((row) => {
-                row.forEach((ele) => {
+
+            ctx.clearRect(0, 0, width, height);
+
+            for (let r = 0; r < vHeight; r++) {
+                for (let c = 0; c < vWidth; c++) {
                     if (byte & (2 ** offset)) {
-                        ele.classList.add('current');
+                        // ctx.fillRect(c * 10, r * 10, 10, 10);
+                        ctx.beginPath();
+                        ctx.arc(c * 10 + 5, r * 10 + 5, 3, 0, 2 * Math.PI, false);
+                        ctx.stroke();
+                        ctx.closePath();
                     } else {
-                        ele.classList.remove('current');
+                        // ele.classList.remove('current');
                     }
                     offset++;
                     if (offset === 8) {
@@ -158,8 +150,8 @@ class Demo2Model extends Model {
                             byte = dataView.getUint8(index);
                         }
                     }
-                });
-            });
+                }
+            }
         }
         render();
     }

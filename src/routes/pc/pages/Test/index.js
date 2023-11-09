@@ -6,8 +6,9 @@ import TestModel, {all} from '~/routes/pc/models/TestModel';
 import style from './style.less';
 
 export default () => {
+    const canvas = useRef();
     const model = useInitModel(TestModel, () => {
-        model.init();
+        model.init(canvas.current);
         model.play();
     }, true);
     return (
@@ -17,12 +18,7 @@ export default () => {
                     <div className={style.btn} onClick={model.play}>播放</div>
                     <div className={style.btn} onClick={model.playAndSaveFile}>播放视频并保存</div>
                 </div>
-
-                {all.map((row) => (
-                    <div key={row.key} className={style.row}>
-                        {row.map(col => <div key={col} id={col} className={`${style.col} current`} />)}
-                    </div>
-                ))}
+                <canvas width={800} height={600} ref={canvas} />
 
             </div>
 
