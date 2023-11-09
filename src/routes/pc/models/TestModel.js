@@ -1,7 +1,7 @@
 import {Model, define} from 'mtor';
 
-const vHeight = 60;
-const vWidth = 80;
+const vHeight = 90;
+const vWidth = 120;
 
 @define(module)
 class Demo2Model extends Model {
@@ -74,7 +74,7 @@ class Demo2Model extends Model {
     async loadFromFile() {
         return new Promise((resolve => {
             const xhr = new XMLHttpRequest();
-            xhr.open('GET', 'mp4.blob');
+            xhr.open('GET', 'mp4_.blob');
             xhr.responseType = 'arraybuffer';
             xhr.onreadystatechange = () => {
                 if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {
@@ -102,7 +102,7 @@ class Demo2Model extends Model {
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
-        link.download = 'mp4.blob';
+        link.download = 'mp4_.blob';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -128,15 +128,16 @@ class Demo2Model extends Model {
             flag = true;
 
             ctx.clearRect(0, 0, width, height);
+            const rt = width / vWidth;
 
             for (let r = 0; r < vHeight; r++) {
                 for (let c = 0; c < vWidth; c++) {
                     if (byte & (2 ** offset)) {
-                        // ctx.fillRect(c * 10, r * 10, 10, 10);
-                        ctx.beginPath();
-                        ctx.arc(c * 10 + 5, r * 10 + 5, 3, 0, 2 * Math.PI, false);
-                        ctx.stroke();
-                        ctx.closePath();
+                        ctx.fillRect(c * rt, r * rt, rt / 1.2, rt / 1.2);
+                        // ctx.beginPath();
+                        // ctx.arc(c * rt + rt/2, r * rt + rt/2, 3, 0, 2 * Math.PI, false);
+                        // ctx.stroke();
+                        // ctx.closePath();
                     } else {
                         // ele.classList.remove('current');
                     }
