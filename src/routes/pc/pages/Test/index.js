@@ -18,7 +18,7 @@ export default () => {
                     <div className={style.btn} onClick={model.play}>播放</div>
                     <div className={style.btn} onClick={model.playAndSaveFile}>播放视频并保存</div>
                 </div>
-                <canvas width={800} height={600} ref={canvas} />
+                <canvas width={model.width} height={model.height} ref={canvas} />
 
             </div>
 

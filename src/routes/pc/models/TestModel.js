@@ -11,9 +11,9 @@ class Demo2Model extends Model {
 
     video;
 
-    width;
+    width = 600;
 
-    height;
+    height = 800;
 
     ctx;
 
