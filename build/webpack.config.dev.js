@@ -9,12 +9,12 @@ module.exports = {
     mode: 'development',
     // stats: 'errors-only',
     devServer: {
-        proxy: {
-            '/user': {
-                target: 'https://www.fastmock.site/mock/076e2f3ffbb3afe387cb325e29dc2d2b/v1',
-                changeOrigin: true,
+        proxy: [
+            {
+                context: ['/user'],
+                target: 'https://www.fastmock.site/mock/076e2f3ffbb3afe387cb325e29dc2d2b/v1'
             },
-        },
+        ],
         compress: true,
         port: 9000,
     },

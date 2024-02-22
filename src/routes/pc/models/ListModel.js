@@ -33,10 +33,14 @@ class ListModel extends Model {
     pcModel;
 
     async getList() {
-        this.loading = true;
-        const {data} = await api.getRemoteData();
-        this.list = data.list.slice(0, 10);
-        this.loading = false;
+        try {
+            this.loading = true;
+            const {data} = await api.getRemoteData();
+            this.list = data.list.slice(0, 10);
+            this.loading = false;
+        } catch (e) {
+            console.log(e.message);
+        }
     }
 
     doDelete(record) {
