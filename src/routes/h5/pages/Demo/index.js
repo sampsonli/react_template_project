@@ -8,7 +8,7 @@ export default () => {
 
     return (
         <div>
-            <Button color="primary" onClick={() => model.addAge()}>测试1333</Button>
+            <Button color="primary" onClick={() => model.addAge()}>测试13</Button>
             {model.age}
         </div>
     );
