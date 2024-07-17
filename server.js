@@ -14,7 +14,7 @@ const historyApiFallback = require('connect-history-api-fallback');
 
 const app = express(); // 实例化express服务
 app.use(bodyParser.json());
-const { PORT = 3000 } = process.env; // 服务启动端口号
+const { PORT = 8816} = process.env; // 服务启动端口号
 app.use(historyApiFallback());
 // 如果是生产环境，则运行build文件夹中的代码
 app.use(compression());
