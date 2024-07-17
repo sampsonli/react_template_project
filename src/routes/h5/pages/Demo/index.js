@@ -8,8 +8,8 @@ export default () => {
 
     return (
         <div>
-            <Button color="primary" onClick={() => model.setData({name: 'lichun2223'})}>测试1333</Button>
-            {model.name}
+            <Button color="primary" onClick={() => model.addAge()}>测试1333</Button>
+            {model.age}
         </div>
     );
 };

@@ -8,8 +8,7 @@
     "build:dll": "rimraf static/dll/ && webpack --config build/webpack.config.dll.js && git add static/*",
     "clean": "rimraf dist",
     "dev": "webpack serve --config build/webpack.config.dev.js",
-    "start": "node server.js",
-    "ddns": "node ddns.js"
+    "start": "node server.js"
   },
   "browserslist": [
     ">0.2%",
@@ -45,17 +44,6 @@
     "babel-plugin-webpack-dynamic-import": "^1.0.1",
 
 
-    "@types/react": "^18.3.3",
-    "assets-webpack-plugin": "^7.1.1",
-    "autoprefixer": "^10.4.19",
-    "body-parser": "^1.20.2",
-    "compression": "^1.7.4",
-    "connect-history-api-fallback": "^2.0.0",
-    "copy-webpack-plugin": "^12.0.2",
-    "cross-env": "^7.0.3",
-    "css-loader": "^6",
-
-
     "eslint": "^9.7.0",
     "@babel/eslint-parser": "^7.22.15",
     "eslint-config-airbnb": "^19.0.4",
@@ -66,6 +54,15 @@
     "eslint-plugin-react": "^7.33.2",
 
 
+    "@types/react": "^18.3.3",
+    "assets-webpack-plugin": "^7.1.1",
+    "autoprefixer": "^10.4.19",
+    "body-parser": "^1.20.2",
+    "compression": "^1.7.4",
+    "connect-history-api-fallback": "^2.0.0",
+    "copy-webpack-plugin": "^12.0.2",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6",
     "express": "^4.18.2",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.6.0",
@@ -75,7 +72,7 @@
     "postcss": "^8.4.39",
     "postcss-loader": "^7.3.4",
     "postcss-pxtorem": "^6.1.0",
-    "rimraf": "^6.0.1",
+    "rimraf": "^5",
     "style-loader": "^4.0.0",
     "undici": "^6.19.2",
     "url-loader": "^4.1.1",
