@@ -8,18 +8,19 @@ const srcPath = path.join(ctxPath, 'src');
 module.exports = {
     mode: 'development',
     // stats: 'errors-only',
-    devServer: {
-        proxy: [
-            {
-                context: ['/user'],
-                target: 'https://www.fastmock.site/mock/076e2f3ffbb3afe387cb325e29dc2d2b/v1'
-            },
-        ],
-        compress: true,
-        port: 8816,
-    },
+    // devServer: {
+    //     proxy: [
+    //         {
+    //             context: ['/user'],
+    //             target: 'https://www.fastmock.site/mock/076e2f3ffbb3afe387cb325e29dc2d2b/v1'
+    //         },
+    //     ],
+    //     compress: true,
+    //     port: 8816,
+    // },
     entry: {
         app: [
+            'webpack-hot-middleware/client?reload=true&path=/__webpack_hmr', // webpack热更新插件，就这么写
             path.resolve(__dirname, '../src/index.js'),
         ],
     },
@@ -99,9 +100,9 @@ module.exports = {
     },
 
     plugins: [
+        new webpack.HotModuleReplacementPlugin(), // 热更新插件
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development'),
-            'process.env.SF_ENV': JSON.stringify(process.env.SF_ENV || 'sit'),
         }),
         new CopyWebpackPlugin({patterns: [{from: path.join(ctxPath, 'static')}]}),
         new HtmlWebpackPlugin({

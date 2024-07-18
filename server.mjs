@@ -5,23 +5,39 @@ import bodyParser from 'body-parser';
 import http from 'node:http';
 import compression from 'compression'
 import historyApiFallback from 'connect-history-api-fallback';
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import webpackConfigDev from './build/webpack.config.dev.js';
+
+
 
 
 const app = express(); // 实例化express服务
 app.use(bodyParser.json());
-const { PORT = 8816} = process.env; // 服务启动端口号
+const { PORT = 8816, NODE_ENV : env} = process.env; // 服务启动端口号
 app.use(historyApiFallback());
-// 如果是生产环境，则运行build文件夹中的代码
 app.use(compression());
-app.use(express.static('dist', {
-    maxAge: '1d',
-    setHeaders(res, file) {
-        if (file.indexOf('index.html') > -1) {
-            res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=5');
-        }
-    },
-}));
-// app.use(express.static('dist'));
+
+
+if (env === 'production') {
+    app.use(express.static('dist', {
+        maxAge: '1d',
+        setHeaders(res, file) {
+            if (file.indexOf('index.html') > -1) {
+                res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=5');
+            }
+        },
+    }));
+} else {
+    const compiler = webpack(webpackConfigDev); // 实例化webpack
+    app.use(webpackDevMiddleware(compiler, {
+        // 挂载webpack小型服务器
+        publicPath: webpackConfigDev.output.publicPath, // 对应webpack配置中的publicPath
+    }));
+    // 挂载HMR热更新中间件
+    app.use(webpackHotMiddleware(compiler));
+}
 
 app.use((req, resp, next) => {
     if (req.originalUrl.indexOf('/user') > -1) {
@@ -39,13 +55,13 @@ app.use((req, resp, next) => {
                 return body.json();
             }
             return Promise.reject(new Error('错误'));
-        }).then((result) => resp.send(result));
+        }).then((result) => resp.send(result)).catch(e => resp.send('error'));
     } else {
         next();
     }
 });
 
 /** 启动服务 * */
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, () => {
     console.log(`本地服务启动地址: http://localhost:${PORT}`);
 });

@@ -55,7 +55,7 @@ export default () => {
             )}
             {ignore && (
                 <Routes>
-                    <Route path="login" element={<Login />} />
+                    <Route path="login" Component={Login} />
                     <Route path="test" Component={Test} />
                 </Routes>
             )}

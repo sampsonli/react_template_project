@@ -7,8 +7,8 @@
     "analyse": "cross-env ANALYSE=1 npm run build",
     "build:dll": "rimraf static/dll/ && webpack --config build/webpack.config.dll.js && git add static/*",
     "clean": "rimraf dist",
-    "dev": "webpack serve --config build/webpack.config.dev.js",
-    "start": "node server.mjs"
+    "dev": "cross-env NODE_ENV=development node server.mjs",
+    "start": "cross-env NODE_ENV=production node server.mjs"
   },
   "browserslist": [
     ">0.2%",
@@ -34,35 +34,31 @@
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",
+    "@babel/eslint-parser": "^7.22.15",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
     "@babel/plugin-proposal-decorators": "^7.23.9",
     "@babel/plugin-transform-runtime": "^7.23.9",
     "@babel/preset-env": "^7.23.9",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
-    "babel-loader": "^9.1.3",
-    "babel-plugin-webpack-dynamic-import": "^1.0.1",
-
-
-    "eslint": "^9.7.0",
-    "@babel/eslint-parser": "^7.22.15",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "^7.33.2",
-
-
     "@types/react": "^18.3.3",
     "assets-webpack-plugin": "^7.1.1",
     "autoprefixer": "^10.4.19",
+    "babel-loader": "^9.1.3",
+    "babel-plugin-webpack-dynamic-import": "^1.0.1",
     "body-parser": "^1.20.2",
     "compression": "^1.7.4",
     "connect-history-api-fallback": "^2.0.0",
     "copy-webpack-plugin": "^12.0.2",
     "cross-env": "^7.0.3",
     "css-loader": "^6",
+    "eslint": "^9.7.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.33.2",
     "express": "^4.18.2",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.6.0",
@@ -79,7 +75,8 @@
     "webpack": "^5.93.0",
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.0.4"
+    "webpack-dev-middleware": "^7.2.1",
+    "webpack-hot-middleware": "^2.26.1"
   },
   "main": "server.js"
 }

@@ -1,15 +1,15 @@
-import { service, Model } from 'mtor';
+import { Model, define } from 'mtor';
 
 import api from './api';
 
-@service(module.id)
+@define(module)
 class LoginModel extends Model {
     loaded = false;
 
     /**
      * @type {number}
      */
-    num;
+    num = 0;
 
     init() {
         if (this.loaded) return;
@@ -18,9 +18,8 @@ class LoginModel extends Model {
     }
 
     changeNum() {
-        this.num = 2222;
+        this.num += 20;
     }
 }
 export default LoginModel;
 
-module.hot && module.hot.accept();
