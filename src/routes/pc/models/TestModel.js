@@ -116,7 +116,7 @@ class Demo2Model extends Model {
         let byte = dataView.getUint8(index);
         let flag = true; // 保持30fps
         const {ctx, width, height} = this;
-        ctx.fillStyle = 'green';
+        ctx.fillStyle = 'red';
         function render() {
             if (index >= dataView.byteLength) return;
             window.requestAnimationFrame(render);

@@ -8,13 +8,16 @@ export default () => {
     useEffect(() => {
         model.init();
     }, []);
-    const {num} = model;
+    const {num, num2} = model;
     return (
         <div className={style.container}>
-            <div className={style.header}>用戶登錄</div>
+            <div className={style.header}>用户登录</div>
             <div className={style.content} onClick={model.changeNum}>
-
-                登录111---{num}
+                <div className={style.item}>{num}</div>
+                <div className={style.item}>{num2}</div>
+                <div className={style.item}>{num}</div>
+                <div className={style.item}>{num2}</div>
+                <div className={style.item}>{num}</div>
 
             </div>
         </div>

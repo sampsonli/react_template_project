@@ -10,6 +10,7 @@ class LoginModel extends Model {
      * @type {number}
      */
     num = 0;
+    num2 = 0;
 
     init() {
         if (this.loaded) return;
@@ -17,8 +18,11 @@ class LoginModel extends Model {
         this.loaded = true;
     }
 
-    changeNum() {
-        this.num += 20;
+    changeNum() { 
+        this.num += 4;
+        if(this.num  % 10 === 0) {
+            this.num2++;
+        }
     }
 }
 export default LoginModel;

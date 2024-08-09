@@ -7,12 +7,11 @@
   display: flex;
   flex-direction: column;
   .header {
-    height: .5rem;
-    background-color: yellowgreen;
+    background-color: rgb(255, 0, 85); 
     text-align: center;
-    line-height: .5rem;
+    line-height: .4rem;
     color: white;
-    font-size: .2rem;
+    font-size: .18rem;
   }
 
 
@@ -23,14 +22,20 @@
 
     .item {
       height: 1rem;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .24rem;
       border-bottom: .01rem solid yellow;
+      user-select: none;
       &:nth-child(2n) {
 
         background-color: yellowgreen;
       }
       &:nth-child(2n + 1) {
 
-        background-color: blueviolet;
+        background-color: rgb(102, 108, 218);
       }
     }
 
