@@ -3,7 +3,7 @@ import { useModel } from 'mtor';
 import style from './style.less';
 import LoginModel from '../../models/LoginModel';
 
-export default () => {
+export default function Login () {
     const model = useModel(LoginModel);
     useEffect(() => {
         model.init();

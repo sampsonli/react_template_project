@@ -114,7 +114,6 @@ export default {
             dllName: bundleConfig.vendors.js,
         }),
         new BundleAnalyzerPlugin({
-            // eslint-disable-next-line no-undef
             analyzerMode: process.env.ANALYSE ? 'server' : 'disabled',
         }),
     ],
