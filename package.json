@@ -60,7 +60,7 @@
     "less": "^4.2.0",
     "less-loader": "^12.2.0",
     "postcss": "^8.4.47",
-    "postcss-loader": "^7.3.4",
+    "postcss-loader": "^8.1.1",
     "postcss-pxtorem": "^6.1.0",
     "url-loader": "^4.1.1",
     "style-loader": "^4.0.0",
