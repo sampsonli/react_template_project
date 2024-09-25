@@ -1,7 +1,5 @@
 import { Model, define } from 'mtor';
 
-import api from './api';
-
 @define(module)
 class LoginModel extends Model {
     loaded = false;
