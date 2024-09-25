@@ -66,6 +66,7 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             modules: {
+                                namedExport: false,
                                 localIdentName: '[local]-[hash:base64:5]',
                                 exportLocalsConvention: 'camelCase',
                             },
