@@ -5,14 +5,10 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
-import vendorManifest from '../static/dll/vendors-manifest.json' with {type: 'json'};
-import bundleConfig from '../static/dll/bundle-config.json' with {type: 'json'};
+import {vendorManifest, bundleConfig} from './dll.json.js';
 
 import {fileURLToPath} from 'node:url'
-const  __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-
-const ctxPath = path.resolve(__dirname, '../');
+const ctxPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../');
 const srcPath = path.join(ctxPath, 'src');
 
 export default {
