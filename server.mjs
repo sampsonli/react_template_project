@@ -8,7 +8,7 @@ import historyApiFallback from 'connect-history-api-fallback';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-import webpackConfigDev from './build/webpack.config.dev.js';
+import webpackConfigDev from './build/webpack.config.dev.mjs';
 
 
 

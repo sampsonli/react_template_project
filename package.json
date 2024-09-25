@@ -3,9 +3,9 @@
   "version": "0.0.2",
   "private": true,
   "scripts": {
-    "build": "rimraf dist && webpack --config build/webpack.config.prod.js",
+    "build": "rimraf dist && webpack --config build/webpack.config.prod.mjs",
     "analyse": "cross-env ANALYSE=1 npm run build",
-    "build:dll": "rimraf static/dll/ && webpack --config build/webpack.config.dll.js && git add static/*",
+    "build:dll": "rimraf static/dll/ && webpack --config build/webpack.config.dll.mjs && git add static/*",
     "clean": "rimraf dist",
     "dev": "cross-env NODE_ENV=development PORT=3000 node server.mjs",
     "start": "cross-env NODE_ENV=production PORT=3000 node server.mjs"

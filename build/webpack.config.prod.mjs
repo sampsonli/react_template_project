@@ -1,16 +1,21 @@
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
-const vendorManifest = require('../static/dll/vendors-manifest');
-const bundleConfig = require('../static/dll/bundle-config');
+
+import path from 'node:path';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
+import vendorManifest from '../static/dll/vendors-manifest.json' with {type: 'json'};
+import bundleConfig from '../static/dll/bundle-config.json' with {type: 'json'};
+
+import {fileURLToPath} from 'node:url'
+const  __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 
 const ctxPath = path.resolve(__dirname, '../');
 const srcPath = path.join(ctxPath, 'src');
 
-module.exports = {
+export default {
     mode: 'production',
     entry: {
         app: [srcPath],
@@ -93,7 +98,6 @@ module.exports = {
     plugins: [
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
-            'process.env.SF_ENV': JSON.stringify(process.env.SF_ENV || 'prd'),
         }),
         new webpack.DllReferencePlugin({
             context: ctxPath,
@@ -114,6 +118,7 @@ module.exports = {
             dllName: bundleConfig.vendors.js,
         }),
         new BundleAnalyzerPlugin({
+            // eslint-disable-next-line no-undef
             analyzerMode: process.env.ANALYSE ? 'server' : 'disabled',
         }),
     ],
