@@ -3,7 +3,7 @@ import { useInitModel } from 'mtor';
 import React from 'react';
 import DemoModel from '../../models/DemoModel';
 
-export default () => {
+const Demo = () => {
     const model = useInitModel(DemoModel);
 
     return (
@@ -12,4 +12,5 @@ export default () => {
             {model.age}
         </div>
     );
-};
+}
+export default Demo;

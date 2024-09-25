@@ -1,11 +1,13 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+import path from 'node:path';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import {fileURLToPath} from 'node:url'
+const  __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const ctxPath = path.resolve(__dirname, '../');
 const srcPath = path.join(ctxPath, 'src');
-module.exports = {
+export default {
     mode: 'development',
     // stats: 'errors-only',
     // devServer: {
@@ -76,7 +78,8 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             modules: {
-                                localIdentName: '[local]-[hash:base64:5]',
+                                namedExport: false,
+                                localIdentName: '[name]__[local]-[hash:base64:5]',
                                 exportLocalsConvention: 'camelCase',
                             },
                         },

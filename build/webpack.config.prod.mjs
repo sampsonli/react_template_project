@@ -1,16 +1,17 @@
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
-const vendorManifest = require('../static/dll/vendors-manifest');
-const bundleConfig = require('../static/dll/bundle-config');
 
-const ctxPath = path.resolve(__dirname, '../');
+import path from 'node:path';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
+import {vendorManifest, bundleConfig} from './dll.json.js';
+
+import {fileURLToPath} from 'node:url'
+const ctxPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../');
 const srcPath = path.join(ctxPath, 'src');
 
-module.exports = {
+export default {
     mode: 'production',
     entry: {
         app: [srcPath],
@@ -66,6 +67,7 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             modules: {
+                                namedExport: false,
                                 localIdentName: '[local]-[hash:base64:5]',
                                 exportLocalsConvention: 'camelCase',
                             },
@@ -92,7 +94,6 @@ module.exports = {
     plugins: [
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
-            'process.env.SF_ENV': JSON.stringify(process.env.SF_ENV || 'prd'),
         }),
         new webpack.DllReferencePlugin({
             context: ctxPath,

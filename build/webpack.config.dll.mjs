@@ -1,9 +1,13 @@
-const webpack = require('webpack');
-const path = require('path');
-const AssetsPlugin = require('assets-webpack-plugin');
+
+import path from 'node:path';
+import webpack from 'webpack';
+import AssetsPlugin from 'assets-webpack-plugin';
+
+import {fileURLToPath} from 'node:url'
+const  __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const dllPath = path.resolve(__dirname, '../static/dll');
-module.exports = {
+export default {
     mode: 'production',
     entry: {
         vendors: ['react', 'prop-types', 'react-dom', 'react-router', 'dayjs', 'moment',
