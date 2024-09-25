@@ -77,5 +77,5 @@
     "webpack-dev-middleware": "^7.4.2",
     "webpack-hot-middleware": "^2.26.1"
   },
-  "main": "server.js"
+  "main": "server.mjs"
 }

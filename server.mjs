@@ -2,7 +2,6 @@
 import express from 'express';
 import undici from 'undici';
 import bodyParser from 'body-parser';
-import http from 'node:http';
 import compression from 'compression'
 import historyApiFallback from 'connect-history-api-fallback';
 import webpack from 'webpack';
@@ -15,7 +14,7 @@ import webpackConfigDev from './build/webpack.config.dev.mjs';
 
 const app = express(); // 实例化express服务
 app.use(bodyParser.json());
-const { PORT = 8816, NODE_ENV : env} = process.env; // 服务启动端口号
+const { PORT = 3000, NODE_ENV : env} = process.env; // 服务启动端口号
 app.use(historyApiFallback());
 app.use(compression());
 

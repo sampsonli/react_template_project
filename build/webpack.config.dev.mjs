@@ -3,9 +3,8 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import {fileURLToPath} from 'node:url'
-const  __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const ctxPath = path.resolve(__dirname, '../');
+const ctxPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../');
 const srcPath = path.join(ctxPath, 'src');
 export default {
     mode: 'development',
@@ -23,7 +22,7 @@ export default {
     entry: {
         app: [
             'webpack-hot-middleware/client?reload=true&path=/__webpack_hmr', // webpack热更新插件，就这么写
-            path.resolve(__dirname, '../src/index.js'),
+            path.resolve(srcPath, './index.js'),
         ],
     },
     output: {
