@@ -18,7 +18,7 @@ class LoginModel extends Model {
     }
 
     changeNum() {
-        this.num += 20;
+        this.num += 10;
     }
 }
 export default LoginModel;
