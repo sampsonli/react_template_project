@@ -65,15 +65,12 @@
     "url-loader": "^4.1.1",
     "style-loader": "^4.0.0",
 
-
-
-
     "body-parser": "^1.20.3",
     "compression": "^1.7.4",
     "connect-history-api-fallback": "^2.0.0",
     "cross-env": "^7.0.3",
     "express": "^4.21.0",
-    "rimraf": "^5",
+    "rimraf": "^6.0.1",
     "undici": "^6.19.8",
 
     "eslint": "^9.11.1",
