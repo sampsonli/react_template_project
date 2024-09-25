@@ -1,13 +1,13 @@
-
+import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
-import {vendorManifest, bundleConfig} from './dll.json.js';
+import {vendorManifest, bundleConfig} from './dll.json.mjs';
 
-import {fileURLToPath} from 'node:url'
+
 const ctxPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../');
 const srcPath = path.join(ctxPath, 'src');
 
