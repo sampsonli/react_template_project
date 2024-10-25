@@ -92,8 +92,9 @@ class Demo2Model extends Model {
 
     init(canvas) {
         this.ctx = canvas.getContext('2d');
-        this.width = canvas.width;
-        this.height = canvas.height;
+
+        // this.width = innerWidth;
+        // this.height = innerHeight;
     }
 
     async playAndSaveFile() {
@@ -132,7 +133,7 @@ class Demo2Model extends Model {
             for (let r = 0; r < vHeight; r++) {
                 for (let c = 0; c < vWidth; c++) {
                     if (byte & (2 ** offset)) {
-                        ctx.fillRect(c * rt, r * rt, rt / 1.2, rt / 1.2);
+                        ctx.fillRect(c * rt, r * rt, rt / 1.3, rt / 1.3);
                     }
                     offset++;
                     if (offset === 8) {

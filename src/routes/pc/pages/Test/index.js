@@ -2,10 +2,10 @@
 import React, {useRef} from 'react';
 import {useInitModel} from 'mtor';
 
-import TestModel, {all} from '~/routes/pc/models/TestModel';
+import TestModel from '~/routes/pc/models/TestModel';
 import style from './style.less';
 
-export default () => {
+const Test = () => {
     const canvas = useRef();
     const model = useInitModel(TestModel, () => {
         model.init(canvas.current);
@@ -18,7 +18,7 @@ export default () => {
                     <div className={style.btn} onClick={model.play}>播放</div>
                     <div className={style.btn} onClick={model.playAndSaveFile}>播放视频并保存</div>
                 </div>
-                <canvas width={model.width} height={model.height} ref={canvas} />
+                <canvas width={innerWidth} height={innerHeight} ref={canvas} />
 
             </div>
 
@@ -26,3 +26,4 @@ export default () => {
 
     );
 };
+export default Test;
