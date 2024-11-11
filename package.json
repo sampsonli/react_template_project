@@ -8,7 +8,8 @@
     "build:dll": "rimraf static/dll/ && webpack --config build/webpack.config.dll.mjs && git add static/*",
     "clean": "rimraf dist",
     "dev": "cross-env NODE_ENV=development PORT=3000 node server.mjs",
-    "start": "cross-env NODE_ENV=production PORT=3000 node server.mjs"
+    "start": "cross-env NODE_ENV=production PORT=3000 node server.mjs",
+    "deploy": "node deploy.mjs"
   },
   "browserslist": [
     ">0.2%",
